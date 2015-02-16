@@ -1,0 +1,3 @@
+@extends('header')
+
+@include('footer')
