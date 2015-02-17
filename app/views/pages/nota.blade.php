@@ -12,7 +12,7 @@
 			<div id="slider" class="sl-slider-wrapper top">
 				<div class="sl-slider">
 					<div class="sl-slide" data-uid="{{$nota->id}}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-						<div class="sl-slide-inner" style="background-image: url('pictures/large/{{--$picture[0]->url--}}');">
+						<div class="sl-slide-inner" style="background-image: url('pictures/large/{{$nota->img->url}}');">
 							<div class="bottom-preguntame">
 								<div class="row">
 									<div class="col-md-20 col-md-offset-2">
@@ -43,7 +43,7 @@
 				@if(!Agent::isMobile())
 					@foreach ($lasts as $last)
 					<div class="nota">
-						<article data-uid="{{$last->id}}" style="background: #000 url('pictures/small/{{$last->cover}}') center no-repeat; background-size: cover;">
+						<article data-uid="{{$last->id}}" style="background: #000 url('pictures/small/{{$last->img->url}}') center no-repeat; background-size: cover;">
 						<a href="nota/{{$last->id}}" title="{{$last->title}}">
 							<span class="cat">{{$last->categoria->name}}</span>
 							<div class="ft">
@@ -68,7 +68,7 @@
 			<section class="comments">
 				@foreach ($lasts as $last)
 				<div class="nota">
-					<article data-uid="{{$last->id}}" style="background: #000 url('pictures/small/{{$last->cover}}') center no-repeat; background-size: cover;">
+					<article data-uid="{{$last->id}}" style="background: #000 url('pictures/small/{{$last->img->url}}') center no-repeat; background-size: cover;">
 					<a href="nota/{{$last->id}}" title="{{$last->title}}">
 						<span class="cat">{{$last->categoria->name}}</span>
 						<div class="ft">
