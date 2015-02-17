@@ -29,7 +29,7 @@ class AppController extends Controller{
 
 	public function index(){
 		$data = array(
-			'title' => 'Titulo',
+			'title' => 'Inicio',
 		);
 		if(Auth::check()){
 			return View::make('appanel/index', $data);
