@@ -10,6 +10,10 @@ class Nota extends Eloquent {
 		return $this->belongsTo('User', 'author', 'id');
 	}
 
+	public function img(){
+		return $this->hasOne('Image', 'id', 'cover');
+	}
+
 	public function scopeNav($query){
 		return $query->whereStatus(1)->orderBy('id', 'desc')->take(4);
 	}
