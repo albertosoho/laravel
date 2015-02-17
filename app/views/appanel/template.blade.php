@@ -1,69 +1,47 @@
 <!doctype html>
 <html>
 <head>
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script src="{{URL::asset('/panel/materialize/js/materialize.min.js')}}"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+	<script src="{{URL::asset('/panel/js/persist.js')}}"></script>
 	@section('scripts')
 
 	@show
+
 	<script src="{{URL::asset('/panel/js/index.js')}}"></script>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+
+	<link rel="stylesheet" href="{{URL::asset('/panel/materialize/css/materialize.min.css')}}">
 	@section('styles')
 
 	@show
+
 	<link rel="stylesheet" href="{{URL::asset('/panel/css/style.css')}}">
-	<style>
-		button{
-			background:none;
-			border:0;
-		}
-		.inline{
-			display:inline-block;
-			color:#337AB7;
-		}	
-	</style>
-	<title>{{$title}}</title>
+	<title>{{$title}} | Dashboard</title>
 </head>
 <body>
 	@section('sidebar')
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ul>
-					<li>
-						<a href="{{route('appanel.nota.index')}}">Notas</a>
-					</li>
-					<li>
-						<a href="{{route('appanel.video.index')}}">Videos</a>
-					</li>
-					<li>
-						<a href="{{route('appanel.meme.index')}}">Memes</a>
-					</li>
-					<li>
-						<a href="{{route('appanel.picture.index')}}">Imágenes</a>
-					</li>
-					<li>
-						<a href="{{route('appanel.category.index')}}">Categorías</a>
-					</li>
-					<li>
-						<a href="{{route('appanel.user.index')}}">Usuarios</a>
-					</li>
-					<li>
-						<a href="{{route('logout')}}">Salir</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+		<header>
+			<ul class="side-nav fixed">
+			<li class="bold"><a href="/" class="waves-effect waves-teal">Inicio</a></li>
+			<li class="bold"><a href="{{route('appanel.nota.index')}}" class="waves-effect waves-teal">Notas</a></li>
+			<li class="bold"><a href="{{route('appanel.video.index')}}" class="waves-effect waves-teal">Videos</a></li>
+			<li class="bold"><a href="{{route('appanel.meme.index')}}" class="waves-effect waves-teal">Memes</a></li>
+			<li class="bold"><a href="{{route('appanel.picture.index')}}" class="waves-effect waves-teal">Imágenes</a></li>
+			<li class="bold"><a href="{{route('appanel.category.index')}}" class="waves-effect waves-teal">Categorías</a></li>
+			<li class="bold"><a href="{{route('appanel.user.index')}}" class="waves-effect waves-teal">Usuarios</a></li>
+			<li class="bold"><a href="{{route('logout')}}" class="waves-effect waves-teal">Salir</a></li>
+			</ul>
+		</header>
 	@show
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				@section('content')
-				@show
-			</div>
-		</div>
-	</div>
+
+	@section('content')
+	@show
 </body>
 </html>
+
+
+
+
+
