@@ -26,11 +26,12 @@ class ImageController extends Controller{
 				),
 				'description' => 'Se guardó la imagen',
 				'pic' => $file,
+				'filelink' => $file
 			);
 		}
-		$status = json_encode($status);
+		//$status = json_encode($status);
+		return Response::json($status);
 
-		print_r($status);
 	}
 
 	public function index(){
