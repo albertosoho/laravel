@@ -13,12 +13,12 @@
 				<div id="slider" class="sl-slider-wrapper top">
 					<div class="sl-slider">
 						@foreach ($notas as $nota)
-						<div class="sl-slide" data-uid="{{$nota->vuid}}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-							<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$nota->url}}');">
+						<div class="sl-slide" data-uid="{{$nota->id}}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+							<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$nota->cover}}');">
 								<div class="bottom-preguntame">
 									<div class="row">
 										<div class="col-md-20 col-md-offset-2">
-											<h1><a href="nota/{{$nota->vuid}}">{{$nota->title}}</a></h1>
+											<h1><a href="nota/{{$nota->id}}">{{$nota->title}}</a></h1>
 											<p>{{substr(strip_tags($nota->content), 0, 250) }}...</p>
 										</div>
 									</div>
@@ -43,8 +43,8 @@
 				<section class="blog">
 					@foreach ($notas as $nota)
 					<div class="nota">
-						<article data-uid="{{$nota->vuid}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
-						<a href="nota/{{$nota->vuid}}" title="{{$nota->title}}">
+						<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->cover}}') center no-repeat; background-size: cover;">
+						<a href="nota/{{$nota->id}}" title="{{$nota->title}}">
 							<span class="cat">{{$nota->name}}</span>
 							<div class="ft">
 								<h1>{{$nota->title}}</h1>
@@ -75,8 +75,8 @@
 					<?php $i = 1 ?>
 					@foreach ($notas as $nota)
 					<div class="nota">
-						<article data-uid="{{$nota->vuid}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
-						<a href="nota/{{$nota->vuid}}" title="{{$nota->title}}">
+						<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->cover}}') center no-repeat; background-size: cover;">
+						<a href="nota/{{$nota->id}}" title="{{$nota->title}}">
 							<span class="cat">{{$nota->name}}</span>
 							<div class="ft">
 								<h1>{{$nota->title}}</h1>

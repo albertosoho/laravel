@@ -21,35 +21,35 @@
 						<div class="sl-slider">
 							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[0]->url}}'); background-position: center;">
-									<h1><a href="video/{{$videos[0]->vuid}}">{{$videos[0]->title}}</a></h1>
+									<h1><a href="video/{{$videos[0]->id}}">{{$videos[0]->title}}</a></h1>
 								</div>
 							</div>
 						</div>
 						<div class="sl-slider">
 							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$notas[0]->url}}'); background-position: center;">
-									<h1><a href="video/{{$notas[0]->vuid}}">{{$notas[0]->title}}</a></h1>
+									<h1><a href="video/{{$notas[0]->id}}">{{$notas[0]->title}}</a></h1>
 								</div>
 							</div>
 						</div>
 						<div class="sl-slider">
 							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[1]->url}}'); background-position: center;">
-									<h1><a href="video/{{$videos[1]->vuid}}">{{$videos[1]->title}}</a></h1>
+									<h1><a href="video/{{$videos[1]->id}}">{{$videos[1]->title}}</a></h1>
 								</div>
 							</div>
 						</div>
 						<div class="sl-slider">
 							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$notas[1]->url}}'); background-position: center;">
-									<h1><a href="video/{{$notas[1]->vuid}}">{{$notas[1]->title}}</a></h1>
+									<h1><a href="video/{{$notas[1]->id}}">{{$notas[1]->title}}</a></h1>
 								</div>
 							</div>
 						</div>
 						<div class="sl-slider">
 							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[0]->url}}'); background-position: center;">
-									<h1><a href="video/{{$videos[0]->vuid}}">{{$videos[0]->title}}</a></h1>
+									<h1><a href="video/{{$videos[0]->id}}">{{$videos[0]->title}}</a></h1>
 								</div>
 							</div>
 						</div>
@@ -97,8 +97,8 @@
 					<div class="articles">
 						@foreach ($videos as $video)
 						<div class="vid-content">
-							<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-								<a href="video/{{$video->vuid}}" title="{{$video->subtitle}}">
+							<article class="video" data-uid="{{$video->id}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+								<a href="video/{{$video->id}}" title="{{$video->subtitle}}">
 									<div class="ft">
 										<h1>{{$video->title}}</h1>
 									</div>
@@ -140,8 +140,8 @@ data-ad-slot="7339020361"></ins>
 					<div class="articles">
 						@foreach ($notas as $nota)
 						<div class="nota">
-							<article data-uid="{{$nota->vuid}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
-								<a href="nota/{{$nota->vuid}}" title="Grandes actores que no han ganado el Oscar.">
+							<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
+								<a href="nota/{{$nota->id}}" title="Grandes actores que no han ganado el Oscar.">
 									<span class="cat">{{$nota->name}}</span>
 									<div class="ft">
 										<h1>{{$nota->title}}</h1>
@@ -149,7 +149,7 @@ data-ad-slot="7339020361"></ins>
 									</div>
 								</a>
 							</article>
-							<p>{{utf8_decode(substr(strip_tags($nota->description), 0, 50))}}</p>
+							<p>{{substr(strip_tags($nota->description), 0, 50)}}</p>
 						</div>
 						@endforeach
 					</div>

@@ -28,7 +28,7 @@ class VideoController extends \BaseController {
 	{
 		$categories = Category::categoryType('video')->get();
 		$data = array(
-			'title' => 'Nueva video',
+			'title' => 'Nuevo video',
 			'categories' => $categories
 		);
 		return View::make('appanel/videos/create', $data);
@@ -52,7 +52,11 @@ class VideoController extends \BaseController {
 		$video->author = Auth::id();
 		$video->type = Input::get('type');
 		$video->category = Input::get('category');
-		$video->status = Input::get('status');
+		if(Input::has('status')) {
+			$video->status = 1;
+		}else{
+			$video->status = 0;
+		}
 		$video->save();
 
 		return Redirect::to(route('appanel.video.index'));
@@ -100,7 +104,19 @@ class VideoController extends \BaseController {
 	{
 		$video = Video::find($id);
 		$video->title = Input::get('title');
-		$video->content = Input::get('content');
+		$video->subtitle = Input::get('subtitle');
+		$video->credits = Input::get('credits');
+		$video->tags = Input::get('tags');
+		$video->youtube = Input::get('youtube');
+		$video->tags = Input::get('tags');
+		$video->author = Auth::id();
+		$video->type = Input::get('type');
+		$video->category = Input::get('category');
+		if(Input::has('status')) {
+			$video->status = 1;
+		}else{
+			$video->status = 0;
+		}
 		$video->save();
 
 		return Redirect::to('appanel/video/'.$id.'/edit');

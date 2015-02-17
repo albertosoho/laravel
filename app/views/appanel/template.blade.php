@@ -1,16 +1,18 @@
 <!doctype html>
 <html>
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 	@section('scripts')
 
 	@show
 	<script src="{{URL::asset('/panel/js/index.js')}}"></script>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
 	@section('styles')
 
 	@show
-	<link rel="stylesheet" href="">
+	<link rel="stylesheet" href="{{URL::asset('/panel/css/style.css')}}">
 	<style>
 		button{
 			background:none;
@@ -28,24 +30,29 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<li>
-					<a href="{{route('appanel.nota.index')}}">Notas</a>
-				</li>
-				<li>
-					<a href="{{route('appanel.video.index')}}">Videos</a>
-				</li>
-				<li>
-					<a href="{{route('appanel.meme.index')}}">Memes</a>
-				</li>
-				<li>
-					<a href="{{route('appanel.picture.index')}}">Imágenes</a>
-				</li>
-				<li>
-					<a href="{{route('appanel.category.index')}}">Categorías</a>
-				</li>
-				<li>
-					<a href="{{route('appanel.user.index')}}">Usuarios</a>
-				</li>
+				<ul>
+					<li>
+						<a href="{{route('appanel.nota.index')}}">Notas</a>
+					</li>
+					<li>
+						<a href="{{route('appanel.video.index')}}">Videos</a>
+					</li>
+					<li>
+						<a href="{{route('appanel.meme.index')}}">Memes</a>
+					</li>
+					<li>
+						<a href="{{route('appanel.picture.index')}}">Imágenes</a>
+					</li>
+					<li>
+						<a href="{{route('appanel.category.index')}}">Categorías</a>
+					</li>
+					<li>
+						<a href="{{route('appanel.user.index')}}">Usuarios</a>
+					</li>
+					<li>
+						<a href="{{route('logout')}}">Salir</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>

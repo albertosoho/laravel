@@ -14,8 +14,9 @@ class AppController extends Controller{
 		$_token = Input::get('_token');
 
 		if(Auth::attempt(array('username' => $username, 'password' => $password))){
-			//return Redirect::to('appanel/index');
+			return Redirect::to('appanel/index');
 			echo 'login exitoso';
+			echo Auth::id();
 		}else{
 			echo 'Error de login';
 		}

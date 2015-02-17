@@ -49,8 +49,12 @@ class NotaController extends \BaseController {
 		$nota->description = Input::get('description');
 		$nota->tags = Input::get('tags');
 		$nota->fuente = Input::get('fuente');
-		$nota->status = Input::get('status');
 		$nota->author = Auth::id();
+		if(null !== Input::get('status')){
+			$nota->status = 1;
+		}else{
+			$nota->status = 0;
+		}
 		$nota->save();
 
 		return Redirect::to(route('appanel.nota.index'));
@@ -103,7 +107,11 @@ class NotaController extends \BaseController {
 		$nota->description = Input::get('description');
 		$nota->tags = Input::get('tags');
 		$nota->fuente = Input::get('fuente');
-		$nota->status = Input::get('status');
+		if(null !== Input::get('status')){
+			$nota->status = 1;
+		}else{
+			$nota->status = 0;
+		}
 		$nota->author = Auth::id();
 		$nota->save();
 

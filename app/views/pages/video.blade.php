@@ -11,7 +11,7 @@
 						<div class="row">
 							<div class="col-md-24">
 								<div class="lineas-3">
-									{{$category[0]->name}}
+									{{$video->categoria->name}}
 								</div>
 							</div>
 						</div>
@@ -43,11 +43,11 @@
 										}());
 										</script>
 										<article>
-											<h1>{{ $video[0]->title }}</h1>
+											<h1>{{ $video->title }}</h1>
 											<figure class="video-container">
-												<iframe width="853" height="480" src="//www.youtube.com/embed/{{ $video[0]->youtube}}?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+												<iframe width="853" height="480" src="//www.youtube.com/embed/{{ $video->youtube}}?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
 											</figure>
-											{{$video[0]->credits}}
+											{{$video->credits}}
 										</article>
 										@if(!Agent::isMobile())
 											<div class="ad-horizontal">
@@ -90,7 +90,7 @@
 														</div>
 														<div class="amas">
 															<i class="mas"></i>
-															<span>{{$video->name}}</span>
+															<span>{{$video->categoria->name}}</span>
 														</div>
 													</a>
 												</article>

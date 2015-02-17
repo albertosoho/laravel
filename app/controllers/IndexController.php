@@ -9,18 +9,10 @@ class IndexController extends Controller {
 	*/
 
 	public function index(){
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos = Video::lasts()->take(6)->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas = Nota::lasts()->take(3)->get();
-		//});
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
+		$videos = Video::lasts()->take(6)->get();
+		$notas = Nota::lasts()->take(3)->get();
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'videos' => $videos,
@@ -33,23 +25,10 @@ class IndexController extends Controller {
 	}
 
 	public function carnales(){
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos = DB::table('videos')
-				->select(DB::raw('derbez_videos.uid as vuid, subtitle, name, title, url'))
-				->join('categories', 'categories.uid', '=', 'videos.category')
-				->join('pictures', 'pictures.uid', '=', 'videos.pic')
-				->where('videos.status', '=', 'active')
-				->orderBy('videos.id', 'desc')
-				->take(12)
-				->get();
-		//});
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
-		$categories = Category::where('objects', '=', 'video')->where('status', '=', 'active')->get();
+		$videos = Video::orderBy('id', 'desc')->take(12)->get();
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
+		$categories = Category::categoryType('video')->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'videos' => $videos,
@@ -68,24 +47,8 @@ class IndexController extends Controller {
 	}
 
 	public function legales(){
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos = DB::table('videos')
-				->select(DB::raw('derbez_videos.uid as vuid, subtitle, name, title'))
-				->join('categories', 'categories.uid', '=', 'videos.category')
-				->take(12)
-				->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas = DB::table('notas')
-				->take(3)
-				->get();
-		//});
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'videos' => $videos,
@@ -97,24 +60,17 @@ class IndexController extends Controller {
 	}
 
 	public function meme($uid){
-		//$videos = Cache::remember('videos', 60, function(){
 			$videos = DB::table('videos')
 				->select(DB::raw('derbez_videos.uid as vuid, subtitle, name, title'))
 				->join('categories', 'categories.uid', '=', 'videos.category')
 				->take(12)
 				->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas = DB::table('notas')
-				->take(3)
-				->get();
-		//});
-		//$videos = Cache::remember('videos', 60, function(){
+
+			$notas = DB::table('notas')->take(3)->get();
 			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
+
 			$notas_nav = Nota::nav()->get();
-		//});
+
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'videos' => $videos,
@@ -126,12 +82,8 @@ class IndexController extends Controller {
 	}
 
 	public function memeteca(){
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 		$memes = DB::table('memes')
 			->select(DB::raw('derbez_memes.uid as muid, url'))
 			->join('pics', 'pics.uid', '=', 'memes.pic')
@@ -146,36 +98,16 @@ class IndexController extends Controller {
 		return View::make('pages/memeteca', $data);
 	}
 
-	public function nota($uid){
-		$articulo = DB::table('notas')
-			->where('uid', '=', $uid)
-			->get();
+	public function nota($id){
+		$nota = Nota::find($id);
 
-		$picture = DB::table('pictures')
-			->where('uid', '=', $articulo[0]->cover)
-			->get();
-
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas = DB::table('notas')
-				->select(DB::raw('derbez_notas.uid as vuid, description, name, title, url, content'))
-				->join('categories', 'categories.uid', '=', 'notas.category')
-				->join('pictures', 'pictures.uid', '=', 'notas.cover')
-				->where('notas.status', '=', 'active')
-				->orderBy('notas.id', 'desc')
-				->take(3)
-				->get();
-		//});
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
+		$lasts = Nota::lasts()->take(3)->get();
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
-			'articulo' => $articulo,
-			'picture' => $picture,
-			'notas' => $notas,
+			'nota' => $nota,
+			'lasts' => $lasts,
 			'videos_nav' => $videos_nav,
 			'notas_nav' => $notas_nav
 		);
@@ -183,21 +115,9 @@ class IndexController extends Controller {
 	}
 
 	public function preguntame(){
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas = DB::table('notas')
-				->select(DB::raw('derbez_notas.uid as vuid, description, name, title, url, content'))
-				->join('categories', 'categories.uid', '=', 'notas.category')
-				->join('pictures', 'pictures.uid', '=', 'notas.cover')
-				->where('notas.status', '=', 'active')
-				->orderBy('notas.id', 'desc')
-				->paginate(12);
-		//});
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
+		$notas = Nota::orderBy('id', 'desc')->paginate(12);
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'notas' => $notas,
@@ -207,33 +127,15 @@ class IndexController extends Controller {
 		return View::make('pages/preguntame', $data);
 	}
 
-	public function video($uid){
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos = DB::table('videos')
-				->select(DB::raw('derbez_videos.uid as vuid, subtitle, name, title, url'))
-				->join('categories', 'categories.uid', '=', 'videos.category')
-				->join('pictures', 'pictures.uid', '=', 'videos.pic')
-				->where('videos.status', '=', 'active')
-				->orderBy('videos.id', 'desc')
-				->take(6)
-				->get();
-		//});
+	public function video($id){
+		$videos = Video::orderBy('id', 'desc')->take(3)->get();
 
-		$video = DB::table('videos')->where('uid', '=', $uid)->get();
-		$category = DB::table('categories')
-			->where('uid', '=', $video[0]->category)
-			->get();
-
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
+		$video = Video::find($id);
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'video' => $video,
-			'category' => $category,
 			'videos' => $videos,
 			'videos_nav' => $videos_nav,
 			'notas_nav' => $notas_nav
@@ -241,33 +143,14 @@ class IndexController extends Controller {
 		return View::make('pages/video', $data);
 	}
 
-	public function categoryVideos($uid){
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos = DB::table('videos')
-				->select(DB::raw('derbez_videos.uid as vuid, subtitle, name, title, url'))
-				->join('categories', 'categories.uid', '=', 'videos.category')
-				->join('pictures', 'pictures.uid', '=', 'videos.pic')
-				->where('videos.status', '=', 'active')
-				->where('videos.category', '=', $uid)
-				->orderBy('videos.id', 'desc')
-				->take(6)
-				->get();
-		//});
-
-		$category = DB::table('categories')
-			->where('uid', '=', $uid)
-			->get();
-
-		//$videos = Cache::remember('videos', 60, function(){
-			$videos_nav = Video::nav()->get();
-		//});
-		//$notas = Cache::remember('notas', 60, function(){
-			$notas_nav = Nota::nav()->get();
-		//});
+	public function categoryVideos($id){
+		$videos = Category::find($id)->videos()->paginate(12);
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 		$categories = Category::where('objects', '=', 'video')->where('status', '=', 'active')->get();
+
 		$data = array(
 			'title' => 'Eugenio Derbez',
-			'category' => $category,
 			'categories' => $categories,
 			'videos' => $videos,
 			'videos_nav' => $videos_nav,

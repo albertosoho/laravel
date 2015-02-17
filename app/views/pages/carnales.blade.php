@@ -14,18 +14,18 @@
 						</h4>
 						<ul>
 							@foreach($categories as $c)
-							<li><a href="videos/{{$c->uid}}">{{$c->name}}</a></li>
+							<li><a href="videos/{{$c->id}}">{{$c->name}}</a></li>
 							@endforeach
 						</ul>
 						<div class="ad-cuadro">
-<!-- SQ_Ads_P5 -->
-<ins class="adsbygoogle"
-style="display:inline-block;width:300px;height:250px"
-data-ad-client="ca-pub-3284457972326292"
-data-ad-slot="7339020361"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+							<!-- SQ_Ads_P5 -->
+							<ins class="adsbygoogle"
+							style="display:inline-block;width:300px;height:250px"
+							data-ad-client="ca-pub-3284457972326292"
+							data-ad-slot="7339020361"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
 						</div>
 						<h4>
 							Populares
@@ -34,14 +34,14 @@ data-ad-slot="7339020361"></ins>
 							<?php $i = 1 ?>
 							@foreach ($videos as $video)
 							<div class="vid-content">
-								<article class="video" data-uid="{{ $video->vuid }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-									<a href="video/{{ $video->vuid }}" title="{{ $video->title }}">
+								<article class="video" data-uid="{{ $video->id }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+									<a href="video/{{ $video->id }}" title="{{ $video->title }}">
 										<div class="ft">
 											<h1>{{ $video->title }}</h1>
 										</div>
 										<div class="amas">
 											<i class="mas"></i>
-											<span>{{ $video->name}}</span>
+											<span>{{ $video->categoria->name}}</span>
 										</div>
 									</a>
 								</article>
@@ -62,9 +62,9 @@ data-ad-slot="7339020361"></ins>
 					<div id="slider" class="sl-slider-wrapper">
 						<div class="sl-slider">
 							@foreach($videos as $video )
-							<div class="sl-slide" data-uid="{{ $video->vuid }}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+							<div class="sl-slide" data-uid="{{ $video->id }}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$video->url}}');">
-									<h1><a href="video/{{ $video->vuid }}">{{ $video->title }}</a></h1>
+									<h1><a href="video/{{ $video->id }}">{{ $video->title }}</a></h1>
 								</div>
 							</div>
 							@endforeach
@@ -101,14 +101,14 @@ data-ad-slot="7339020361"></ins>
 							<?php $i = 1 ?>
 							@foreach ($videos as $video)
 							<div class="vid-content">
-								<article class="video" data-uid="{{ $video->vuid }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-									<a href="video/{{ $video->vuid }}" title="{{ $video->title }}">
+								<article class="video" data-uid="{{ $video->id }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+									<a href="video/{{ $video->id }}" title="{{ $video->title }}">
 										<div class="ft">
 											<h1>{{ $video->title }}</h1>
 										</div>
 										<div class="amas">
 											<i class="mas"></i>
-											<span>{{ $video->name }}</span>
+											<span>{{ $video->categoria->name }}</span>
 										</div>
 									</a>
 								</article>
@@ -138,14 +138,14 @@ data-ad-slot="7339020361"></ins>
 							<div>
 								@foreach ($videos as $video)
 								<div class="vid-content">
-									<article class="video" data-uid="{{ $video->vuid }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-										<a href="video/{{ $video->vuid }}" title="{{ $video->title }}">
+									<article class="video" data-uid="{{ $video->id }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+										<a href="video/{{ $video->id }}" title="{{ $video->title }}">
 											<div class="ft">
 												<h1>{{ $video->title }}</h1>
 											</div>
 											<div class="amas">
 												<i class="mas"></i>
-												<span>{{ $video->name }}</span>
+												<span>{{ $video->categoria->name }}</span>
 											</div>
 										</a>
 									</article>
@@ -161,14 +161,14 @@ data-ad-slot="7339020361"></ins>
 		</div>
 		@if(Agent::isMobile())
 			<div class="ad-cuadro">
-<!-- SQ_Ads_P5 -->
-<ins class="adsbygoogle"
-style="display:inline-block;width:300px;height:250px"
-data-ad-client="ca-pub-3284457972326292"
-data-ad-slot="7339020361"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+				<!-- SQ_Ads_P5 -->
+				<ins class="adsbygoogle"
+				style="display:inline-block;width:300px;height:250px"
+				data-ad-client="ca-pub-3284457972326292"
+				data-ad-slot="7339020361"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
 			</div>
 		@endif
 @include('footer')

@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('prueba', array('as' => 'prueba', 'uses'=>'DemoController@index'));
+Route::get('prueba', array('as'=>'prueba', 'uses'=>'DemoController@index'));
 
 Route::get('/', 'IndexController@index');
 
@@ -23,17 +23,17 @@ Route::get('derbez', 'IndexController@derbez');
 
 Route::get('legales', 'IndexController@legales');
 
-Route::get('meme/{uid}', 'IndexController@meme');
+Route::get('meme/{id}', 'IndexController@meme');
 
 Route::get('memeteca', 'IndexController@memeteca');
 
-Route::get('nota/{uid}', 'IndexController@nota');
+Route::get('nota/{id}', 'IndexController@nota');
 
 Route::get('preguntame', 'IndexController@preguntame');
 
-Route::get('video/{uid}', 'IndexController@video');
+Route::get('video/{id}', 'IndexController@video');
 
-Route::get('videos/{uid}', 'IndexController@categoryVideos');
+Route::get('videos/{id}', 'IndexController@categoryVideos');
 
 /*
 	Panel de administración
@@ -45,7 +45,7 @@ Route::post('appanel/dologin', 'AppController@entrar');
 
 Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
-	Route::get('logout', 'AppController@salir');
+	Route::get('logout', array('as' => 'logout', 'uses' => 'AppController@salir'));
 
 	Route::get('index', 'AppController@index');
 
@@ -61,4 +61,12 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
 	Route::resource('category', 'CategoryController');
 
+	Route::post('upload', array('as'=>'upload', 'uses'=>'ImageController@upload'));
+
+	Route::get('upload/index', array('uses'=>'ImageController@index'));
+
 });
+
+
+
+

@@ -1302,6 +1302,9 @@ nav.menu span{
 .the_new{
 	display:none;
 }
+.articulo img, .articulo iframe {
+	max-width: 100%;
+}
 /*mediaqueries*/
 @media (max-width: 990px){
 	nav.menu{

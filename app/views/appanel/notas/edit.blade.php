@@ -1,4 +1,24 @@
 @extends('appanel/template')
+
+@section('styles')
+	<link rel="stylesheet" type="text/css" href="{{URL::asset('/panel/css/redactor.css')}}">
+@stop
+
+@section('scripts')
+	<script src="{{URL::asset('/panel/js/fontsize.min.js')}}"></script>
+	<script src="{{URL::asset('/panel/js/fullscreen.min.js')}}"></script>
+	<script src="{{URL::asset('/panel/js/redactor.min.js')}}"></script>
+	<script>
+	$(document).ready(function(){
+		$('textarea').redactor({
+			plugins: ['fullscreen'],
+			imageUpload: '{{route('appanel.picture.store')}}',
+			minHeight: 400,
+		});
+	});
+	</script>
+@stop
+
 @section('content')
 {{Form::model($nota, array('route' => array('appanel.nota.update', $nota->id), 'method' => 'PUT'))}}
 	<div class="form-group">

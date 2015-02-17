@@ -89,15 +89,14 @@
 			<div class="col-md-24">
 				@foreach ($videos_nav as $video)
 				<div class="vid-content">
-					<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-						<a href="video/{{$video->vuid}}" title="{{$video->title}}">
+					<article class="video" data-uid="{{$video->id}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+						<a href="video/{{$video->id}}" title="{{$video->title}}">
 							<div class="ft">
 								<h1>{{$video->title}}</h1>
-								<span>{{$video->categoria->name}}</span>
 							</div>
 							<div class="amas">
 								<i class="mas"></i>
-								<span>{{$video->name}}</span>
+								<span>{{$video->categoria->name}}</span>
 							</div>
 						</a>
 					</article>
@@ -112,9 +111,9 @@
 			<div class="col-md-24">
 				@foreach ($notas_nav as $nota)
 				<div class="nota">
-					<article data-uid="{{$nota->vuid}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
-						<a href="nota/{{$nota->vuid}}" title="{{$nota->title}}">
-							<span class="cat">{{$nota->name}}</span>
+					<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
+						<a href="nota/{{$nota->id}}" title="{{$nota->title}}">
+							<span class="cat">{{$nota->categoria->name}}</span>
 							<div class="ft">
 								<h1>{{$nota->title}}</h1>
 								<span>{{$nota->categoria->name}}</span>

@@ -11,10 +11,10 @@ class Nota extends Eloquent {
 	}
 
 	public function scopeNav($query){
-		return $query->take(4);
+		return $query->whereStatus(1)->orderBy('id', 'desc')->take(4);
 	}
 
 	public function scopeLasts($query){
-		return $query->orderBy('id', 'desc');
+		return $query->whereStatus(1)->orderBy('id', 'desc');
 	}
 }

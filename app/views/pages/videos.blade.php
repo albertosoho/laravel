@@ -14,7 +14,7 @@
 						</h4>
 						<ul>
 							@foreach($categories as $c)
-							<li><a href="videos/{{$c->uid}}">{{$c->name}}</a></li>
+							<li><a href="videos/{{$c->id}}">{{$c->name}}</a></li>
 							@endforeach
 						</ul>
 						<div class="ad-cuadro"></div>
@@ -25,14 +25,14 @@
 							<?php $i = 1 ?>
 							@foreach ($videos as $video)
 							<div class="vid-content">
-								<article class="video" data-uid="{{ $video->vuid }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-									<a href="video/{{ $video->vuid }}" title="{{ $video->title }}">
+								<article class="video" data-uid="{{ $video->id }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+									<a href="video/{{ $video->id }}" title="{{ $video->title }}">
 										<div class="ft">
 											<h1>{{ $video->title }}</h1>
 										</div>
 										<div class="amas">
 											<i class="mas"></i>
-											<span>{{ $video->name}}</span>
+											<span>{{ $video->categoria->name}}</span>
 										</div>
 									</a>
 								</article>
@@ -62,14 +62,14 @@
 							<?php $i = 1 ?>
 							@foreach ($videos as $video)
 							<div class="vid-content">
-								<article class="video" data-uid="{{ $video->vuid }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-									<a href="video/{{ $video->vuid }}" title="{{ $video->title }}">
+								<article class="video" data-uid="{{ $video->id }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+									<a href="video/{{ $video->id }}" title="{{ $video->title }}">
 										<div class="ft">
 											<h1>{{ $video->title }}</h1>
 										</div>
 										<div class="amas">
 											<i class="mas"></i>
-											<span>{{ $video->name }}</span>
+											<span>{{ $video->categoria->name }}</span>
 										</div>
 									</a>
 								</article>
@@ -90,14 +90,14 @@
 							<div>
 								@foreach ($videos as $video)
 								<div class="vid-content">
-									<article class="video" data-uid="{{ $video->vuid }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-										<a href="video/{{ $video->vuid }}" title="{{ $video->title }}">
+									<article class="video" data-uid="{{ $video->id }}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+										<a href="video/{{ $video->id }}" title="{{ $video->title }}">
 											<div class="ft">
 												<h1>{{ $video->title }}</h1>
 											</div>
 											<div class="amas">
 												<i class="mas"></i>
-												<span>{{ $video->name }}</span>
+												<span>{{ $video->categoria->name }}</span>
 											</div>
 										</a>
 									</article>

@@ -1,6 +1,22 @@
 @extends('appanel/template')
+
+@section('styles')
+	<link rel="stylesheet" type="text/css" href="{{URL::asset('/panel/css/redactor.css')}}">
+@stop
+
+@section('scripts')
+	<script src="{{URL::asset('/panel/js/fontsize.min.js')}}"></script>
+	<script src="{{URL::asset('/panel/js/fullscreen.min.js')}}"></script>
+	<script src="{{URL::asset('/panel/js/redactor.min.js')}}"></script>
+	<script>
+	$(document).ready(function(){
+		$('textarea').redactor();
+	});
+	</script>
+@stop
+
 @section('content')
-{{Form::model($video, array('route' => array('appanel.nota.update', $video->id), 'method' => 'PUT'))}}
+{{Form::model($video, array('route' => array('appanel.video.update', $video->id), 'method' => 'PUT'))}}
 	<div class="form-group">
 	<label>Título</label>
 		<input type="text" name="title" value="{{$video->title}}" placeholder="Título" class="form-control">

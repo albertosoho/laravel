@@ -11,13 +11,13 @@
 		<div class="col-md-24">
 			<div id="slider" class="sl-slider-wrapper top">
 				<div class="sl-slider">
-					<div class="sl-slide" data-uid="{{$articulo[0]->uid}}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-						<div class="sl-slide-inner" style="background-image: url('pictures/large/{{$picture[0]->url}}');">
+					<div class="sl-slide" data-uid="{{$nota->id}}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+						<div class="sl-slide-inner" style="background-image: url('pictures/large/{{--$picture[0]->url--}}');">
 							<div class="bottom-preguntame">
 								<div class="row">
 									<div class="col-md-20 col-md-offset-2">
-										<h1>{{$articulo[0]->title}}</h1>
-										<p>{{substr(strip_tags($articulo[0]->content), 0 , 250) }}</p>
+										<h1>{{$nota->title}}</h1>
+										<p>{{substr(strip_tags($nota->content), 0 , 250) }}</p>
 									</div>
 								</div>
 							</div>
@@ -41,22 +41,22 @@
 		<div class="col-md-24">
 			<section class="notas">
 				@if(!Agent::isMobile())
-					@foreach ($notas as $nota)
+					@foreach ($lasts as $last)
 					<div class="nota">
-						<article data-uid="{{$nota->vuid}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
-						<a href="nota/{{$nota->vuid}}" title="{{$nota->title}}">
-							<span class="cat">{{$nota->name}}</span>
+						<article data-uid="{{$last->id}}" style="background: #000 url('pictures/small/{{$last->cover}}') center no-repeat; background-size: cover;">
+						<a href="nota/{{$last->id}}" title="{{$last->title}}">
+							<span class="cat">{{$last->categoria->name}}</span>
 							<div class="ft">
-								<h1>{{$nota->title}}</h1>
+								<h1>{{$last->title}}</h1>
 							</div>
 						</a>
 						</article>
-						<p>{{substr(strip_tags($nota->description), 0, 50)}}...</p>
+						<p>{{substr(strip_tags($last->description), 0, 50)}}...</p>
 					</div>
 					@endforeach
 				@endif
 				<article class="articulo">
-					{{$articulo[0]->content}}
+					{{$nota->content}}
 				</article>
 			</section>
 		</div>
@@ -66,17 +66,17 @@
 	<div class="row">
 		<div class="col-md-24">
 			<section class="comments">
-				@foreach ($notas as $nota)
+				@foreach ($lasts as $last)
 				<div class="nota">
-					<article data-uid="{{$nota->vuid}}" style="background: #000 url('pictures/small/{{$nota->url}}') center no-repeat; background-size: cover;">
-					<a href="nota/{{$nota->vuid}}" title="{{$nota->title}}">
-						<span class="cat">{{$nota->title}}</span>
+					<article data-uid="{{$last->id}}" style="background: #000 url('pictures/small/{{$last->cover}}') center no-repeat; background-size: cover;">
+					<a href="nota/{{$last->id}}" title="{{$last->title}}">
+						<span class="cat">{{$last->categoria->name}}</span>
 						<div class="ft">
-							<h1>{{$nota->title}}</h1>
+							<h1>{{$last->title}}</h1>
 						</div>
 					</a>
 					</article>
-					<p>{{substr(strip_tags($nota->description), 0, 50)}}...</p>
+					<p>{{substr(strip_tags($last->description), 0, 50)}}...</p>
 				</div>
 				@endforeach
 				@if(!Agent::isMobile())
