@@ -1,0 +1,9 @@
+.nav-wrapper {
+	margin-left: 1em;
+}
+#drawer {
+	height: 100vh;
+}
+#content {
+	min-height: 100vh;
+}

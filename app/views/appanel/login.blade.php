@@ -1,17 +1,46 @@
 @extends('appanel/template')
+
 @section('sidebar')
 @stop
+
 @section('content')
-<div id="error"></div>
-{{Form::open(array('url' => 'appanel/dologin', 'id'=>'login'))}}
-	<div class="form-group">
-		<input class="form-control"name="username" type="text" placeholder="Username">
+
+	<div class="container">
+		<div class="row"></div>
+		<div class="row"></div>
+		<div class="row"></div>
+		<div class="row">
+			<div class="col s6 offset-s3">
+				<div class="card-panel">
+					<h1>Iniciar sesión</h1>
+					{{Form::open(array('url' => 'appanel/dologin', 'id'=>'login'))}}
+						<div class="input-field col s12">
+							<input name="username" type="text">
+							<label for="username">Nombre de usuario</label>
+						</div>
+						<div class="input-field col s12">
+							<input name="password" type="password">
+							<label for="password">Contraseña</label>
+						</div>
+						<div class="row"></div>
+						<div class="row">
+							<div class="col s12">
+								<div class="right-align">
+									<button class="waves-effect waves-light btn-large">Entrar</button>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col s12 right-align">
+								<a href="#">Olvidé mi contraseña</a>
+							</div>
+
+							<div id="error"></div>
+						</div>
+					{{Form::close()}}
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="form-group">
-		<input class="form-control"name="password" type="password" placeholder="Password">
-	</div>
-	<div class="form-group">
-		<input class="btn btn-primary" type="submit" value="Entrar">
-	</div>
-{{Form::close()}}
+
 @stop
