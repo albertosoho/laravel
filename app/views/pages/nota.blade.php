@@ -54,9 +54,13 @@
 						<p>{{substr(strip_tags($last->description), 0, 50)}}...</p>
 					</div>
 					@endforeach
+					<div class="ad-cuadro-inline"></div>
 				@endif
 				<article class="articulo">
 					{{$nota->content}}
+					@if(!Agent::isMobile())
+						<div class="ad-horizontal"></div>
+					@endif
 					<span class="fuente">{{$nota->fuente}}</span>
 				</article>
 			</section>
@@ -80,6 +84,7 @@
 					<p>{{substr(strip_tags($last->description), 0, 50)}}...</p>
 				</div>
 				@endforeach
+				<div class="ad-cuadro-inline"></div>
 				@if(!Agent::isMobile())
 				<div class="comments-box">
 					<div class="text">Comentarios</div>
