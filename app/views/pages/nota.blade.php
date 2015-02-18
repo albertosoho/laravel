@@ -57,6 +57,7 @@
 				@endif
 				<article class="articulo">
 					{{$nota->content}}
+					<span class="fuente">{{$nota->fuente}}</span>
 				</article>
 			</section>
 		</div>

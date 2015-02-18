@@ -10,7 +10,7 @@ class Image extends Eloquent{
 
 	public function video()
 	{
-		return $this->belongsTo('Video', 'pic');
+		return $this->belongsTo('Video', 'pic', 'id');
 	}
 
 }

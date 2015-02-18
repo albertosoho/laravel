@@ -24,7 +24,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="home">
+							<a href="memeteca">
 								memeteca
 							</a>
 						</li>
@@ -89,7 +89,7 @@
 			<div class="col-md-24">
 				@foreach ($videos_nav as $video)
 				<div class="vid-content">
-					<article class="video" data-uid="{{$video->id}}" style="background: #000 url('pictures/small/{{--$video->img->url--}}') center no-repeat; background-size: cover;">
+					<article class="video" data-uid="{{$video->id}}" style="background: #000 url('pictures/small/{{$video->img->url}}') center no-repeat; background-size: cover;">
 						<a href="video/{{$video->id}}" title="{{$video->title}}">
 							<div class="ft">
 								<h1>{{$video->title}}</h1>

@@ -12,6 +12,7 @@
 	$(document).ready(function(){
 		$('#description').redactor({
 			plugins: ['fullscreen'],
+<<<<<<< HEAD
 			buttons: ['bold', 'italic', 'deleted'],
 			minHeight: 50
 		});
@@ -21,6 +22,11 @@
 			convertLinks: true,
 			toolbarFixedBox: true,
 			minHeight: 150
+=======
+			imageUpload: '{{route('upload')}}',
+			imageGetJson: '{{route('picsJSON')}}',
+			minHeight: 400,
+>>>>>>> f0e9116df68fda11e062f81d41653ecb777b79eb
 		});
 	});
 	</script>

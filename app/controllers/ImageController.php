@@ -36,4 +36,18 @@ class ImageController extends Controller{
 
 	public function index(){
 	}
+
+	public function picsJSON(){
+		$pictures = Picture::all();
+		foreach($pictures as $p){
+			$res[] = Array(
+				'url' => URL::to('/').'/pictures/sq/' . $p->url,
+				'folder' => 'General',
+				'image' => URL::to('/').'/pictures/medium/' . $p->url,
+				'thumb' => URL::to('/').'/pictures/sq/' . $p->url,
+				'name' => $p->oldname,
+			);
+		}
+		return Response::json($res);
+	}
 }

@@ -25,7 +25,7 @@ class IndexController extends Controller {
 	}
 
 	public function carnales(){
-		$videos = Video::orderBy('id', 'desc')->take(12)->get();
+		$videos = Video::orderBy('id', 'desc')->paginate(12);
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
 		$categories = Category::categoryType('video')->get();
@@ -59,22 +59,15 @@ class IndexController extends Controller {
 		return View::make('pages/legales', $data);
 	}
 
-	public function meme($uid){
-			$videos = DB::table('videos')
-				->select(DB::raw('derbez_videos.uid as vuid, subtitle, name, title'))
-				->join('categories', 'categories.uid', '=', 'videos.category')
-				->take(12)
-				->get();
+	public function meme($id){
+		$videos_nav = Video::nav()->get();
+		$notas_nav = Nota::nav()->get();
 
-			$notas = DB::table('notas')->take(3)->get();
-			$videos_nav = Video::nav()->get();
-
-			$notas_nav = Nota::nav()->get();
+		$meme = Meme::find($id);
 
 		$data = array(
 			'title' => 'Eugenio Derbez',
-			'videos' => $videos,
-			'notas' => $notas,
+			'meme' => $meme,
 			'videos_nav' => $videos_nav,
 			'notas_nav' => $notas_nav
 		);
@@ -84,11 +77,7 @@ class IndexController extends Controller {
 	public function memeteca(){
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
-		$memes = DB::table('memes')
-			->select(DB::raw('derbez_memes.uid as muid, url'))
-			->join('pics', 'pics.uid', '=', 'memes.pic')
-			->orderBy('memes.id', 'desc')
-			->get();
+		$memes = Meme::paginate(4);
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'memes' => $memes,

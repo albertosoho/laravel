@@ -9,8 +9,15 @@ class PictureController extends \BaseController {
 	 */
 	public function index()
 	{
+<<<<<<< HEAD
 		$data = array(
 			'title' => 'Memes'
+=======
+		$pictures = Picture::all();
+		$data = array(
+			'title' => 'lista de imágenes',
+			'pictures' => $pictures,
+>>>>>>> f0e9116df68fda11e062f81d41653ecb777b79eb
 		);
 		return View::make('appanel/pictures/index', $data);
 	}
