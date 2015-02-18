@@ -1,15 +1,17 @@
 @extends('appanel/template')
 @section('content')
 <a href="nota/create" class="btn btn-primary">Añadir nuevo</a>
-@foreach ($notas as $nota)
+@foreach ($pictures as $picture)
 <li>
-	<a href="nota/{{$nota->id}}/edit">{{$nota->title}} - {{$nota->categoria->name}} - {{$nota->status}}</a>
-	<a href="nota/{{$nota->id}}/edit">Editar</a>
-	{{Form::model($nota, array('route' => array('appanel.nota.destroy', $nota->id), 'class'=>'inline', 'method' => 'DELETE'))}}
+	<a href="picture/{{$picture->id}}/edit">
+		<img src="{{URL::asset('/pics/sqm/'.$picture->url)}}">
+	</a>
+	<a href="picture/{{$picture->id}}/edit">Editar</a>
+	{{Form::model($picture, array('route' => array('appanel.nota.destroy', $picture->id), 'class'=>'inline', 'method' => 'DELETE'))}}
 		<button type="submit">Borrar</button>
 	{{Form::close()}}
 </li>
 @endforeach
-{{$notas->links()}}
+{{--$pictures->links()--}}
 @stop
 {{--$notas imprime json--}}

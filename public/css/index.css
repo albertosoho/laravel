@@ -467,7 +467,7 @@ nav.mobil li a:active{
 section.slider{
 	background-image:url(../img/patterns/slider-home.png);
 	background-attachment: fixed;
-	padding-bottom:50px;
+	padding-bottom:10px;
 	margin-top:0;
 	box-shadow:-6px 12px 10px -11px #000 inset;
 	position:relative;
@@ -482,7 +482,7 @@ section.slider{
 	height:380px;
 	position:relative;
 	width:100%;
-	margin:20px auto;
+	margin:30px auto 20px;
 }
 #slider h1 {
 	font-family: "SierraMadre";
@@ -538,6 +538,7 @@ section.videos h1.title{
 section.videos .articles{
 	box-shadow:-6px 12px 10px -11px #000 inset;
 	padding-top: 60px;
+	padding-bottom:20px;
 }
 section.videos .view-more{
 	background: #1d2932;
@@ -759,12 +760,19 @@ section.preguntame header p {
 	background: #111317 url('../img/patterns/lineas-abuso.png');
 	background-attachment: fixed;
 	margin-top:60px;
+	padding-top:15px;
 }
 #redes #twitter {
 	overflow: hidden;
 	float: left;
 	min-height: 100px;
 	margin-right: 40px;
+}
+#redes hr{
+	margin:5px auto;
+	width:60%;
+	color:#9a9889;
+	border:1px solid #9a9889;
 }
 #twheader{
 	position:relative;
@@ -780,6 +788,7 @@ section.preguntame header p {
 }
 #twitter-widget-0{
 	width:100% !important;
+	height:420px;
 }
 .side{
 	background:url(../img/descargas.png) no-repeat center;
@@ -1304,6 +1313,16 @@ nav.menu span{
 }
 .articulo img, .articulo iframe {
 	max-width: 100%;
+	position:relative;
+}
+.articulo .fuente{
+	color:#9a9889;
+	background:#a13d22;
+	position: absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	padding:10px;
 }
 /*mediaqueries*/
 @media (max-width: 990px){

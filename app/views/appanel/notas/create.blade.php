@@ -13,6 +13,7 @@
 		$('textarea').redactor({
 			plugins: ['fullscreen'],
 			imageUpload: '{{route('upload')}}',
+			imageGetJson: '{{route('picsJSON')}}',
 			minHeight: 400,
 		});
 	});

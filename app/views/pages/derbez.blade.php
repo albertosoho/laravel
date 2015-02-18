@@ -56,7 +56,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="/">
+							<a href="memetaca">
 								memeteca
 							</a>
 						</li>

@@ -65,6 +65,8 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
 	Route::get('upload/index', array('uses'=>'ImageController@index'));
 
+	Route::get('picsjson', array('as'=>'picsJSON', 'uses'=>'ImageController@picsJSON'));
+
 });
 
 
