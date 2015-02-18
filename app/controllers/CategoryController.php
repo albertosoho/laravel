@@ -16,7 +16,6 @@ class CategoryController extends \BaseController {
 		$videos = Category::categoryType('video')->get();
 		$data = array(
 			'title' => 'Categorías',
-		//	'categories' => $categories,
 			'notas' => $notas,
 			'videos' => $videos
 		);
