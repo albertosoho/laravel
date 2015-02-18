@@ -39,14 +39,15 @@ Route::get('videos/{id}', 'IndexController@categoryVideos');
 	Panel de administración
 */
 
-Route::get('appanel', 'AppController@login');
+Route::get('appanel', array('as' => 'appanel', 'uses'=>'AppController@login'));
+
 Route::post('appanel/dologin', 'AppController@entrar');
 
 Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
 	Route::get('logout', array('as' => 'logout', 'uses' => 'AppController@salir'));
 
-	Route::get('index', 'AppController@index');
+	Route::get('index', array('as' => 'index', 'uses' => 'AppController@index'));
 
 	Route::resource('video', 'VideoController');
 

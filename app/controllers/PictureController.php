@@ -9,7 +9,7 @@ class PictureController extends \BaseController {
 	 */
 	public function index()
 	{
-		$pictures = Picture::paginate(20);
+		$pictures = Picture::paginate(100);
 		$data = array(
 			'title' => 'lista de imágenes',
 			'pictures' => $pictures
@@ -48,7 +48,7 @@ class PictureController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+
 	}
 
 
@@ -60,7 +60,13 @@ class PictureController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$picture = Picture::find($id);
+		$data = array(
+			'title' => 'Vista previa',
+			'picture' => $picture,
+		);
+
+		return View::make('appanel/pictures/edit', $data);
 	}
 
 
@@ -84,7 +90,11 @@ class PictureController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$picture = Picture::find($id);
+		$picture->status = 0;
+		$picture->save();
+
+		return Redirect::to(route('appanel.picture'));
 	}
 
 

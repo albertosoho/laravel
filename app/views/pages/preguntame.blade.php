@@ -119,7 +119,7 @@
 			</div>
 		</div>
 		@endif
-		{{$notas->links()}}
+		<div class="pagination">{{$notas->links()}}</div>
 		@if(!Agent::isMobile())
 					<div class="ad-horizontal">
 						<!-- HRAds - P1 -->

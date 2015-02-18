@@ -5,23 +5,40 @@
 	<nav id="top" class="top-nav">
 		<span class="page-title">Notas</span>
 	</nav>
-{{Form::model($nota, array('route' => array('appanel.nota.update', $nota->id), 'method' => 'PUT'))}}
- 	<div class="form-group">
-		<input type="text" name="title" value="{{$nota->title}}" placeholder="Título" class="form-control">
+
+	<div class="container">
+		{{Form::model($user, array('route' => array('appanel.nota.update', $user->id), 'method' => 'PUT'))}}
+			<div class="row">
+				<div class="input-field col s12 big">
+					<label>Nombre</label>
+					<input type="text" name="name" class="form-control" value="{{$user->name}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label>Username</label>
+					<input type="text" name="username" value="{{$user->username}}" class="form-control">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label>Email</label>
+					<input type="text" name="email" class="form-control" value="{{$user->email}}">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<label>Nueva Contraseña</label>
+					<input type="text" name="password" class="form-control" value="">
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-fiel col s12">
+					<button class="btn waves-effect waves-light right">Actualizar</button>
+				</div>
+			</div>
+		{{Form::close()}}
 	</div>
-	<div class="form-group">
-		<textarea name="content" class="form-control">{{$nota->content}}</textarea>
-	</div>
-	<div class="form-group">
-		<label>Categoría</label>
-		<select name="category" class="form-control">
-			@foreach($categories as $c)
-			<option value="{{$c->id}}">{{$c->name}}</option>
-			@endforeach
-		</select>
-	</div>
-	<input type="submit" name="" value="Enviar">
-{{Form::close()}}
 
 	<!-- Footer -->
 	<footer id="footer" class="page-footer blue-grey darken-2">

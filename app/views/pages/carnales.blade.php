@@ -156,7 +156,7 @@
 						</section>
 					</section>
 				@endif
-				{{$videos->links()}}
+				<div class="pagination">{{$videos->links()}}</div>
 				</div>
 			</div>
 		</div>

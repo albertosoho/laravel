@@ -21,7 +21,7 @@
 		<div class="col s4" id="item-{{$nota->id}}">
 			<div class="card small">
 				<div class="card-image waves-effect waves-block waves-light">
-					<img class="activator" src="http://dannegm.pro/picboard/wxnuRDfF">
+					<img class="activator" src="{{URL::asset('pictures/sq/'.$nota->img->url)}}">
 					<span class="card-title">{{$nota->title}}</span>
 				</div>
 				<div class="card-content">

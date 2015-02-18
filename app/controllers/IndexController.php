@@ -77,7 +77,7 @@ class IndexController extends Controller {
 	public function memeteca(){
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
-		$memes = Meme::paginate(4);
+		$memes = Meme::paginate(12);
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'memes' => $memes,

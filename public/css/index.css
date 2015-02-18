@@ -1168,15 +1168,16 @@ ul.memes li{
 	text-align: center;
 	margin-top:10px;
 }
-.pagination li{
+.col.s1 a, .col.s1 a:visited{
+	color:#fff;
+}
+.col.s1{
 	display:inline-block;
 	font-family: SierraMadre;
 	padding:10px;
 	font-size:27px;
 }
-.pagination li a, .pagination li a:visited{
-	color:#fff;
-}
+
 /* footer */
 footer {
 	background: #ac472a url('../img/patterns/menu-2.png');
@@ -1329,6 +1330,9 @@ nav.menu span{
 }
 .articulo{
 	position: relative;
+}
+.articulo a:visited, .articulo a:active{
+	color:#337AB7;
 }
 .articulo img, .articulo iframe {
 	max-width: 100%;

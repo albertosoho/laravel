@@ -20,7 +20,9 @@
 			convertVideoLinks: true,
 			convertLinks: true,
 			toolbarFixedBox: true,
-			minHeight: 150
+			minHeight: 150,
+			imageUpload: '{{route('upload')}}',
+			imageGetJson: '{{route('picsJSON')}}'
 		});
 	});
 	</script>

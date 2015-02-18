@@ -9,8 +9,10 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
+		$users = User::all();
 		$data = array(
-			'title' => 'Memes'
+			'title' => 'Memes',
+			'users' => $users,
 		);
 		return View::make('appanel/users/index', $data);	}
 
@@ -57,7 +59,12 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::find($id);
+		$data = array(
+			'title' => 'Editar Usuario',
+			'user' => $user,
+		);
+		return View::make('appanel/users/edit', $data);
 	}
 
 
