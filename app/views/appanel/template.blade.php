@@ -24,14 +24,59 @@
 	@section('sidebar')
 		<header>
 			<ul class="side-nav fixed">
-			<li class="bold"><a href="/" class="waves-effect waves-teal">Inicio</a></li>
-			<li class="bold"><a href="{{route('appanel.nota.index')}}" class="waves-effect waves-teal">Notas</a></li>
-			<li class="bold"><a href="{{route('appanel.video.index')}}" class="waves-effect waves-teal">Videos</a></li>
-			<li class="bold"><a href="{{route('appanel.meme.index')}}" class="waves-effect waves-teal">Memes</a></li>
-			<li class="bold"><a href="{{route('appanel.picture.index')}}" class="waves-effect waves-teal">Imágenes</a></li>
-			<li class="bold"><a href="{{route('appanel.category.index')}}" class="waves-effect waves-teal">Categorías</a></li>
-			<li class="bold"><a href="{{route('appanel.user.index')}}" class="waves-effect waves-teal">Usuarios</a></li>
-			<li class="bold"><a href="{{route('logout')}}" class="waves-effect waves-teal">Salir</a></li>
+				@if(Auth::check())
+				<li class="avatar">
+					<img src="{{URL::asset('/panel/img/avatarPlaceholder.png')}}" />
+					<h1>{{Auth::user()->name}}</h1>
+					<h2><span>@</span>{{Auth::user()->username}}</h2>
+				</li>
+				@endif
+				<li class="bold">
+					<a href="http://ambdeveloper.local/laravel/public/appanel/index" class="waves-effect waves-teal">
+						<i class="mdi-action-home"></i> Inicio
+					</a>
+				</li>
+				<li class="bold">
+					<a href="{{route('appanel.nota.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-editor-format-quote"></i> Notas
+					</a>
+				</li>
+				<li class="bold">
+					<a href="{{route('appanel.video.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-av-videocam"></i> Videos
+					</a>
+				</li>
+				<li class="bold">
+					<a href="{{route('appanel.meme.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-hardware-keyboard-alt"></i> Memes
+					</a>
+				</li>
+
+			<li class="separator"></li>
+
+				<li class="bold">
+					<a href="{{route('appanel.picture.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-image-camera-alt"></i> Imágenes
+					</a>
+				</li>
+				<li class="bold">
+					<a href="{{route('appanel.category.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-action-dashboard"></i> Categorías
+					</a>
+				</li>
+				<li class="bold">
+					<a href="{{route('appanel.user.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-action-account-child"></i> Usuarios
+					</a>
+				</li>
+
+			<li class="separator"></li>
+
+				<li class="bold">
+					<a href="{{route('logout')}}" class="waves-effect waves-teal">
+						<i class="mdi-action-exit-to-app"></i> Salir
+					</a>
+				</li>
 			</ul>
 		</header>
 	@show

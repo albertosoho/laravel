@@ -74,7 +74,7 @@ $(document).ready(function(){
 
 			var cloned = $(this).clone();
 			cloned.attr('id', (++new_id).toString());
-			
+
 			return cloned;
 		},
 		distance: 20

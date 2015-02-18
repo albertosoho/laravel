@@ -9,10 +9,16 @@ class CategoryController extends \BaseController {
 	 */
 	public function index()
 	{
-		$categories = Category::orderBy('id', 'desc')->whereStatus(1)->get();
+		// Necesitamos diferenciar entre categorías
+		//$categories = Category::orderBy('id', 'desc')->whereStatus(1)->get();
+
+		$notas = Category::categoryType('nota')->get();
+		$videos = Category::categoryType('video')->get();
 		$data = array(
 			'title' => 'Categorías',
-			'categories' => $categories,
+		//	'categories' => $categories,
+			'notas' => $notas,
+			'videos' => $videos
 		);
 		return View::make('appanel/categories/index', $data);
 	}

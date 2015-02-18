@@ -40,7 +40,6 @@ Route::get('videos/{id}', 'IndexController@categoryVideos');
 */
 
 Route::get('appanel', 'AppController@login');
-
 Route::post('appanel/dologin', 'AppController@entrar');
 
 Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){

@@ -10,49 +10,108 @@
 	<script src="{{URL::asset('/panel/js/redactor.min.js')}}"></script>
 	<script>
 	$(document).ready(function(){
-		$('textarea').redactor({
+		$('#description').redactor({
 			plugins: ['fullscreen'],
-			imageUpload: '{{route('upload')}}',
-			minHeight: 400,
+			buttons: ['bold', 'italic', 'deleted'],
+			minHeight: 50
+		});
+		$('#content').redactor({
+			plugins: ['fontsize','fullscreen'],
+			convertVideoLinks: true,
+			convertLinks: true,
+			toolbarFixedBox: true,
+			minHeight: 150
 		});
 	});
 	</script>
 @stop
 
 @section('content')
-{{ Form::open(array('url'=>'appanel/nota')) }}
-	<div class="form-group">
-		<label>Título</label>
-		<input type="text" name="title" value="" placeholder="Título" class="form-control">
+<main>
+	<!-- Header -->
+	<nav id="top" class="top-nav">
+		<span class="page-title">Nueva nota</span>
+	</nav>
+
+	<div class="container">
+	{{ Form::open(array('url'=>'appanel/nota')) }}
+		<div class="row">
+			<div class="input-field col s12 big">
+				<label>Título</label>
+				<input type="text" name="title" value="" class="form-control">
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s6">
+			</div>
+			<div class="input-field col s6">
+				<label>Categoría</label>
+				<br />
+
+				<select name="category">
+
+					<option value="" disabled selected>Elige una cateogría</option>
+					@foreach($categories as $c)
+					<option value="{{$c->id}}">{{$c->name}}</option>
+					@endforeach
+
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label>Descripción</label>
+				<textarea id="description" name="description" class="form-control" placeholder="Descripción"></textarea>
+			</div>
+			<div class="input-field col s12">
+				<label>Contenido</label>
+				<textarea id="content" name="content" class="form-control" placeholder="Contenido"></textarea>
+			</div>
+		</div>
+		<div class="row">
+		 	<div class="input-field col s6">
+		 		<label>Fuente</label>
+				<input type="text" name="fuente" value="">
+			</div>
+		 	<div class="input-field col s6">
+		 		<label>Tags</label>
+				<input type="text" name="tags" value="">
+			</div>
+		</div>
+		<div class="row">
+		 	<div class="input-field col s6">
+			 	<div>
+					<input type="checkbox" id="status" name="status" value="1" checked>
+			 		<label for="status">Publicada</label>
+				</div>
+			</div>
+		 	<div class="input-field col s6">
+				<button class="btn waves-effect waves-light right">Publicar</button>
+				<button class="btn-flat waves-effect waves-light right">Borrador</button>
+			</div>
+		</div>
+	{{Form::close()}}
 	</div>
-	<div class="form-group">
-		<label>Contenido</label>
-		<textarea name="content" placeholder="Contenido" class="form-control"></textarea>
-	</div>
-	<div class="form-group">
-		<label>Categoría</label>
-		<select name="category" class="form-control">
-			@foreach($categories as $c)
-			<option value="{{$c->id}}">{{$c->name}}</option>
-			@endforeach
-		</select>
-	</div>
-	<div class="form-group">
-		<label>Descripción</label>
-		<textarea name="description" class="form-control" placeholder="Descripción"></textarea>
-	</div>
- 	<div class="form-group">
- 		<label>Tags</label>
-		<input type="text" name="tags" value="" placeholder="Tags" class="form-control">
-	</div>
- 	<div class="form-group">
- 		<label>Fuente</label>
-		<input type="text" name="fuente" value="" placeholder="Fuente" class="form-control">
-	</div>
- 	<div class="form-group">
- 		<label>Publicada</label>
-		<input type="checkbox" checked name="status" value="1">
-	</div>
-	<input type="submit" name="" value="Enviar">
-{{Form::close()}}
+
+	<!-- Footer -->
+	<footer id="footer" class="page-footer blue-grey darken-2">
+		<div class="row">
+			<div class="col l6 s12">
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="row">
+				<div class="col s12">
+					<span>© 2015 AMB Multimedia</span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</main>
+<script>
+	$(document).ready(function() {
+		$('select').material_select();
+	});
+</script>
 @stop

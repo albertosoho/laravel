@@ -9,8 +9,10 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
-	}
+		$data = array(
+			'title' => 'Memes'
+		);
+		return View::make('appanel/users/index', $data);	}
 
 
 	/**

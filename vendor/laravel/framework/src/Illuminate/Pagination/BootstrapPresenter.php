@@ -14,7 +14,7 @@ class BootstrapPresenter extends Presenter {
 	{
 		$rel = is_null($rel) ? '' : ' rel="'.$rel.'"';
 
-		return '<li><a href="'.$url.'"'.$rel.'>'.$page.'</a></li>';
+		return '<div class="col s1"><a class="btn-flat grey-text text-lighten-5 waves-effect waves-light" href="'.$url.'"'.$rel.'>'.$page.'</a></div>';
 	}
 
 	/**
@@ -25,7 +25,7 @@ class BootstrapPresenter extends Presenter {
 	 */
 	public function getDisabledTextWrapper($text)
 	{
-		return '<li class="disabled"><span>'.$text.'</span></li>';
+		return '<div class="col s1"><a class="btn-flat disabled grey-text text-lighten-5 waves-effect waves-light">'.$text.'</a></div>';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class BootstrapPresenter extends Presenter {
 	 */
 	public function getActivePageWrapper($text)
 	{
-		return '<li class="active"><span>'.$text.'</span></li>';
+		return '<div class="col s1"><a class="btn-flat disabled blue-grey darken-3 grey-text text-lighten-5">'.$text.'</a></div>';
 	}
 
 }

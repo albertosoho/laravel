@@ -3,7 +3,9 @@
 ?>
 
 <?php if ($paginator->getLastPage() > 1): ?>
-	<ul class="pagination">
+	<!-- <ul class="pagination"> -->
+	<div class="row">
 			<?php echo $presenter->render(); ?>
-	</ul>
+	</div>
+	<!-- </ul> -->
 <?php endif; ?>

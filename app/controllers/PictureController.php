@@ -9,7 +9,10 @@ class PictureController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$data = array(
+			'title' => 'Memes'
+		);
+		return View::make('appanel/pictures/index', $data);
 	}
 
 

@@ -1,15 +1,25 @@
 @extends('appanel/template')
 @section('content')
-<a href="nota/create" class="btn btn-primary">Añadir nuevo</a>
-@foreach ($notas as $nota)
-<li>
-	<a href="nota/{{$nota->id}}/edit">{{$nota->title}} - {{$nota->categoria->name}} - {{$nota->status}}</a>
-	<a href="nota/{{$nota->id}}/edit">Editar</a>
-	{{Form::model($nota, array('route' => array('appanel.nota.destroy', $nota->id), 'class'=>'inline', 'method' => 'DELETE'))}}
-		<button type="submit">Borrar</button>
-	{{Form::close()}}
-</li>
-@endforeach
-{{$notas->links()}}
+<main>
+	<!-- Header -->
+	<nav id="top" class="top-nav">
+		<span class="page-title">Usuarios</span>
+	</nav>
+
+	<!-- Footer -->
+	<footer id="footer" class="page-footer blue-grey darken-2">
+		<div class="row">
+			<div class="col l6 s12">
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="row">
+				<div class="col s12">
+					<span>© 2015 AMB Multimedia</span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</main>
 @stop
-{{--$notas imprime json--}}
