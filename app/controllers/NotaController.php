@@ -10,7 +10,7 @@ class NotaController extends \BaseController {
 	public function index()
 	{
 		//$notas = Nota::with('categoria')->paginate(2);//->toJson();
-		$notas = Nota::orderBy('id', 'desc')->whereStatus(1)->paginate(10);
+		$notas = Nota::orderBy('id', 'desc')->whereStatus(1)->paginate(12);
 		$data = array(
 			'title' => 'Notas',
 			'notas' => $notas,

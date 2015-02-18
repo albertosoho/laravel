@@ -6,6 +6,14 @@
 		<span class="page-title">Usuarios</span>
 	</nav>
 
+	<div class="container">
+		<ul class="collection with-header">
+		@foreach($users as $u)
+			<li class="collection-item"><a href="user/{{$u->id}}/edit">{{$u->username}}</a></li>
+		@endforeach
+		</ul>
+	</div>
+
 	<!-- Footer -->
 	<footer id="footer" class="page-footer blue-grey darken-2">
 		<div class="row">

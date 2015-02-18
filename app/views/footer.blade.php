@@ -15,6 +15,6 @@
 		</div>
 	</footer>
 	<footer class="mobil">
-		<p>TODO EL CONTENIDO QUE SE EXHIBE EN ESTE PORATL, PERTENECE A WWW.EUGENIODERBEZ.TV</p>
+		<p>TODO EL CONTENIDO QUE SE EXHIBE EN ESTE PORTAL, PERTENECE A WWW.EUGENIODERBEZ.TV</p>
 	</footer>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

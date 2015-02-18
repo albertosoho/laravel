@@ -1,7 +1,11 @@
 <?php 
 
 class AppController extends Controller{
+
 	public function login(){
+		if(Auth::check()){
+			return Redirect::to(route('index'));
+		}
 		$data=array(
 			'title' => 'Login',
 		);

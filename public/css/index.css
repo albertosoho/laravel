@@ -838,11 +838,20 @@ section.notas{
 section.notas article{
 	background:#eae8cc;
 	color:#000;
-	width:70%;
+	width:75%;
 	margin:0 auto;
 	padding:10px 40px 80px;
 	text-align:justify;
 	font-size:16px;
+}
+section.notas .nota p, .comments .nota p{
+	text-align: justify;
+	margin:20px 0;
+	font-size:16px;
+	width:240px;
+}
+section.notas .nota article, .comments .nota article{
+	margin:10px 0;
 }
 section.comments{
 	background:url(../img/patterns/azulpreguntame.png);
@@ -1159,15 +1168,16 @@ ul.memes li{
 	text-align: center;
 	margin-top:10px;
 }
-.pagination li{
+.col.s1 a, .col.s1 a:visited{
+	color:#fff;
+}
+.col.s1{
 	display:inline-block;
 	font-family: SierraMadre;
 	padding:10px;
 	font-size:27px;
 }
-.pagination li a, .pagination li a:visited{
-	color:#fff;
-}
+
 /* footer */
 footer {
 	background: #ac472a url('../img/patterns/menu-2.png');
@@ -1251,6 +1261,13 @@ footer.mobil{
 	margin:30px auto;
 	background:#fff;
 }
+.ad-cuadro-inline{
+	display:inline-block;
+	margin:0 auto;
+	width:240px;
+	height:200px;
+	background:#fff;
+}
 #redes .ad-cuadro{
 	margin:5px auto;
 }
@@ -1311,9 +1328,14 @@ nav.menu span{
 .the_new{
 	display:none;
 }
+.articulo{
+	position: relative;
+}
+.articulo a:visited, .articulo a:active{
+	color:#337AB7;
+}
 .articulo img, .articulo iframe {
 	max-width: 100%;
-	position:relative;
 }
 .articulo .fuente{
 	color:#9a9889;
@@ -1322,7 +1344,8 @@ nav.menu span{
 	bottom:0;
 	left:0;
 	width:100%;
-	padding:10px;
+	padding:10px 0 10px 30px;
+	text-transform:uppercase;
 }
 /*mediaqueries*/
 @media (max-width: 990px){

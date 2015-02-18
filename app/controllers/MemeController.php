@@ -9,8 +9,10 @@ class MemeController extends \BaseController {
 	 */
 	public function index()
 	{
+		$memes = Meme::orderBy('id', 'desc')->whereStatus(1)->paginate(12);
 		$data = array(
-			'title' => 'Memes'
+			'title' => 'Memes',
+			'memes' => $memes
 		);
 		return View::make('appanel/memes/index', $data);
 	}
@@ -23,7 +25,17 @@ class MemeController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		if(Input::get('type') == 'meme'){
+			$data = array(
+				'title' => 'Nuevo Meme',
+			);
+			return View::make('appanel/memes/create-meme', $data);
+		}elseif (Input::get('type') == 'vine') {
+			$data = array(
+				'title' => 'Nuevo Vine',
+			);
+			return View::make('appanel/memes/create-vine', $data);
+		}
 	}
 
 

@@ -5,8 +5,10 @@ class ImageController extends Controller{
 	public function upload(){
 		$up = Input::hasFile('file');
 		if($up){
-			Input::file('file')->move('uploads', Input::file('file')->getClientOriginalName());
-			$file = URL::asset('uploads/'.Input::file('file')->getClientOriginalName());
+			Input::file('file')->move('pictures', Input::file('file')->getClientOriginalName());
+			$file = URL::asset('pictures/'.Input::file('file')->getClientOriginalName());
+			$pathLarge = public_path('pictures/large/' . $file);
+			Image::make($image->getRealPath())->resize(468, 249)->save($path);
 		}
 		$status = array();
 		if(!$up){
@@ -35,6 +37,7 @@ class ImageController extends Controller{
 	}
 
 	public function index(){
+
 	}
 
 	public function picsJSON(){

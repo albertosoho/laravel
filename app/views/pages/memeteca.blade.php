@@ -20,7 +20,7 @@
 				<ul class="memes">
 				@foreach($memes as $m)
 					<li>
-						<img class="img-responsive" src="{{$m->url}}">
+						<img class="img-responsive" src="{{URL::asset('/pictures/small/'.$m->img->url)}}">
 					</li>
 				@endforeach
 				</ul>

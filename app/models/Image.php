@@ -13,4 +13,8 @@ class Image extends Eloquent{
 		return $this->belongsTo('Video', 'pic', 'id');
 	}
 
+	public function meme()
+	{
+		return $this->belongsTo('Meme', 'pic', 'id');
+	}
 }

@@ -10,7 +10,7 @@ class VideoController extends \BaseController {
 	public function index()
 	{
 		//$videos = Nota::with('categoria')->paginate(2);//->toJson();
-		$videos = Video::orderBy('id', 'desc')->whereStatus(1)->paginate(10);
+		$videos = Video::orderBy('id', 'desc')->whereStatus(1)->paginate(12);
 		$data = array(
 			'title' => 'Videos',
 			'videos' => $videos,

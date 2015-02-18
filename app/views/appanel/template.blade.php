@@ -32,7 +32,7 @@
 				</li>
 				@endif
 				<li class="bold">
-					<a href="http://ambdeveloper.local/laravel/public/appanel/index" class="waves-effect waves-teal">
+					<a href="{{route('appanel')}}" class="waves-effect waves-teal">
 						<i class="mdi-action-home"></i> Inicio
 					</a>
 				</li>
