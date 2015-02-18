@@ -8,7 +8,7 @@ class ImageController extends Controller{
 			Input::file('file')->move('pictures', Input::file('file')->getClientOriginalName());
 			$file = URL::asset('pictures/'.Input::file('file')->getClientOriginalName());
 			$pathLarge = public_path('pictures/large/' . $file);
-			Image::make($image->getRealPath())->resize(468, 249)->save($path);
+			Image::make($file)->resize(1280, null)->save($pathLarge);
 		}
 		$status = array();
 		if(!$up){
