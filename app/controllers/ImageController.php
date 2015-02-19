@@ -75,6 +75,8 @@ class ImageController extends Controller{
 					'filelink' => $fileUrl,
 				);
 			}else{
+				//$fileUrl = URL::asset('pictures/'.$imagen->url);
+				print_r($imagen);
 				//guardamos el status
 				$status = array(
 					'status' => 'repeat',
@@ -82,8 +84,8 @@ class ImageController extends Controller{
 						'time' => time()
 					),
 					'description' => 'La imágen ya existe',
-					'pic' => $fileUrl,
-					'filelink' => $fileUrl,
+					'pic' => 'fileUrl',
+					'filelink' => 'fileUrl',
 				);
 			}
 		}else{
