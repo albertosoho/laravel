@@ -61,7 +61,7 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
 	Route::resource('category', 'CategoryController');
 
-	Route::post('upload', array('as'=>'upload', 'uses'=>'ImageController@upload'));
+//	Route::post('upload', array('as'=>'upload', 'uses'=>'ImageController@upload'));
 
 	Route::get('upload/index', array('uses'=>'ImageController@index'));
 
@@ -69,6 +69,6 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
 });
 
-
+	Route::post('appanel/upload', array('as'=>'upload', 'uses'=>'ImageController@upload'));
 
 

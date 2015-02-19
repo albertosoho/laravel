@@ -89,6 +89,28 @@ ul.side-nav.fixed li.avatar {
 	z-index: 9999 !important;
 }
 
+#file {
+	display: none;
+}
+.upload {
+	padding-bottom: 5px;
+}
+	.upload .response {
+		display: none;
+	}
+	.upload .options {
+		overflow: hidden;
+	}
+
+.dragover {
+	background-color: #81d4fa !important;
+	background-image: url('http://placehold.it/368x76/81d4fa/ffffff&text=Suelta+tu+imagen+aqu%C3%AD');
+	height: 76px;
+}
+	.dragover * {
+		display: none;
+	}
+
 /* Memo Styles */
 
 .destacados{
