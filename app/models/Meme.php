@@ -7,7 +7,7 @@ Class Meme extends Eloquent{
 	}
 
 	public function img(){
-		return $this->hasOne('Image', 'id', 'pic');
+		return $this->hasOne('Picture', 'id', 'pic');
 	}
 
 }

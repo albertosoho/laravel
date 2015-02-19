@@ -11,7 +11,7 @@ class Nota extends Eloquent {
 	}
 
 	public function img(){
-		return $this->hasOne('Image', 'id', 'cover');
+		return $this->hasOne('Picture', 'id', 'cover');
 	}
 
 	public function scopeNav($query){

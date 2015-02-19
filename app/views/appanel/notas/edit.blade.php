@@ -22,7 +22,8 @@
 			toolbarFixedBox: true,
 			minHeight: 150,
 			imageUpload: '{{route('upload')}}',
-			imageGetJson: '{{route('picsJSON')}}'
+			imageGetJson: '{{route('picsJSON')}}',
+			clipboardUploadUrl: '{{route('picsJSON')}}'
 		});
 	});
 	</script>
