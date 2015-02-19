@@ -11,7 +11,7 @@ class Video extends Eloquent{
 	}
 
 	public function img(){
-		return $this->hasOne('Image', 'id', 'pic');
+		return $this->hasOne('Picture', 'id', 'pic');
 	}
 
 	public function scopeNav($query){

@@ -71,4 +71,3 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
 
 
-

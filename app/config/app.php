@@ -122,6 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Jenssegers\Agent\AgentServiceProvider',
+		'Intervention\Image\ImageServiceProvider'
 
 	),
 
@@ -190,6 +191,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Agent'            => 'Jenssegers\Agent\Facades\Agent',
+		'Image' => 'Intervention\Image\Facades\Image'
 	),
 
 );
