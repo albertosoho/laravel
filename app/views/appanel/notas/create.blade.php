@@ -48,7 +48,7 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
-				<div class="droppeable card-panel grey lighten-5 z-depth-1 upload">
+				<div id="droppeable" class="card-panel grey lighten-5 z-depth-1 upload">
 					<input type="hidden" name="cover" value="" />
 					<div class="response">
 						<div class="progress">

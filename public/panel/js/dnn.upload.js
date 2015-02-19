@@ -1,25 +1,41 @@
 var upload = function (files) {
+    $('.options').hide();
+    $('.response').show();
+
     // Inicializamos variables
-    var imgData = false, reader, picture, file = files[0];
+    var imgData = false, reader, picture, file = files[0], canUpload = false;;
     // Comprobamos que el archivo recibido sea una imagen
     if ( !!file.type.match(/image.*/) ) {
-        // Creamos un formulario
-        if (window.FormData) { imgData = new FormData(); }
-        if (window.FileReader) {
-            // Creamos un archivo a partir de la lectura del input
-            reader = new FileReader();
-            // Cuando el archivo esté cargado ...
-            reader.onloadend = function (e) {
-                // Obtenemos su resultado y lo almacenamos
-                picture = e.target.result;
-            };
-            // Leemos el archivo
-            reader.readAsDataURL(file);
+        // #mega * #kilo * #byte
+        if (!(file.size > (8 * 1024 * 1024)) ) {
+            // Creamos un formulario
+            if (window.FormData) { imgData = new FormData(); }
+            if (window.FileReader) {
+                // Creamos un archivo a partir de la lectura del input
+                reader = new FileReader();
+                // Cuando el archivo esté cargado ...
+                reader.onloadend = function (e) {
+                    // Obtenemos su resultado y lo almacenamos
+                    picture = e.target.result;
+                    console.log(e);
+
+                    var tmpimg = document.createElement('img');
+                    tmpimg.src = picture;
+
+                    if (tmpimg.width > 1920) {
+                        alert('La imagen es muy grande');
+                    }
+                };
+                // Leemos el archivo
+                reader.readAsDataURL(file);
+            }
+            // Anexamos el archivo al formulario con name="file"
+            if (imgData) { imgData.append('file', file); }
+        } else {
+            alert("La imagen es muy pesada");
         }
-        // Anexamos el archivo al formulario con name="file"
-        if (imgData) { imgData.append('file', file); }
     } else {
-        // En caso de no ser una imagen
+        alert("Debes elegir una imagen");
     }
 
     // Si alrchivo está listo
@@ -41,12 +57,20 @@ var upload = function (files) {
                 xhr.upload.addEventListener('progress', function(p) {
                     var percentComplete = p.loaded / p.total;
                     var percent = parseFloat(Math.round((percentComplete * 100)));
+
+                    $('#uploadStatus').css('width', percent + '%');
                 }, false);
                 return xhr;
             },
             // Evento cuando se terminó de subir la imagen
             success: function(resp) {
                 console.log(resp);
+
+                $('.response').hide();
+                $('.options').show();
+                $('#droppeable').css({
+                    'background-image': "url('" + resp.pic + "')"
+                });
             }
         });
     }
@@ -71,8 +95,9 @@ $(function () {
     });
 
     /* Usando drag&drop */
+    var $$ = function (e) { return document.getElementById(e); };
 
-    var holder = $('.droppeable');
+    var holder = $$('droppeable');
 
     var onDragEnter = function (e) {
         e.preventDefault();
@@ -92,11 +117,20 @@ $(function () {
     },
     onDrop = function(e) {
         e.preventDefault();
+        var $dr = $(this);
+        $dr.removeClass('dragover');
+
+        console.log(e);
         upload( e.dataTransfer.files );
     };
 
-    holder.on("dragenter", onDragEnter)
-        .on("dragover", onDragOver)
-        .on("dragleave", onDragLeave)
-        .on("drop", onDrop)
+    holder.ondragenter = onDragEnter;
+    holder.ondragover = onDragOver;
+    holder.ondragleave = onDragLeave;
+    holder.ondrop = onDrop;
 });
+
+
+
+
+

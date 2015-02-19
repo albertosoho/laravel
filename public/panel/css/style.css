@@ -102,9 +102,16 @@ ul.side-nav.fixed li.avatar {
 		overflow: hidden;
 	}
 
+#droppeable {
+	background-size: cover;
+	background-position: center;
+	height: 76px;
+}
 .dragover {
-	background-color: #81d4fa !important;
-	background-image: url('http://placehold.it/368x76/81d4fa/ffffff&text=Suelta+tu+imagen+aqu%C3%AD');
+	background-color: #00897b !important;
+	background-size: cover;
+	background-position: center;
+	background-image: url('http://placehold.it/368x76/00897b/ffffff&text=Suelta+tu+imagen+aqu%C3%AD');
 	height: 76px;
 }
 	.dragover * {

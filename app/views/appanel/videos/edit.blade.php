@@ -8,6 +8,7 @@
 	<script src="{{URL::asset('/panel/js/fontsize.min.js')}}"></script>
 	<script src="{{URL::asset('/panel/js/fullscreen.min.js')}}"></script>
 	<script src="{{URL::asset('/panel/js/redactor.min.js')}}"></script>
+	<script src="{{URL::asset('/panel/js/dnn.upload.js')}}"></script>
 	<script>
 	$(document).ready(function(){
 		$('#description').redactor({
@@ -33,6 +34,7 @@
 	<nav id="top" class="top-nav">
 		<span class="page-title">Editar video</span>
 	</nav>
+	<input type="file" id="file" class="hidden" />
 
 	<div class="container">
 	{{Form::model($video, array('route' => array('appanel.video.update', $video->id), 'method' => 'PUT'))}}
@@ -44,6 +46,21 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
+				<div id="droppeable" class="card-panel grey lighten-5 z-depth-1 upload">
+					<input type="hidden" name="cover" value="" />
+					<div class="response">
+						<div class="progress">
+							<div id="uploadStatus" class="determinate" style="width: 70%"></div>
+						</div>
+					</div>
+					<div class="options">
+						<button class="openLocal btn col s5">Selecciona</button>
+						<div class="col s2 center-align">
+							<span>ó</span>
+						</div>
+						<button class="openFile btn col s5">Sube</button>
+					</div>
+				</div>
 			</div>
 			<div class="input-field col s6">
 				<label>Categoría</label>
