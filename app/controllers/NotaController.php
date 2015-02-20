@@ -10,7 +10,7 @@ class NotaController extends \BaseController {
 	public function index()
 	{
 		//$notas = Nota::with('categoria')->paginate(2);//->toJson();
-		$notas = Nota::orderBy('id', 'desc')->whereStatus(1)->paginate(12);
+		$notas = Nota::orderBy('id', 'desc')->whereStatus(1)->orWhere('status', '=', 2)->paginate(12);
 		$data = array(
 			'title' => 'Notas',
 			'notas' => $notas,
@@ -42,22 +42,53 @@ class NotaController extends \BaseController {
 	 */
 	public function store()
 	{
-		$nota = new Nota;
-		$nota->title = Input::get('title');
-		$nota->content = Input::get('content');
-		$nota->category = Input::get('category');
-		$nota->description = Input::get('description');
-		$nota->tags = Input::get('tags');
-		$nota->fuente = Input::get('fuente');
-		$nota->author = Auth::id();
-		if(null !== Input::get('status')){
-			$nota->status = 1;
-		}else{
-			$nota->status = 0;
-		}
-		$nota->save();
+		//validation videos
+		$rules = array(
+			'title' => 'required',
+			'content' => 'required',
+			'description' => 'required',
+			'cover' => 'required|integer|exists:pictures,id',
+			'category' => 'required|integer|exists:categories,id',
+		);
 
-		return Redirect::to(route('appanel.nota.index'));
+		$messages = array(
+			'title.required' => 'Has dejado el título vacío',
+			'content.required' => 'No has colocado contenido',
+			'description.required' => 'No has colocado descripción',
+			'cover.required' => 'Debes arrastrar o subir una imágen',
+			'category.required' => 'Selecciona una categoría',
+			'integer' => 'Si ves este mensaje haces algo raro',
+			'category.exists' => 'Estás asociando una categoría que no existe',
+			'cover.exists' => 'Estás asociando una imágen que no existe'
+		);
+
+		//check validation
+		$validator = Validator::make(Input::all(), $rules, $messages);
+
+		if ($validator->fails()) {
+			$messages = $validator->messages();
+			return Redirect::route('appanel.nota.create')
+				->withErrors($validator)
+				->withInput();
+		} else {
+			$nota = new Nota;
+			$nota->title = Input::get('title');
+			$nota->content = Input::get('content');
+			$nota->category = Input::get('category');
+			$nota->description = Input::get('description');
+			$nota->tags = Input::get('tags');
+			$nota->fuente = Input::get('fuente');
+			$nota->cover = Input::get('cover');
+			$nota->author = Auth::id();
+			if(null !== Input::get('status')){
+				$nota->status = 1;
+			}else{
+				$nota->status = 2;
+			}
+			$nota->save();
+
+			return Redirect::to(route('appanel.nota.index'));
+		}
 	}
 
 
@@ -100,22 +131,54 @@ class NotaController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$nota = Nota::find($id);
-		$nota->title = Input::get('title');
-		$nota->content = Input::get('content');
-		$nota->category = Input::get('category');
-		$nota->description = Input::get('description');
-		$nota->tags = Input::get('tags');
-		$nota->fuente = Input::get('fuente');
-		if(null !== Input::get('status')){
-			$nota->status = 1;
-		}else{
-			$nota->status = 0;
-		}
-		$nota->author = Auth::id();
-		$nota->save();
+		//validation videos
+		$rules = array(
+			'title' => 'required',
+			'content' => 'required',
+			'description' => 'required',
+			'cover' => 'required|integer|exists:pictures,id',
+			'category' => 'required|integer|exists:categories,id',
+		);
 
-		return Redirect::to('appanel/nota/'.$id.'/edit');
+		$messages = array(
+			'title.required' => 'Has dejado el título vacío',
+			'content.required' => 'No has colocado contenido',
+			'description.required' => 'No has colocado descripción',
+			'cover.required' => 'Debes arrastrar o subir una imágen',
+			'category.required' => 'Selecciona una categoría',
+			'integer' => 'Si ves este mensaje haces algo raro',
+			'category.exists' => 'Estás asociando una categoría que no existe',
+			'cover.exists' => 'Estás asociando una imágen que no existe'
+		);
+
+		//check validation
+		$validator = Validator::make(Input::all(), $rules, $messages);
+
+		if ($validator->fails()) {
+			$messages = $validator->messages();
+			return Redirect::route('appanel.nota.edit', array('id'=>$id))
+				->withErrors($validator)
+				->withInput();
+		} else {
+			$nota = Nota::find($id);
+
+			$nota->title = Input::get('title');
+			$nota->content = Input::get('content');
+			$nota->category = Input::get('category');
+			$nota->description = Input::get('description');
+			$nota->tags = Input::get('tags');
+			$nota->fuente = Input::get('fuente');
+			$nota->cover = Input::get('cover');
+			$nota->author = Auth::id();
+			if(null !== Input::get('status')){
+				$nota->status = 1;
+			}else{
+				$nota->status = 2;
+			}
+			$nota->save();
+
+			return Redirect::to('appanel/nota/'.$id.'/edit');
+		}
 	}
 
 

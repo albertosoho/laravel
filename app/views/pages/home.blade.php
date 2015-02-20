@@ -108,7 +108,7 @@
 									</div>
 								</a>
 							</article>
-							<p>{{substr($video->subtitle, 0, 50)}}...</p>
+							<p>{{Clean::desc($video->subtitle, 60)}}...</p>
 						</div>
 						@endforeach
 					</div>
@@ -149,7 +149,7 @@ data-ad-slot="7339020361"></ins>
 									</div>
 								</a>
 							</article>
-							<p>{{substr(strip_tags($nota->description), 0, 50)}}</p>
+							<p>{{Clean::desc($nota->description, 60)}}...</p>
 						</div>
 						@endforeach
 					</div>

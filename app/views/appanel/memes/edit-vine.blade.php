@@ -7,7 +7,6 @@
 	</nav>
 
 	<div class="container">
-
 		<!-- Manejo de errores -->
 		@if ($errors->has())
 			<?php $dis = '' ?>
@@ -27,32 +26,28 @@
 		<!-- Manejo de errores -->
 
 		<!-- Formulario -->
-		{{Form::open(array('url' => route('appanel.meme.store')))}}
+		{{Form::model($meme, array('route' => array('appanel.meme.update', $meme->id), 'method' => 'PUT'))}}
 			<div class="row">
 				<div class="input-field col s12">
 					<label>Vine</label>
-					<input type="text" name="vine">
+					<input type="text" name="vine" value="https://vine.co/v/{{$meme->id_vine}}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s12">
 					<label>Tags</label>
-					<input type="text" name="tags" value="">
+					<input type="text" name="tags" value="{{$meme->tags}}">
 					<input type="hidden" name="type" value="2">
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
 					<div>
-						@if($errors->has())
-							@if(Input::old('status') == 1)
-								<input type="checkbox" checked id="status" name="status" value="1">
-							@else
-								<input type="checkbox" id="status" name="status" value="1">
+						<input type="checkbox" id="status" name="status" value="1"
+							@if($meme->status == "1")
+							{{" checked"}}
 							@endif
-						@else
-							<input type="checkbox" checked id="status" name="status" value="1">
-						@endif
+						>
 						<label for="status">Publicado</label>
 					</div>
 				</div>
@@ -92,5 +87,4 @@
 		}).change();
 	});
 </script>
-
 @stop

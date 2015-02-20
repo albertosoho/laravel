@@ -191,6 +191,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Agent'            => 'Jenssegers\Agent\Facades\Agent',
+		'Clean'          => 'Helpers\Clean',
 		'Image' => 'Intervention\Image\Facades\Image'
 	),
 

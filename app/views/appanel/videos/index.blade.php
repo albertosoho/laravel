@@ -18,7 +18,11 @@
 	<!-- Listado -->
 	<div class="row">
 	@foreach ($videos as $video)
+		@if($video->status == 2)
+		<div class="col s4" style="opacity:0.3" id="item-{{$video->id}}">
+		@else
 		<div class="col s4" id="item-{{$video->id}}">
+		@endif
 			<div class="card small">
 				<div class="card-image waves-effect waves-block waves-light">
 					<img class="activator" src="{{URL::asset('pictures/sq/'.$video->img->url)}}">
@@ -26,13 +30,16 @@
 				</div>
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4">{{$video->categoria->name}} <i class="mdi-navigation-more-vert right"></i></span>
-					<p>{{$video->subtitle}}</p>
+					<p>{{Clean::desc($video->subtitle, 60)}}</p>
+					@if($video->status == 2)
+						<p style="color:red">BORRADOR</p>
+					@endif
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Opciones <i class="mdi-navigation-close right"></i></span>
 					<ul class="collection">
-						<li class="collection-item"><a href="video/{{$video->id}}/edit"><i class="mdi-content-create"></i> Editar</a></li>
-						<li class="collection-item"><a href="video/{{$video->id}}/edit"><i class="mdi-action-delete"></i> Borrar</a></li>
+						<li class="collection-item"><a href="{{route('appanel.video.edit', array('id' => $video->id))}}"><i class="mdi-content-create"></i> Editar</a></li>
+						<li class="collection-item"><a href="{{route('appanel.video.edit', array('id' => $video->id))}}"><i class="mdi-action-delete"></i> Borrar</a></li>
 					</ul>
 				</div>
 			</div>

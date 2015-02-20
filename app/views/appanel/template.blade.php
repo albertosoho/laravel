@@ -6,6 +6,7 @@
 	<script src="{{URL::asset('/panel/materialize/js/materialize.min.js')}}"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 	<script src="{{URL::asset('/panel/js/persist.js')}}"></script>
+	<script src="{{URL::asset('/panel/js/sweet.js')}}"></script>
 	@section('scripts')
 
 	@show
@@ -13,6 +14,7 @@
 	<script src="{{URL::asset('/panel/js/index.js')}}"></script>
 
 	<link rel="stylesheet" href="{{URL::asset('/panel/materialize/css/materialize.min.css')}}">
+	<link rel="stylesheet" href="{{URL::asset('/panel/css/sweet.css')}}">
 	@section('styles')
 
 	@show

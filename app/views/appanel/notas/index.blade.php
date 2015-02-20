@@ -18,7 +18,11 @@
 	<!-- Listado -->
 	<div class="row">
 	@foreach ($notas as $nota)
+		@if($nota->status == 2)
+		<div class="col s4" style="opacity:0.3" id="item-{{$nota->id}}">
+		@else
 		<div class="col s4" id="item-{{$nota->id}}">
+		@endif
 			<div class="card small">
 				<div class="card-image waves-effect waves-block waves-light">
 					<img class="activator" src="{{URL::asset('pictures/sq/'.$nota->img->url)}}">
@@ -26,7 +30,10 @@
 				</div>
 				<div class="card-content">
 					<span class="card-title activator grey-text text-darken-4">{{$nota->categoria->name}} <i class="mdi-navigation-more-vert right"></i></span>
-					<p>{{$nota->description}}</p>
+					<p>{{Clean::desc($nota->description, 100)}}</p>
+					@if($nota->status == 2)
+						<p style="color:red">BORRADOR</p>
+					@endif
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Opciones <i class="mdi-navigation-close right"></i></span>

@@ -43,7 +43,7 @@ var upload = function (files) {
         // Creamos petició AJAX
         $.ajax({
             // Ruta a enviar el formulario
-            url: 'http://localhost/laravel/public/appanel/upload',
+            url: $('#ajaxdrop').data('upload'),
             // Método de la petición
             type: 'POST',
             // Datos del formulario
@@ -67,6 +67,8 @@ var upload = function (files) {
                 console.log(resp);
 
                 $('.response').hide();
+                $('.pic').val(resp.id);
+                $('.urlcover').val(resp.pic);
                 $('.options').show();
                 $('#droppeable').css({
                     'background-image': "url('" + resp.pic + "')"

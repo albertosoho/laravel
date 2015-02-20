@@ -9,7 +9,11 @@
 	<!-- Listado -->
 	<div class="row">
 	@foreach ($memes as $meme)
+		@if($meme->status == 2)
+		<div class="col s4" style="opacity:0.3" id="item-{{$meme->id}}">
+		@else
 		<div class="col s4" id="item-{{$meme->id}}">
+		@endif
 			<div class="card small">
 				<div class="card-image waves-effect waves-block waves-light">
 					<img class="activator" src="{{URL::asset('pictures/sq/'.$meme->img->url)}}">

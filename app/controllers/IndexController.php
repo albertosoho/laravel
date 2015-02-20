@@ -51,8 +51,6 @@ class IndexController extends Controller {
 		$notas_nav = Nota::nav()->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
-			'videos' => $videos,
-			'notas' => $notas,
 			'videos_nav' => $videos_nav,
 			'notas_nav' => $notas_nav
 		);
@@ -146,4 +144,21 @@ class IndexController extends Controller {
 		);
 		return View::make('pages/videos', $data);
 	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| Sanitizing functions
+	|--------------------------------------------------------------------------
+	|
+	*/
+
+	public function sanitize($text, $length){
+		$text = strip_tags($text);
+		if(strlen($text) > $length) {
+			$text = substr($text, 0, strpos($text, ' ', $length));
+		}
+
+		return $text;
+	}
+
 }

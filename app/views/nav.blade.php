@@ -100,7 +100,7 @@
 							</div>
 						</a>
 					</article>
-					<p>{{substr($video->subtitle, 0, 50)}}... </p>
+					<p>{{Clean::desc($video->subtitle, 50)}}... </p>
 				</div>
 				@endforeach
 			</div>
@@ -120,7 +120,7 @@
 							</div>
 						</a>
 					</article>
-					<p>{{substr(strip_tags($nota->description), 0, 50)}}...</p>
+					<p>{{Clean::desc($nota->description, 50)}}...</p>
 				</div>
 				@endforeach
 			</div>

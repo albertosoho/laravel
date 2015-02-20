@@ -39,6 +39,26 @@
 	<input type="file" id="file" class="hidden" />
 
 	<div class="container">
+
+	<!-- Manejo de errores -->
+	@if ($errors->has())
+		<?php $dis = '' ?>
+		@foreach ($errors->all() as $error)
+			<?php $dis .= $error.'</br>' ?>
+		@endforeach
+		<script>
+		$(window).load(function(){
+			swal({
+				title: 'Verfica lo siguiente',
+				html: '{{$dis}}',
+				type:'error',
+			});
+		});
+		</script>
+	@endif
+	<!-- Manejo de errores -->
+	
+	<!-- Formulario -->
 	{{Form::model($nota, array('route' => array('appanel.nota.update', $nota->id), 'method' => 'PUT'))}}
 		<div class="row">
 			<div class="input-field col s12 big">
@@ -48,19 +68,15 @@
 		</div>
 		<div class="row">
 			<div class="input-field col s6">
-				<div id="droppeable" class="card-panel grey lighten-5 z-depth-1 upload">
-					<input type="hidden" name="cover" value="" />
+				<div id="droppeable" style="background:url({{ URL::asset('pictures/small/'.$nota->img->url) }})" class="card-panel grey lighten-5 z-depth-1 upload">
+					<input type="hidden" class="pic" name="cover" value="{{$nota->cover}}" />
 					<div class="response">
 						<div class="progress">
 							<div id="uploadStatus" class="determinate" style="width: 70%"></div>
 						</div>
 					</div>
 					<div class="options">
-						<button class="openLocal btn col s5">Selecciona</button>
-						<div class="col s2 center-align">
-							<span>ó</span>
-						</div>
-						<button class="openFile btn col s5">Sube</button>
+						<button id="ajaxdrop" data-upload="{{route('upload')}}" class="openFile btn col s10 offset-s1">Sube o arrastra una imágen</button>
 					</div>
 				</div>
 			</div>
@@ -69,7 +85,7 @@
 				<br />
 
 				<select name="category">
-
+					<option value="">Elige una categoría</option>
 					@foreach($categories as $c)
 					<option value="{{$c->id}}"
 						@if($nota->categoria->id == $c->id)
@@ -92,29 +108,29 @@
 			</div>
 		</div>
 		<div class="row">
-		 	<div class="input-field col s6">
-		 		<label>Fuente</label>
+			<div class="input-field col s6">
+				<label>Fuente</label>
 				<input type="text" name="fuente" value="{{$nota->fuente}}">
 			</div>
-		 	<div class="input-field col s6">
-		 		<label>Tags</label>
+			<div class="input-field col s6">
+				<label>Tags</label>
 				<input type="text" name="tags" value="{{$nota->tags}}">
 			</div>
 		</div>
 		<div class="row">
-		 	<div class="input-field col s6">
-			 	<div>
+			<div class="input-field col s6">
+				<div>
 					<input type="checkbox" id="status" name="status" value="1"
 						@if($nota->status == "1")
 						{{" checked"}}
 						@endif
 					>
-			 		<label for="status">Publicada</label>
+					<label for="status">Publicada</label>
 				</div>
 			</div>
-		 	<div class="input-field col s6">
+			<div class="input-field col s6">
 				<button class="btn waves-effect waves-light right">Actualizar</button>
-				<button class="btn-flat waves-effect waves-light right">Borrador</button>
+				<a target="_blanck" href="{{route('nota', array('id' => $nota->id))}}" class="waves-effect waves-teal btn-flat right">Vista previa</a>&nbsp
 			</div>
 		</div>
 	{{Form::close()}}
@@ -139,6 +155,14 @@
 <script>
 	$(document).ready(function() {
 		$('select').material_select();
+
+		$('#status').change(function() {
+			var $input = $( this );
+			if( $input.prop('checked') == true )
+				$('label[for="status"]').html('Publicada');
+			else
+				$('label[for="status"]').html('Borrador');
+		}).change();
 	});
 </script>
 @stop

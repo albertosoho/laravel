@@ -1,4 +1,9 @@
 @extends('appanel/template')
+
+@section('scripts')
+	<script src="{{URL::asset('/panel/js/dnn.upload.js')}}"></script>
+@stop
+
 @section('content')
 <main>
 	<!-- Header -->
@@ -7,7 +12,6 @@
 	</nav>
 
 	<div class="container">
-
 		<!-- Manejo de errores -->
 		@if ($errors->has())
 			<?php $dis = '' ?>
@@ -27,33 +31,42 @@
 		<!-- Manejo de errores -->
 
 		<!-- Formulario -->
-		{{Form::open(array('url' => route('appanel.meme.store')))}}
+		{{Form::model($meme, array('route' => array('appanel.meme.update', $meme->id), 'method' => 'PUT'))}}
 			<div class="row">
-				<div class="input-field col s12">
-					<label>Vine</label>
-					<input type="text" name="vine">
+				<div class="input-field col s12 big">
+					<label>Descripción</label>
+					<input type="text" name="description" value="{{$meme->description}}">
 				</div>
 			</div>
 			<div class="row">
-				<div class="input-field col s12">
+				<div class="input-field col s6">
+					<div id="droppeable" style="background:url({{ URL::asset('pictures/small/'.$meme->img->url) }})" class="card-panel grey lighten-5 z-depth-1 upload">
+						<input type="hidden" class="pic" name="cover" value="{{$meme->pic}}" />
+						<input type="hidden" name="type" value="1">
+						<div class="response">
+							<div class="progress">
+								<div id="uploadStatus" class="determinate" style="width: 70%"></div>
+							</div>
+						</div>
+						<div class="options">
+							<button id="ajaxdrop" data-upload="{{route('upload')}}" class="openFile btn col s10 offset-s1">Sube o arrastra una imágen</button>
+						</div>
+					</div>
+				</div>
+				<div class="input-field col s6">
 					<label>Tags</label>
-					<input type="text" name="tags" value="">
-					<input type="hidden" name="type" value="2">
+					<input type="text" name="tags" value="{{$meme->tags}}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-field col s6">
 					<div>
-						@if($errors->has())
-							@if(Input::old('status') == 1)
-								<input type="checkbox" checked id="status" name="status" value="1">
-							@else
-								<input type="checkbox" id="status" name="status" value="1">
+						<input type="checkbox" id="status" name="status" value="1"
+							@if($nota->status == "1")
+							{{" checked"}}
 							@endif
-						@else
-							<input type="checkbox" checked id="status" name="status" value="1">
-						@endif
-						<label for="status">Publicado</label>
+						>
+						<label for="status">Publicada</label>
 					</div>
 				</div>
 				<div class="input-field col s6">
@@ -92,5 +105,4 @@
 		}).change();
 	});
 </script>
-
 @stop
