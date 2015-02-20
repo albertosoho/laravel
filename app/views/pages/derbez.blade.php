@@ -18,11 +18,22 @@
 	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+	@if(!Agent::ismobile())
 	<script src="{{URL::asset('js/b.js')}}"></script>
 	<script src="{{URL::asset('js/derbez.js')}}"></script>
 	<script src="{{URL::asset('js/jquery.parallax.js')}}"></script>
 	<script src="{{URL::asset('js/buzz.min.js')}}"></script>
 	<script src="{{URL::asset('js/index-derbez.js')}}"></script>
+	@endif
+
+	<script>
+	$(document).ready(function(){
+		$('nav.mobil .button').click(function(e){
+			e.stopPropagation();
+			$('nav.mobil ul').slideToggle(200);
+		});
+	});
+	</script>
 	
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -111,9 +122,10 @@
 		</ul>
 	</nav>
 
-
+@if(!Agent::ismobile())
 <figure id="ciudad">
-</figure><ul id="paralax_ciudad">
+</figure>
+<ul id="paralax_ciudad">
 	<li class="layer" data-depth="0.30" id="cielo"></li>
 	<li class="layer" data-depth="0" id="plano4"></li>
 	<li class="layer" data-depth="0.05" id="plano3"></li>
@@ -150,7 +162,9 @@
 		</ul>
 	</li>
 </ul>
+@endif
 
+@if(Agent::isMobile())
 <section id="intro">
 	<h1>
 		<span>Eugenio Derbez</span>
@@ -312,7 +326,7 @@
 		</p>
 	</div>
 </section>
-
+@endif
 
 <footer id="footer">
 <div class="center">
@@ -331,21 +345,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

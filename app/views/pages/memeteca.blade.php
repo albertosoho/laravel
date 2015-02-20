@@ -1,5 +1,6 @@
 @extends('header')
 @section('scripts')
+	<script src="{{URL::asset('js/b.js')}}"></script>
 	<script src="{{URL::asset('js/masonry.min.js')}}"></script>
 @stop
 @section('content')
@@ -20,7 +21,11 @@
 				<ul class="memes">
 				@foreach($memes as $m)
 					<li>
-						<img class="img-responsive" src="{{URL::asset('/pictures/small/'.$m->img->url)}}">
+						<!--<img class="img-responsive" src="{{URL::asset('/pictures/small/'.$m->img->url)}}">-->
+						<div class="superposition">
+							<p>{{$m->description}}</p>	
+						</div>
+						<img class="img-responsive" style="width:100%;height:auto" src="http://www.forpcapps.com/wp-content/uploads/2014/05/2.jpg">
 					</li>
 				@endforeach
 				</ul>
@@ -31,19 +36,37 @@
 <script>
 $(document).ready(function(){
 	$(window).load(function(){
-		widthUl = $('ul.memes').width();
-		if($('body').width() > 768){
-			widthLi = widthUl/3 - 20;
-		}else{
-			widthLi = 250;
-		}
-		$('.memes li').css('width', widthLi);
+
 		var $container = $('ul.memes');
 		// initialize
 		$container.masonry({
-			columnWidth: widthLi,
+			columnWidth: 280,
 			itemSelector: '.memes li',
-			gutter: 10
+			//isFitWidth: true,
+			gutter: 20
+		});
+
+		//load memes
+		pages = {{$memes->count()}};
+		current = 1;
+
+		$(window).scroll(function() {
+			if($(window).scrollTop() + $(window).height() == $(document).height()) {
+				page = current + 1;
+				$.ajax({
+					type: 'GET',
+					url: '{{route('memetecapages')}}',
+					data: {page : page},
+					cache: false,
+				}).done(function(html){
+					if (html.length > 0) {
+						var el = $(html);
+						$('.memes').append(el).masonry( 'appended', el, true );
+						current = current + 1;
+						console.log(current);
+					}
+				});
+			}
 		});
 	});
 });

@@ -75,7 +75,7 @@ class IndexController extends Controller {
 	public function memeteca(){
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
-		$memes = Meme::paginate(12);
+		$memes = Meme::take(12)->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'memes' => $memes,
@@ -83,6 +83,14 @@ class IndexController extends Controller {
 			'notas_nav' => $notas_nav
 		);
 		return View::make('pages/memeteca', $data);
+	}
+
+	public function memetecaPages(){
+		$memes = Meme::paginate(12);
+		$data = array(
+			'memes' => $memes,
+		);
+		return View::make('pages/memetecaPages', $data);
 	}
 
 	public function nota($id){
@@ -101,7 +109,7 @@ class IndexController extends Controller {
 	}
 
 	public function preguntame(){
-		$notas = Nota::orderBy('id', 'desc')->paginate(12);
+		$notas = Nota::orderBy('id', 'desc')->paginate(10);
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
 		$data = array(

@@ -27,6 +27,8 @@ Route::get('meme/{id}', array('as' => 'meme', 'uses' => 'IndexController@meme'))
 
 Route::get('memeteca', array('as' => 'memeteca', 'uses' => 'IndexController@memeteca'));
 
+Route::get('memetecapages', array('as' => 'memetecapages', 'uses' => 'IndexController@memetecaPages'));
+
 Route::get('nota/{id}', array('as' => 'nota', 'uses' => 'IndexController@nota'));
 
 Route::get('preguntame', array('as' => 'preguntame', 'uses' => 'IndexController@preguntame'));

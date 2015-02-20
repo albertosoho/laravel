@@ -566,6 +566,9 @@ nav.mobil .logo{
   left:10px;
   z-index:1000;
 }
+nav.mobil .logo img{
+  width:80px;
+}
 nav.mobil .button{
   position:absolute;
   width:30px;

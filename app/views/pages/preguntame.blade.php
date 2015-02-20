@@ -19,7 +19,7 @@
 									<div class="row">
 										<div class="col-md-20 col-md-offset-2">
 											<h1><a href="nota/{{$nota->id}}">{{$nota->title}}</a></h1>
-											<p>{{substr(strip_tags($nota->content), 0, 250) }}...</p>
+											<p>{{Clean::desc($nota->content, 250) }}...</p>
 										</div>
 									</div>
 								</div>
@@ -48,10 +48,11 @@
 							<span class="cat">{{$nota->name}}</span>
 							<div class="ft">
 								<h1>{{$nota->title}}</h1>
+								<span>{{$nota->categoria->name}}</span>
 							</div>
 						</a>
 						</article>
-						<p>{{substr(strip_tags($nota->description), 0, 50)}}...</p>
+						<p>{{Clean::desc($nota->description, 50)}}...</p>
 					</div>
 					@endforeach
 				</section>
@@ -74,18 +75,22 @@
 					</div>
 					<?php $i = 1 ?>
 					@foreach ($notas as $nota)
+					@if($i == 3)
+						<div class="ad-cuadro-inline" style="margin:0 25px"></div>
+					@endif
 					<div class="nota">
 						<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->img->url}}') center no-repeat; background-size: cover;">
 						<a href="nota/{{$nota->id}}" title="{{$nota->title}}">
 							<span class="cat">{{$nota->name}}</span>
 							<div class="ft">
 								<h1>{{$nota->title}}</h1>
+								<span>{{$nota->categoria->name}}</span>
 							</div>
 						</a>
 						</article>
-						<p>{{substr(strip_tags($nota->description), 0, 50)}}...</p>
+						<p>{{Clean::desc($nota->description, 50)}}...</p>
 					</div>
-					@if($i == 6)
+					@if($i == 5)
 						<?php break; ?> 
 					@endif
 					<?php $i++ ?>
@@ -100,18 +105,22 @@
 				<section class="blog blog-2">
 					<?php $i = 1 ?>
 					@foreach ($notas as $nota)
-					@if($i > 6)
+					@if($i > 5)
 					<div class="nota">
 						<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->img->url}}') center no-repeat; background-size: cover;">
 						<a href="nota/{{$nota->id}}" title="{{$nota->title}}">
 							<span class="cat">{{$nota->name}}</span>
 							<div class="ft">
 								<h1>{{$nota->title}}</h1>
+								<span>{{$nota->categoria->name}}</span>
 							</div>
 						</a>
 						</article>
-						<p>{{substr(strip_tags($nota->description), 0, 50)}}...</p>
+						<p>{{Clean::desc($nota->description, 50)}}...</p>
 					</div>
+						@if($i == 8)
+							<div class="ad-cuadro-inline" style="margin:0 25px"></div>
+						@endif
 					@endif
 					<?php $i++ ?>
 					@endforeach
