@@ -45,6 +45,22 @@
 										<article>
 											<h1>{{ $video->title }}</h1>
 											<figure class="video-container">
+												<ul class="social-video">
+													<li class="fb">
+														<span>
+															<a href="http://www.facebook.com/sharer/sharer.php?u={{URL::to('/').'video/'.$video->id}}">
+															<img src="{{URL::asset('img/face.png')}}">
+															</a>
+														</span>
+													</li>
+													<li class="tt">
+														<span>
+															<a href="https://twitter.com/share" data-via="eugenioderbez" data-lang="es">
+																<img src="{{URL::asset('img/twit.png')}}">
+															</a>
+														</span>
+													</li>
+												</ul>
 												<iframe width="853" height="480" src="//www.youtube.com/embed/{{ $video->youtube}}?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
 											</figure>
 											{{$video->credits}}
@@ -84,7 +100,7 @@
 										@foreach ($videos as $video)
 											<div class="vid-content">
 												<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-													<a href="video/{{$video->vuid}}" title="{{str_replace('"', '', $video->title)}}">
+													<a href="video/{{$video->vuid}}" title="{{$video->title}}">
 														<div class="ft">
 															<h1>{{str_replace('"', '', $video->title)}}</h1>
 														</div>
@@ -109,8 +125,26 @@
 											@endif
 											<?php $i++ ?>
 										@endforeach
+
+										<h3>recomendados</h3>
+										@foreach ($videos as $video)
+											<div class="vid-content">
+												<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
+													<a href="video/{{$video->vuid}}" title="{{$video->title}}">
+														<div class="ft">
+															<h1>{{str_replace('"', '', $video->title)}}</h1>
+														</div>
+														<div class="amas">
+															<i class="mas"></i>
+															<span>{{$video->categoria->name}}</span>
+														</div>
+													</a>
+												</article>
+											</div>
+										@endforeach
 									</aside>
 									@endif
+									<div style="clear:both"></div>
 								</div>
 							</div>
 						</div>

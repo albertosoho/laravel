@@ -16,7 +16,11 @@
 		@endif
 			<div class="card small">
 				<div class="card-image waves-effect waves-block waves-light">
-					<img class="activator" src="{{URL::asset('pictures/sq/'.$meme->img->url)}}">
+					@if(isset($meme->img->url))
+						<img class="activator" src="{{URL::asset('pictures/sq/'.$meme->img->url)}}">
+					@else
+						<img class="activator" src="{{URL::asset('img/vine-meme.png')}}">
+					@endif
 					<span class="card-title">{{$meme->title}}</span>
 				</div>
 				<div class="card-content">

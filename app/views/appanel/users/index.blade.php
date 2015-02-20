@@ -14,6 +14,13 @@
 		</ul>
 	</div>
 
+	<!-- Floating button -->
+	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+		<a href="user/create" class="btn-floating btn-large red">
+			<i class="large mdi-content-create"></i>
+		</a>
+	</div>
+
 	<!-- Footer -->
 	<footer id="footer" class="page-footer blue-grey darken-2">
 		<div class="row">

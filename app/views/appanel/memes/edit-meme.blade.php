@@ -62,7 +62,7 @@
 				<div class="input-field col s6">
 					<div>
 						<input type="checkbox" id="status" name="status" value="1"
-							@if($nota->status == "1")
+							@if($meme->status == 1)
 							{{" checked"}}
 							@endif
 						>

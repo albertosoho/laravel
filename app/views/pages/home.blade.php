@@ -17,6 +17,7 @@
 		<div class="row">
 			<div class="col-md-24">
 				<section class="slider">
+					<h1 style="margin:0;padding:10px 0 0 0;margin-bottom:-20px;font-family:SierraMadre;text-align:center;font-size:40px;-webkit-font-smoothing:antialiased">Destacados</h1>
 					<div id="slider" class="sl-slider-wrapper">
 						<div class="sl-slider">
 							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">

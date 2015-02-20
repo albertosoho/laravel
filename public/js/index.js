@@ -27,11 +27,17 @@ $(document).ready(function(){
 		$('.preguntaover').slideUp(200);
 		$('.videover').slideUp(200);
 	});
+
 	$(window).load(function(){
 		body = $('body').width();
 		if(body < 768){
 			$('.wrapper-container').width(body).css('overflow-x', 'hidden');
 		}
+	});
+
+	$(document).on('click', '.social-video a', function(e){
+		e.preventDefault();
+		window.open($(this).attr('href'), '', 'width=500,height=500');
 	});
 
 	var Page = (function() {

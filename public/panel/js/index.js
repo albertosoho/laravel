@@ -16,53 +16,22 @@ $(document).ready(function(){
 		return false;
 	});
 
-	/*counter = 0;
-	$('.drag').draggable({
-		helper: 'clone',
-		revert:'invalid',
-		//When first dragged
-		stop: function (ev, ui) {
-			var pos = $(ui.helper).offset();
-			objName = '#clonediv' + counter
-			$(objName).css({
-				'position':'relative'
-			});
-			$(objName).removeClass('drag');
-			//When an existiung object is dragged
-			$(objName).draggable({
-				containment: 'parent',
-				stop: function (ev, ui) {
-					var pos = $(ui.helper).offset();
-					console.log($(this).attr('id'));
-					console.log(pos.left)
-					console.log(pos.top)
-				}
-			});
-		}
+	$('.delete').click(function(e){
+		e.preventDefault();
+		$this = $(this);
+		swal({
+			title: '¿Estás seguro?',
+			text: 'Esta acción no puede deshacerse',
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: '¡¡Perfecto!!',
+			closeOnConfirm: true,
+		}, function(){
+			window.location = $this.attr('href');
+		});
 	});
-
-	//Make element droppable
-	$('.destacados').droppable({
-		drop: function (ev, ui) {
-			lis = $('.destacados > li').length;
-			if(lis < 5){
-				if (ui.helper.context.id.search(/item-([0-9]*)/g) != -1) {
-					counter++;
-					var element = $(ui.draggable).clone();
-					element.addClass('tempclass');
-					$(this).append(element);
-					$('.tempclass').attr('id', 'clonediv' + counter);
-					$('#clonediv' + counter).removeClass('tempclass');
-					console.log(ui.helper.context.id.search(/item-([0-9]*)/g));
-					//Get the dynamically item id
-					draggedNumber = ui.helper.context.id.search(/item-([0-9]*)/g);
-					itemDragged = 'dragged' + RegExp.$1;
-					console.log(itemDragged);
-					$("#clonediv" + counter).addClass(itemDragged);
-				}
-			}
-		},
-	});*/
 	
 	var new_id = 20;
 

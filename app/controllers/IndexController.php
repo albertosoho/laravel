@@ -63,6 +63,9 @@ class IndexController extends Controller {
 
 		$meme = Meme::find($id);
 
+		$meme->views = $meme->views + 1;
+		$meme->save();
+
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'meme' => $meme,
@@ -98,6 +101,9 @@ class IndexController extends Controller {
 		$lasts = Nota::lasts()->take(2)->get();
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
+
+		$nota->views = $nota->views + 1;
+		$nota->save();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'nota' => $nota,
@@ -127,6 +133,10 @@ class IndexController extends Controller {
 		$video = Video::find($id);
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
+
+		$video->views = $video->views + 1;
+		$video->save();
+
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'video' => $video,

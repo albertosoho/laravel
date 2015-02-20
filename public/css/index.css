@@ -18,6 +18,9 @@
 	src: url('../fonts/sierramadre.eot?#iefix') format('embedded-opentype'), url('../fonts/sierramadre.woff') format('woff'), url('../fonts/sierramadre.ttf') format('truetype'), url('../fonts/sierramadre.svg#sierramadre') format('svg');
 	font-weight: normal;
 	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	font-smoothing: antialiased;
 }
 @font-face {
 	font-family: 'WeblySleekUISemilight';
@@ -115,7 +118,7 @@ a:visited, a:focus{
 	background-position:bottom;
 	background-size:cover;
 	width:100%;
-	height:300px;
+	height:150px;
 }
 #ciudad{
 	width: 100%;
@@ -130,6 +133,7 @@ nav.menu{
 	position:fixed;
 	width:100%;
 	z-index:10000;
+	text-align: right;
 }
 nav.menu .col-md-12{
 	position: relative;
@@ -154,14 +158,14 @@ nav.menu li a:hover{
 	color:#fbb100;
 	text-decoration:none;
 }
-nav.menu li:first-child{
-	margin-left:120px;
+nav.menu li:last-child{
+	margin-right:100px;
 }
 nav.menu .logo{
 	position:absolute;
 	position: absolute;
 	width: 130px;
-	left: -4px;
+	left: 40px;
 	top:-2px;
 	cursor:pointer;
 }
@@ -414,11 +418,11 @@ nav.mobil li a:active{
 	width: 100%;
 	height: 50%;
 	left: -200px;
-	-webkit-transform: translateY(0%) scale(1);
-	-moz-transform: translateY(0%) scale(1);
-	-o-transform: translateY(0%) scale(1);
-	-ms-transform: translateY(0%) scale(1);
-	transform: translateY(0%) scale(1);
+	-webkit-transform: translateY(0%) scale(2);
+	-moz-transform: translateY(0%) scale(2);
+	-o-transform: translateY(0%) scale(2);
+	-ms-transform: translateY(0%) scale(2);
+	transform: translateY(0%) scale(2);
 }
 .sl-slide-horizontal .sl-content-slice:first-child {
 	top: -200px;
@@ -517,13 +521,18 @@ section.videos{
 	background:url(../img/patterns/azulcuadros.png);
 	background-attachment: fixed;
 	text-align:center;
-	margin-top:60px;
+	margin-top:36px;
 }
 section.videos .vid-content{
 	margin:10px 7px;
 }
 aside .vid-content{
 	margin:10px 7px;
+}
+aside h3{
+	padding-right:20px;
+	font-family: SierraMadre;
+	-webkit-font-smoothing:antialiased;
 }
 section.videos h1.title{
 	text-transform: uppercase;
@@ -532,8 +541,9 @@ section.videos h1.title{
 	background:url(../img/patterns/amarillopt.png);
 	color:#282828;
 	font-size: 50px;
-	line-height: 60px;
+	line-height: 36px;
 	margin:0;
+	padding:15px;
 }
 section.videos .articles{
 	box-shadow:-6px 12px 10px -11px #000 inset;
@@ -618,7 +628,7 @@ section.preguntame{
 	background:url(../img/patterns/azulpreguntame.png);
 	background-attachment: fixed !important;
 	text-align:center;
-	margin-top:60px;
+	margin-top:35px;
 }
 section.preguntame .articles{
 	box-shadow:-6px 12px 10px -11px #000 inset;
@@ -1069,7 +1079,6 @@ section.comments .comment-bottom{
 }
 .video-content{
 	background:#014e5e;
-	overflow:hidden;
 	padding-bottom:50px;
 	margin-bottom: 50px;
 }
@@ -1336,6 +1345,7 @@ footer.mobil{
     padding-bottom: 56.25%;
     padding-top: 30px; height: 0; overflow: hidden;
     margin-bottom:15px;
+    overflow: visible;
 } 
 .video-container iframe,
 .video-container object,
@@ -1345,6 +1355,30 @@ footer.mobil{
     left: 0;
     width: 100%;
     height: 100%;
+}
+.social-video{
+	position: absolute;
+	left:-60px;
+	height:40px;
+	width:20px;
+}
+.social-video li{
+	text-align:center;
+	padding:0;
+	width:60px;
+	height:40px;
+	margin:10px 0;
+	box-shadow:-2px 1px 3px -1px #2D2D2D;
+}
+.social-video a{
+	display: block;
+	padding:10px;
+}
+.fb{
+	background:#3e80b3;
+}
+.tt{
+	background:#65a6d8;
 }
 .the_new span{
 	display:inline-block;
@@ -1371,6 +1405,8 @@ nav.menu span{
 }
 .articulo{
 	position: relative;
+	margin-top:30px !important;
+	padding-top: 30px !important;
 }
 .articulo a:visited, .articulo a:active{
 	color:#337AB7;
@@ -1387,6 +1423,84 @@ nav.menu span{
 	width:100%;
 	padding:10px 0 10px 30px;
 	text-transform:uppercase;
+}
+.contain h1{
+	display: block;
+	padding: 20px;
+	background: #eeb727 url('../img/patterns/amarillopt.png');
+	background-size: 4px;
+	color: #2e3440;
+	font-family: 'SierraMadre';
+	font-size: 32px;
+	text-align: center;
+	-webkit-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+	-moz-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+.contain.special{
+	position: absolute;
+	top:-38px;
+	left:50%;
+	width:300px;
+	margin-left:-150px;
+}
+.contain .share {
+  display: block;
+  overflow: hidden;
+  margin-top: 20px;
+  -webkit-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  -moz-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+.contain .share li {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 39px;
+  overflow: hidden;
+}
+.contain .share li > span {
+  display: block;
+  padding: 10px 0px;
+  width: 100%;
+  height: 39px;
+  overflow: hidden;
+  font-family: 'SierraMadre';
+  font-size: 16px;
+  text-align: center;
+  color: #f5f2d5;
+  line-height:16px;
+}
+.contain .share li > span img {
+  height: 18px;
+  margin-bottom: -2px;
+}
+.contain .share li .back {
+  background-image: none !important;
+}
+.contain .share li .front {
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  transition: all .2s;
+}
+.contain .share li:hover .front {
+  margin-top: -39px;
+}
+.contain .share li.fb span {
+  background: #3e80b3 url('../img/patterns/bg_mini_azul_1.jpg');
+  background-size: 4px 4px;
+}
+.contain .share li.tw span {
+  background: #65a6d8 url('../img/patterns/bg_mini_azul_2.jpg');
+  background-size: 4px 4px;
+}
+.contain .share li.like span {
+  background: #a0123a url('../img/patterns/bg_mini_rojo_1.jpg');
+  background-size: 4px 4px;
+}
+.contain .share li.comments span {
+  background: #a13d22 url('../img/patterns/bg_mini_rojo_2.jpg');
+  background-size: 4px 4px;
 }
 /*mediaqueries*/
 @media (max-width: 990px){

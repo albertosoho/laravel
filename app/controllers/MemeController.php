@@ -9,7 +9,7 @@ class MemeController extends \BaseController {
 	 */
 	public function index()
 	{
-		$memes = Meme::orderBy('id', 'desc')->whereStatus(1)->paginate(12);
+		$memes = Meme::orderBy('id', 'desc')->whereStatus(1)->orWhere('status', '=', 2)->paginate(12);
 		$data = array(
 			'title' => 'Memes',
 			'memes' => $memes

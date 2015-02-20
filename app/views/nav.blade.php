@@ -2,11 +2,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-24">
-					<div class="logo">
-						<a href="home">
-							<img class="img-responsive" src="img/logo.png">
-						</a>
-					</div>
+					@if(Route::currentRouteName() == 'index')
+						<div class="logo" style="width:250px;top:-15px;left:-40px;">
+							<a href="/">
+								<img class="img-responsive" src="img/principal-fecha.png">
+							</a>
+						</div>
+					@else
+						<div class="logo">
+							<a href="/">
+								<img class="img-responsive" src="img/logo.png">
+							</a>
+						</div>
+					@endif
 					<ul>
 						<li>
 							<a href="home">
@@ -87,6 +95,7 @@
 	<div class="videover">
 		<div class="row">
 			<div class="col-md-24">
+				<?php $i = 1 ?>
 				@foreach ($videos_nav as $video)
 				<div class="vid-content">
 					<article class="video" data-uid="{{$video->id}}" style="background: #000 url('pictures/small/{{$video->img->url}}') center no-repeat; background-size: cover;">
@@ -102,6 +111,12 @@
 					</article>
 					<p>{{Clean::desc($video->subtitle, 50)}}... </p>
 				</div>
+				@if(Route::currentRouteName() == 'index')
+					@if($i == 3)
+						<?php break; ?>
+					@endif
+				@endif
+				<?php $i++ ?>
 				@endforeach
 			</div>
 		</div>
@@ -109,6 +124,7 @@
 	<div class="preguntaover">
 		<div class="row">
 			<div class="col-md-24">
+			<?php $i = 1 ?>
 				@foreach ($notas_nav as $nota)
 				<div class="nota">
 					<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->img->url}}') center no-repeat; background-size: cover;">
@@ -122,6 +138,12 @@
 					</article>
 					<p>{{Clean::desc($nota->description, 50)}}...</p>
 				</div>
+				@if(Route::currentRouteName() == 'index')
+					@if($i == 3)
+						<?php break; ?>
+					@endif
+				@endif
+				<?php $i++ ?>
 				@endforeach
 			</div>
 		</div>

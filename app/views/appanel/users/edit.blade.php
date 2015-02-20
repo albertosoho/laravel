@@ -3,11 +3,31 @@
 <main>
 	<!-- Header -->
 	<nav id="top" class="top-nav">
-		<span class="page-title">Notas</span>
+		<span class="page-title">{{$title}}</span>
 	</nav>
 
 	<div class="container">
-		{{Form::model($user, array('route' => array('appanel.nota.update', $user->id), 'method' => 'PUT'))}}
+
+		<!-- Manejo de errores -->
+		@if ($errors->has())
+			<?php $dis = '' ?>
+			@foreach ($errors->all() as $error)
+				<?php $dis .= $error.'</br>' ?>
+			@endforeach
+			<script>
+			$(window).load(function(){
+				swal({
+					title: 'Verfica lo siguiente',
+					html: '{{$dis}}',
+					type:'error',
+				});
+			});
+			</script>
+		@endif
+		<!-- Manejo de errores -->
+	
+		<!-- Formulario -->
+		{{Form::model($user, array('route' => array('appanel.user.update', $user->id), 'method' => 'PUT'))}}
 			<div class="row">
 				<div class="input-field col s12 big">
 					<label>Nombre</label>
@@ -29,12 +49,13 @@
 			<div class="row">
 				<div class="input-field col s12">
 					<label>Nueva Contraseña</label>
-					<input type="text" name="password" class="form-control" value="">
+					<input type="password" name="password" class="form-control" value="">
 				</div>
 			</div>
 			<div class="row">
 				<div class="input-fiel col s12">
 					<button class="btn waves-effect waves-light right">Actualizar</button>
+					<a href="{{route('appanel.user.destroy', array('id' => $user->id))}}" class="delete waves-effect waves-teal btn-flat">Borrar</a>
 				</div>
 			</div>
 		{{Form::close()}}

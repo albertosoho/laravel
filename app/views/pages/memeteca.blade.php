@@ -20,13 +20,18 @@
 				@endif
 				<ul class="memes">
 				@foreach($memes as $m)
+					@if(isset($m->img->url))
 					<li>
-						<!--<img class="img-responsive" src="{{URL::asset('/pictures/small/'.$m->img->url)}}">-->
 						<div class="superposition">
 							<p>{{$m->description}}</p>	
 						</div>
-						<img class="img-responsive" style="width:100%;height:auto" src="http://www.forpcapps.com/wp-content/uploads/2014/05/2.jpg">
+						<img class="img-responsive" src="{{URL::asset('/pictures/small/'.$m->img->url)}}">
 					</li>
+					@else
+					<li>
+						<iframe src="https://vine.co/v/{{$m->id_vine}}/embed/simple" width="600" height="600" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
+					</li>
+					@endif
 				@endforeach
 				</ul>
 			</div>

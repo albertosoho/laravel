@@ -58,16 +58,21 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 	Route::post('video/store', array('as' => 'appanel.video.store', 'uses' => 'VideoController@store'));
 	Route::get('video/{id}/edit', array('as' => 'appanel.video.edit', 'uses' => 'VideoController@edit'));
 	Route::put('video/{id}/update', array('as' => 'appanel.video.update', 'uses' => 'VideoController@update'));
-	Route::delete('video/{id}/destroy', array('as' => 'appanel.video.destroy', 'uses' => 'VideoController@destroy'));
+	Route::get('video/{id}/destroy', array('as' => 'appanel.video.destroy', 'uses' => 'VideoController@destroy'));
 
 	Route::get('nota', array('as' => 'appanel.nota.index', 'uses' => 'NotaController@index'));
 	Route::get('nota/create', array('as' => 'appanel.nota.create', 'uses' => 'NotaController@create'));
 	Route::post('nota/store', array('as' => 'appanel.nota.store', 'uses' => 'NotaController@store'));
 	Route::get('nota/{id}/edit', array('as' => 'appanel.nota.edit', 'uses' => 'NotaController@edit'));
 	Route::put('nota/{id}/update', array('as' => 'appanel.nota.update', 'uses' => 'NotaController@update'));
-	Route::delete('nota/{id}/destroy', array('as' => 'appanel.nota.destroy', 'uses' => 'NotaController@destroy'));
+	Route::get('nota/{id}/destroy', array('as' => 'appanel.nota.destroy', 'uses' => 'NotaController@destroy'));
 
-	Route::resource('user', 'UserController');
+	Route::get('user', array('as' => 'appanel.user.index', 'uses' => 'UserController@index'));
+	Route::get('user/create', array('as' => 'appanel.user.create', 'uses' => 'UserController@create'));
+	Route::post('user/store', array('as' => 'appanel.user.store', 'uses' => 'UserController@store'));
+	Route::get('user/{id}/edit', array('as' => 'appanel.user.edit', 'uses' => 'UserController@edit'));
+	Route::put('user/{id}/update', array('as' => 'appanel.user.update', 'uses' => 'UserController@update'));
+	Route::get('user/{id}/destroy', array('as' => 'appanel.user.destroy', 'uses' => 'UserController@destroy'));
 
 	Route::resource('picture', 'PictureController');
 
@@ -76,14 +81,14 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 	Route::post('meme/store', array('as' => 'appanel.meme.store', 'uses' => 'MemeController@store'));
 	Route::get('meme/{id}/edit', array('as' => 'appanel.meme.edit', 'uses' => 'MemeController@edit'));
 	Route::put('meme/{id}/update', array('as' => 'appanel.meme.update', 'uses' => 'MemeController@update'));
-	Route::delete('meme/{id}/destroy', array('as' => 'appanel.meme.destroy', 'uses' => 'MemeController@destroy'));
+	Route::get('meme/{id}/destroy', array('as' => 'appanel.meme.destroy', 'uses' => 'MemeController@destroy'));
 
 	Route::get('category', array('as' => 'appanel.category.index', 'uses' => 'CategoryController@index'));
 	Route::get('category/create', array('as' => 'appanel.category.create', 'uses' => 'CategoryController@create'));
 	Route::post('category/store', array('as' => 'appanel.category.store', 'uses' => 'CategoryController@store'));
 	Route::get('category/{id}/edit', array('as' => 'appanel.category.edit', 'uses' => 'CategoryController@edit'));
 	Route::put('category/{id}/update', array('as' => 'appanel.category.update', 'uses' => 'CategoryController@update'));
-	Route::delete('category/{id}/destroy', array('as' => 'appanel.category.destroy', 'uses' => 'CategoryController@destroy'));
+	Route::get('category/{id}/destroy', array('as' => 'appanel.category.destroy', 'uses' => 'CategoryController@destroy'));
 
 //uploads
 

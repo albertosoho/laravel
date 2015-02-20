@@ -17,7 +17,7 @@
 								<div class="row">
 									<div class="col-md-20 col-md-offset-2">
 										<h1>{{$nota->title}}</h1>
-										<p>{{substr(strip_tags($nota->content), 0 , 250) }}</p>
+										<p>{{Clean::desc($nota->content, 250) }}</p>
 									</div>
 								</div>
 							</div>
@@ -51,12 +51,28 @@
 							</div>
 						</a>
 						</article>
-						<p>{{substr(strip_tags($last->description), 0, 50)}}...</p>
+						<p>{{Clean::desc($last->description, 50)}}...</p>
 					</div>
 					@endforeach
 					<div class="ad-cuadro-inline"></div>
 				@endif
 				<article class="articulo">
+					<div class="contain special">
+						<ul class="share">
+							<li class="fb">
+								<span class="front"><img src="img/face.png"></span>
+								<span class="back">
+									<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+								</span>
+							</li>
+							<li class="tw">
+								<span class="front"><img src="img/twit.png"></span>
+								<span class="back">
+									<a href="https://twitter.com/share" class="twitter-share-button" data-via="eugenioderbez" data-lang="es">Twittear</a>
+								</span>
+							</li>
+						</ul>
+					</div>
 					{{$nota->content}}
 					@if(!Agent::isMobile())
 						<div class="ad-horizontal"></div>
@@ -81,7 +97,7 @@
 						</div>
 					</a>
 					</article>
-					<p>{{substr(strip_tags($last->description), 0, 50)}}...</p>
+					<p>{{Clean::desc($last->description, 50)}}...</p>
 				</div>
 				@endforeach
 				<div class="ad-cuadro-inline"></div>
