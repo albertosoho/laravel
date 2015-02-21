@@ -323,61 +323,75 @@ html {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
   z-index: -1;
 }
-#footer {
-  background: #ac472a url('../img/patterns/bg_footer1.png');
+/* footer */
+footer {
+  background: #ac472a url('../img/patterns/menu-2.png');
   background-size: 2px 50px;
   width: 100%;
   height: 50px;
   margin-top: 50px;
   overflow: hidden;
-  color: #ffffff;
+  color: #fff;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  position:fixed;
+  bottom:0;
+  left:0;
+  z-index:101;
 }
-#footer .social {
+footer .social {
   display: block;
   float: left;
-  margin-top: -5px;
+  margin-top: 10px;
 }
-#footer .social li {
+footer .social li {
   display: inline-block;
 }
-#footer .social li a {
+footer .social li a {
   display: block;
 }
-#footer .social li a:hover {
+footer .social li a:hover {
   -webkit-animation: late 1s infinite linear;
   -moz-animation: late 1s infinite linear;
   animation: late 1s infinite linear;
 }
-#footer .social li a img {
+footer .social li a img {
   display: block;
   width: 30px;
 }
-#footer p {
-  color: #ffffff;
+footer p {
+  color: #fff;
   margin-top: 14px;
   font-family: 'WeblySleekUISemilight';
   text-align: center;
   text-transform: uppercase;
 }
-#footer p a {
+footer p a {
   color: #eeb727;
 }
-#footer .info {
+footer .col-md-12{
+  position:relative;
+}
+footer .info {
+  position: absolute;
+  top:0;
+  right:0;
   float: right;
   display: block;
-  margin-top: -23px;
+  margin-top: 11px;
 }
-#footer .info:hover {
+footer .info:hover {
   -webkit-animation: late 1s infinite linear;
   -moz-animation: late 1s infinite linear;
   animation: late 1s infinite linear;
 }
-#footer .info img {
+footer .info img {
   display: block;
   width: 30px;
+}
+footer.mobil{
+  display:none;
 }
 #mwrap {
   width: 1020px;
@@ -568,6 +582,10 @@ nav.mobil .logo{
 }
 nav.mobil .logo img{
   width:80px;
+  position:absolute;
+  top:0;
+  left:10px;
+  z-index:1000;
 }
 nav.mobil .button{
   position:absolute;
@@ -602,7 +620,7 @@ nav.mobil li a:active{
   background:#532323;
   color:#e6e4c7;
 }
-@media (max-width: 321px){
+@media (max-width: 340px){
   nav.menu{
     display:none;
   }
