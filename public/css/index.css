@@ -1193,11 +1193,11 @@ ul.memes li{
 	position:absolute;
 	width:100%;
 	height:100%;
-	background:rgba(0,0,0,0.3);
+	background:rgba(0,0,0,0.8);
 	opacity:0;
 }
 .superposition p{
-	font-size:50px;
+	font-size:30px;
     -webkit-transition:all .2s; /* For Safari 3.1 to 6.0 */
     transition:all .2s;
     width:90%;
@@ -1207,6 +1207,9 @@ ul.memes li{
 	font-family: SierraMadre;
 	position:absolute;
 	margin-top:-200px;
+}
+ul.memes a{
+	color:#fff;
 }
 .superposition:hover{
 	opacity:1;

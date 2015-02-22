@@ -39,7 +39,7 @@
 					<span class="card-title grey-text text-darken-4">Opciones <i class="mdi-navigation-close right"></i></span>
 					<ul class="collection">
 						<li class="collection-item"><a href="{{route('appanel.video.edit', array('id' => $video->id))}}"><i class="mdi-content-create"></i> Editar</a></li>
-						<li class="collection-item"><a href="{{route('appanel.video.edit', array('id' => $video->id))}}"><i class="mdi-action-delete"></i> Borrar</a></li>
+						<li class="collection-item"><a class="delete" href="{{route('appanel.video.destroy', array('id' => $video->id))}}"><i class="mdi-action-delete"></i> Borrar</a></li>
 					</ul>
 				</div>
 			</div>

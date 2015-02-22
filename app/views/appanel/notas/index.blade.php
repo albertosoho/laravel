@@ -9,7 +9,7 @@
 	<!-- Destacados -->
 	<div class="row">
 		<div class="col s12">
-			<div class="destacados card-panel grey lighten-3 valign-wrapper">
+			<div style="position:relative" data-send="{{route('appanel.nota.destacados')}}" class="destacados card-panel grey lighten-3 valign-wrapper">
 				<h5 class="valign grey-text text-lighten-1">Arrastra aquí tu contenido destacado</h5>
 			</div>
 		</div>
@@ -19,9 +19,9 @@
 	<div class="row">
 	@foreach ($notas as $nota)
 		@if($nota->status == 2)
-		<div class="col s4" style="opacity:0.3" id="item-{{$nota->id}}">
+		<div class="col s4 drag" style="opacity:0.3" data-item="{{$nota->id}}" id="item-{{$nota->id}}">
 		@else
-		<div class="col s4" id="item-{{$nota->id}}">
+		<div class="col s4 drag" data-item="{{$nota->id}}" id="item-{{$nota->id}}">
 		@endif
 			<div class="card small">
 				<div class="card-image waves-effect waves-block waves-light">
@@ -39,7 +39,7 @@
 					<span class="card-title grey-text text-darken-4">Opciones <i class="mdi-navigation-close right"></i></span>
 					<ul class="collection">
 						<li class="collection-item"><a href="nota/{{$nota->id}}/edit"><i class="mdi-content-create"></i> Editar</a></li>
-						<li class="collection-item"><a href="nota/{{$nota->id}}/edit"><i class="mdi-action-delete"></i> Borrar</a></li>
+						<li class="collection-item"><a class="delete" href="nota/{{$nota->id}}/destroy"><i class="mdi-action-delete"></i> Borrar</a></li>
 					</ul>
 				</div>
 			</div>

@@ -77,11 +77,6 @@
 							</a>
 						</li>
 					</ul>
-					<ul class="social">
-						<li><a href="https://vine.co/eugenioderbezTV" title="Vine de Eugenio Derbez"><img src="img/vine.png" alt="Vine"></a></li>
-						<li><a href="https://twitter.com/EugenioDerbez" title="Twitter de Eugenio Derbez"><img src="img/twitter.png" alt="Twitter"></a></li>
-						<li><a href="https://www.facebook.com/pages/Eugenio-Derbez/148393515248368" title="Facebook de Eugenio Derbez"><img src="img/facebook.png" alt="Facebook"></a></li>
-					</ul>
 				</div>
 			</div>
 		</div>
@@ -272,8 +267,11 @@
 		<img class="hide" src="img/derbez/director_1.png" />
 
 		<iframe src="//www.youtube.com/embed/_Dn70Q4tWro?rel=0" frameborder="0" allowfullscreen></iframe>
-
+				@if(Agent::isAndroidOS())
+				<a class="btn" href="https://play.google.com/store/movies/details/No_se_aceptan_devoluciones?id=xNAIh-xaKrk">No Se Aceptan Devoluciones en Google play</a>
+				@else
 				<a class="btn" href="https://itunes.apple.com/mx/movie/no-se-aceptan-devoluciones/id794259708">No Se Aceptan Devoluciones en iTunes</a>
+				@endif
 			</div>
 </section>
 <section class="popup" id="s8">
@@ -302,7 +300,11 @@
 
 		<iframe src="//www.youtube.com/embed/TiH_gBoIN4A?rel=0" frameborder="0" allowfullscreen></iframe>
 
+				@if(Agent::isAndroidOS())
+				<a class="btn" href="https://play.google.com/store/movies/details/No_Eres_Tu_Soy_Yo_VE?id=8ATuWQ_ZS2s">No Eres Tú, Soy Yo en Google play</a>
+				@else
 				<a class="btn" href="https://itunes.apple.com/mx/movie/no-eres-tu-soy-yo/id435869493">No Eres Tú, Soy Yo en iTunes</a>
+				@endif
 			</div>
 </section>
 <section class="popup" id="s10">

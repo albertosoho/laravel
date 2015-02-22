@@ -14,8 +14,13 @@
 				<div class="card-panel">
 					<h1>Iniciar sesión</h1>
 					{{Form::open(array('url' => 'appanel/dologin', 'id'=>'login'))}}
+						@if($errors->any())
 						<div class="input-field col s12">
-							<input name="username" type="text">
+							<p style="color:red">{{$errors->first()}}</p>
+						</div>
+						@endif
+						<div class="input-field col s12">
+							<input name="username" type="text" value="{{Input::old('username')}}">
 							<label for="username">Nombre de usuario</label>
 						</div>
 						<div class="input-field col s12">

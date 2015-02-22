@@ -266,7 +266,11 @@ class MemeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$meme = Meme::find($id);
+		$meme->status = 0;
+		$meme->save();
+
+		return Redirect::to('appanel/meme/');
 	}
 
 

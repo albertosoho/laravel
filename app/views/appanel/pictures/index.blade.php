@@ -9,22 +9,16 @@
 	<ul class="pictures">
 		@foreach ($pictures as $picture)
 		<li>
+		{{$picture->id}}
 			<a href="picture/{{$picture->id}}/edit">
-				<img src="{{URL::asset('/pictures/sqm/'.$picture->url)}}">
+				<img src="{{URL::asset('/pictures/sq/'.$picture->url)}}">
 			</a>
-			{{Form::model($picture, array('route' => array('appanel.nota.destroy', $picture->id), 'class'=>'inline', 'method' => 'DELETE'))}}
+			{{Form::model($picture, array('route' => array('appanel.picture.destroy', $picture->id), 'class'=>'inline', 'method' => 'post'))}}
 				<button type="submit" class="link">Borrar</button>
 			{{Form::close()}}
 		</li>
 		@endforeach
 	</ul>
-
-	<!-- Floating button -->
-	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-		<a href="picture/create" class="btn-floating btn-large red">
-			<i class="large mdi-content-create"></i>
-		</a>
-	</div>
 
 	<!-- Footer -->
 	<footer id="footer" class="page-footer blue-grey darken-2">

@@ -160,7 +160,11 @@ class UserController extends \BaseController {
 	public function destroy($id)
 	{
 		$user = User::find($id);
-		$user->delete();
+		if($user->rol != 1){
+			$user->delete();
+		}else{
+			
+		}
 
 		return Redirect::route('appanel.user.index');
 	}

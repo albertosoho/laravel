@@ -209,5 +209,8 @@ class VideoController extends \BaseController {
 		return Redirect::to('appanel/video/');
 	}
 
+	public function destacados(){
+
+	}
 
 }

@@ -124,20 +124,48 @@ ul.side-nav.fixed li.avatar {
 	margin: 10px auto;
 	height: 200px;
 }
-.destacados li {
+.destacados h5{
+	position: absolute;
+	top: 35%;
+	width: 100%;
+	left: 0;
+	text-align: center;
+}
+.destacados .list {
+	cursor:move;
 	width: 18%;
 	margin: 0 1%;
 	height: 100%;
 	float: left;
+	overflow:hidden;
 	box-sizing: border-box;
+	position: relative;
+	z-index:999;
+	padding:20px;
+}
+.destacados h3{
+	font-size:16px;
+	color:#fff;
+	margin:0;
+	line-height:1;
+	text-shadow:1px 1px 1px #000;
 }
 .destacados .edit, .destacados .delete, .remove{
 	display: none;
 }
 .destacados .remove{
-	display: inline-block;
-}
-.drag {
+	position:absolute;
+	top:0;
+	right:0;
+	background:#ee6e73;
+	padding:0;
+	width:30px;
+	height:30px;
+	color:#fff;
+	display:block;
+	line-height:30px;
+	text-align:center;
+	cursor: pointer;
 }
 .pictures li{
 	display:inline-block;
@@ -163,4 +191,3 @@ left: 0;
 padding: 20px;
 text-shadow: 1px 1px 1px #000;
 }
-

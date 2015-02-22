@@ -16,6 +16,10 @@ $(document).ready(function(){
 		return false;
 	});
 
+	$('.destacados').sortable({
+		revert: true
+	});
+
 	$('.delete').click(function(e){
 		e.preventDefault();
 		$this = $(this);
@@ -57,20 +61,54 @@ $(document).ready(function(){
 			return true;
 		},
 		drop: function (event, ui) {
-			//alert($(this).parent().html());
-			//alert($(ui.helper).attr('class'));
-			var obj;
-			if ($(ui.helper).hasClass('drag')) {
-				//alert('draggable');
-				obj = $(ui.helper).clone();  
-				obj.removeClass('drag').addClass('editable').removeAttr('style');
-				//obj.addClass('droppable');
-				$(this).append(obj);
+			lis = $('.destacados > div').length;
+			if(lis < 5){
+				var obj;
+				id = $(ui.helper).data('item');
+				if(id != undefined){
+					img = $(ui.helper).find('.activator').attr('src');
+					title = $(ui.helper).find('.card-image .card-title').text();
+
+					el = $('<div>').addClass('list').attr('data-id', id).css({
+						'background-size':'cover',
+						'background':'url('+img+') center',
+					});
+					el.append($('<h3>').text(title));
+					el.append($('<span>').addClass('remove').text('x'));
+
+					$(this).append(el);
+				}
 			}
+
+			$(this).find('h5').hide();
+
+			saveDestacados();
 		}
-	}).sortable({
-		revert: true
 	});
+
+	function saveDestacados(){
+		url = $('.destacados').data('send');
+		elements = $('.destacados > div');
+		obj = {
+			destacados:{}
+		};
+		i = 1;
+		$.each(elements, function(key, value){
+			div = $(value);
+			id = div.attr('data-id');
+			pos = key + 1;
+			obj.destacados[pos] = id;
+		});
+		console.log(obj);
+		$.ajax({
+			type: "POST",
+			url: url,
+			data: {'positions':obj},
+			success: function(){},
+			dataType: "json",
+			//contentType : "application/json"
+		});
+	}
 
 	$(document).on('click', '.remove', function(e){
 		e.preventDefault()

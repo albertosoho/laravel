@@ -30,7 +30,7 @@
 					<span class="card-title grey-text text-darken-4">Opciones <i class="mdi-navigation-close right"></i></span>
 					<ul class="collection">
 						<li class="collection-item"><a href="meme/{{$meme->id}}/edit"><i class="mdi-content-create"></i> Editar</a></li>
-						<li class="collection-item"><a href="meme/{{$meme->id}}/edit"><i class="mdi-action-delete"></i> Borrar</a></li>
+						<li class="collection-item"><a class="delete" href="meme/{{$meme->id}}/destroy"><i class="mdi-action-delete"></i> Borrar</a></li>
 					</ul>
 				</div>
 			</div>

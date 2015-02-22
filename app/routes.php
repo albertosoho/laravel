@@ -59,6 +59,7 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 	Route::get('video/{id}/edit', array('as' => 'appanel.video.edit', 'uses' => 'VideoController@edit'));
 	Route::put('video/{id}/update', array('as' => 'appanel.video.update', 'uses' => 'VideoController@update'));
 	Route::get('video/{id}/destroy', array('as' => 'appanel.video.destroy', 'uses' => 'VideoController@destroy'));
+	Route::post('video/destacados', array('as' => 'appanel.video.destacados', 'uses' => 'VideoController@destacados'));
 
 	Route::get('nota', array('as' => 'appanel.nota.index', 'uses' => 'NotaController@index'));
 	Route::get('nota/create', array('as' => 'appanel.nota.create', 'uses' => 'NotaController@create'));
@@ -66,6 +67,7 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 	Route::get('nota/{id}/edit', array('as' => 'appanel.nota.edit', 'uses' => 'NotaController@edit'));
 	Route::put('nota/{id}/update', array('as' => 'appanel.nota.update', 'uses' => 'NotaController@update'));
 	Route::get('nota/{id}/destroy', array('as' => 'appanel.nota.destroy', 'uses' => 'NotaController@destroy'));
+	Route::post('nota/destacados', array('as' => 'appanel.nota.destacados', 'uses' => 'NotaController@destacados'));
 
 	Route::get('user', array('as' => 'appanel.user.index', 'uses' => 'UserController@index'));
 	Route::get('user/create', array('as' => 'appanel.user.create', 'uses' => 'UserController@create'));
@@ -74,7 +76,12 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 	Route::put('user/{id}/update', array('as' => 'appanel.user.update', 'uses' => 'UserController@update'));
 	Route::get('user/{id}/destroy', array('as' => 'appanel.user.destroy', 'uses' => 'UserController@destroy'));
 
-	Route::resource('picture', 'PictureController');
+	Route::get('picture', array('as' => 'appanel.picture.index', 'uses' => 'PictureController@index'));
+	Route::get('picture/create', array('as' => 'appanel.picture.create', 'uses' => 'PictureController@create'));
+	Route::post('picture/store', array('as' => 'appanel.picture.store', 'uses' => 'PictureController@store'));
+	Route::get('picture/{id}/edit', array('as' => 'appanel.picture.edit', 'uses' => 'PictureController@edit'));
+	Route::put('picture/{id}/update', array('as' => 'appanel.picture.update', 'uses' => 'PictureController@update'));
+	Route::post('picture/{id}/destroy', array('as' => 'appanel.picture.destroy', 'uses' => 'PictureController@destroy'));
 
 	Route::get('meme', array('as' => 'appanel.meme.index', 'uses' => 'MemeController@index'));
 	Route::get('meme/create', array('as' => 'appanel.meme.create', 'uses' => 'MemeController@create'));

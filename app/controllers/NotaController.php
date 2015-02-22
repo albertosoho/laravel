@@ -197,5 +197,10 @@ class NotaController extends \BaseController {
 		return Redirect::to('appanel/nota/');
 	}
 
+	public function destacados(){
+		//$
+		$json = json_encode($_POST['positions']);
+		print_r($json);
+	}
 
 }

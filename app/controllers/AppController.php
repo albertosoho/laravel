@@ -22,7 +22,9 @@ class AppController extends Controller{
 			echo 'login exitoso';
 			echo Auth::id();
 		}else{
-			echo 'Error de login';
+			return Redirect::route('appanel')
+				->withErrors(array('La contraseña o el password son incorrectos'))
+				->withInput();
 		}
 	}
 

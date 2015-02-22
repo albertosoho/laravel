@@ -78,7 +78,7 @@ class IndexController extends Controller {
 	public function memeteca(){
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
-		$memes = Meme::take(12)->get();
+		$memes = Meme::where('status', '=', 1)->orWhere('status', '=', 2)->take(12)->orderBy('id', 'desc')->get();
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'memes' => $memes,
@@ -89,7 +89,7 @@ class IndexController extends Controller {
 	}
 
 	public function memetecaPages(){
-		$memes = Meme::paginate(12);
+		$memes = Meme::where('status', '=', 1)->orWhere('status', '=', 2)->paginate(12);
 		$data = array(
 			'memes' => $memes,
 		);

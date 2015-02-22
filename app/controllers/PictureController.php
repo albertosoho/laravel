@@ -9,7 +9,7 @@ class PictureController extends \BaseController {
 	 */
 	public function index()
 	{
-		$pictures = Picture::paginate(100);
+		$pictures = Picture::paginate(1000);
 		$data = array(
 			'title' => 'lista de imágenes',
 			'pictures' => $pictures
@@ -90,11 +90,32 @@ class PictureController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$picture = Picture::find($id);
-		$picture->status = 0;
-		$picture->save();
+		$nota = Nota::where('cover', '=', $id)->where('status', '=', '1')->get();
+		$video = Nota::where('cover', '=', $id)->where('status', '=', '1')->get();
+		$meme = Nota::where('cover', '=', $id)->where('status', '=', '1')->get();
+		$user = Nota::where('cover', '=', $id)->where('status', '=', '1')->get();
 
-		return Redirect::to(route('appanel.picture'));
+		if($nota->isEmpty() && $video->isEmpty() && $meme->isEmpty() && $user->isEmpty()){
+			$picture = Picture::find($id);
+			
+			unlink(public_path('pictures/'.$picture->url));
+			unlink(public_path('pictures/large/'.$picture->url));
+			unlink(public_path('pictures/normal/'.$picture->url));
+			unlink(public_path('pictures/small/'.$picture->url));
+			unlink(public_path('pictures/thumb/'.$picture->url));
+			unlink(public_path('pictures/sq/'.$picture->url));
+			unlink(public_path('pictures/sqm/'.$picture->url));
+			unlink(public_path('pictures/medium/'.$picture->url));
+
+			$picture->delete();
+
+			return Redirect::to(route('appanel.picture.index'));
+		}else{
+			$data = array(
+				'title' => 'Imposible Borrar'
+			);
+			return View::make('appanel/pictures/nodestroy', $data);
+		}
 	}
 
 
