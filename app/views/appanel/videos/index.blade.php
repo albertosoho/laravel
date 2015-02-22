@@ -9,7 +9,7 @@
 	<!-- Destacados -->
 	<div class="row">
 		<div class="col s12">
-			<div class="destacados card-panel grey lighten-3 valign-wrapper">
+			<div style="position:relative" class="destacados card-panel grey lighten-3 valign-wrapper">
 				<h5 class="valign grey-text text-lighten-1">Arrastra aquí tu contenido destacado</h5>
 			</div>
 		</div>
