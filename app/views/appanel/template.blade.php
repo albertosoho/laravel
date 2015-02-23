@@ -75,6 +75,19 @@
 			<li class="separator"></li>
 
 				<li class="bold">
+					<a href="{{route('appanel.client.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-action-account-child"></i> Clientes
+					</a>
+				</li>
+				<li class="bold">
+					<a href="{{route('appanel.add.index')}}" class="waves-effect waves-teal">
+						<i class="mdi-action-account-child"></i> Anuncios
+					</a>
+				</li>
+
+			<li class="separator"></li>
+
+				<li class="bold">
 					<a href="{{route('logout')}}" class="waves-effect waves-teal">
 						<i class="mdi-action-exit-to-app"></i> Salir
 					</a>

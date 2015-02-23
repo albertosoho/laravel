@@ -185,9 +185,9 @@ ul.side-nav.fixed li.avatar {
 	color:#EE6E73;
 }
 .card .card-image .card-title {
-position: absolute;
-bottom: 0;
-left: 0;
-padding: 20px;
-text-shadow: 1px 1px 1px #000;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 20px;
+	text-shadow: 1px 1px 1px #000;
 }

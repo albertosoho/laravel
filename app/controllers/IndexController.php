@@ -29,12 +29,25 @@ class IndexController extends Controller {
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
 		$categories = Category::categoryType('video')->get();
+
+		$destacadas = Configurando::where('tipe', '=', 'video_destacados')->first();
+		$data = (array) json_decode($destacadas->data);
+		foreach($data['destacados'] as $d => $v){
+			$array[] = $v;
+		}
+		$ids = implode(',', $array);
+		$slider = Video::whereIn('id', $array)->orderByRaw(DB::raw("FIELD(id, $ids)"))->get();
+
+		$populares = Video::orderBy('views', 'desc')->take(3)->get();
+
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'videos' => $videos,
 			'categories' => $categories,
 			'videos_nav' => $videos_nav,
-			'notas_nav' => $notas_nav
+			'notas_nav' => $notas_nav,
+			'slider' => $slider,
+			'populares' => $populares
 		);
 		return View::make('pages/carnales', $data);
 	}
@@ -118,11 +131,21 @@ class IndexController extends Controller {
 		$notas = Nota::orderBy('id', 'desc')->paginate(10);
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
+
+		$destacadas = Configurando::where('tipe', '=', 'nota_destacados')->first();
+		$data = (array) json_decode($destacadas->data);
+		foreach($data['destacados'] as $d => $v){
+			$array[] = $v;
+		}
+		$ids = implode(',', $array);
+		$slider = Nota::whereIn('id', $array)->orderByRaw(DB::raw("FIELD(id, $ids)"))->get();
+
 		$data = array(
 			'title' => 'Eugenio Derbez',
 			'notas' => $notas,
 			'videos_nav' => $videos_nav,
-			'notas_nav' => $notas_nav
+			'notas_nav' => $notas_nav,
+			'slider' => $slider,
 		);
 		return View::make('pages/preguntame', $data);
 	}

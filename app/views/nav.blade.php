@@ -25,11 +25,66 @@
 							<a class="vlink" href="carnales">
 								videos <span>›</span>
 							</a>
+							<div class="videover">
+								<div class="row">
+									<div class="col-md-24">
+										<?php $i = 1 ?>
+										@foreach ($videos_nav as $video)
+										<div class="vid-content">
+											<article class="video" data-uid="{{$video->id}}" style="background: #000 url('pictures/small/{{$video->img->url}}') center no-repeat; background-size: cover;">
+												<a href="video/{{$video->id}}" title="{{$video->title}}">
+													<div class="ft">
+														<h1>{{$video->title}}</h1>
+													</div>
+													<div class="amas">
+														<i class="mas"></i>
+														<span>{{$video->categoria->name}}</span>
+													</div>
+												</a>
+											</article>
+											<p>{{Clean::desc($video->subtitle, 50)}}... </p>
+										</div>
+										@if(Route::currentRouteName() == 'index')
+											@if($i == 3)
+												<?php break; ?>
+											@endif
+										@endif
+										<?php $i++ ?>
+										@endforeach
+									</div>
+								</div>
+							</div>
 						</li>
 						<li>
 							<a class="plink" href="preguntame">
 								pregúntame <span>›</span>
 							</a>
+							<div class="preguntaover">
+								<div class="row">
+									<div class="col-md-24">
+									<?php $i = 1 ?>
+										@foreach ($notas_nav as $nota)
+										<div class="nota">
+											<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->img->url}}') center no-repeat; background-size: cover;">
+												<a href="nota/{{$nota->id}}" title="{{$nota->title}}">
+													<div class="ft">
+														<h1>{{$nota->title}}</h1>
+														<span>{{$nota->categoria->name}}</span>
+													</div>
+												</a>
+											</article>
+											<p>{{Clean::desc($nota->description, 50)}}...</p>
+										</div>
+										@if(Route::currentRouteName() == 'index')
+											@if($i == 3)
+												<?php break; ?>
+											@endif
+										@endif
+										<?php $i++ ?>
+										@endforeach
+									</div>
+								</div>
+							</div>
 						</li>
 						<li>
 							<a href="memeteca">
@@ -92,59 +147,3 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="videover">
-		<div class="row">
-			<div class="col-md-24">
-				<?php $i = 1 ?>
-				@foreach ($videos_nav as $video)
-				<div class="vid-content">
-					<article class="video" data-uid="{{$video->id}}" style="background: #000 url('pictures/small/{{$video->img->url}}') center no-repeat; background-size: cover;">
-						<a href="video/{{$video->id}}" title="{{$video->title}}">
-							<div class="ft">
-								<h1>{{$video->title}}</h1>
-							</div>
-							<div class="amas">
-								<i class="mas"></i>
-								<span>{{$video->categoria->name}}</span>
-							</div>
-						</a>
-					</article>
-					<p>{{Clean::desc($video->subtitle, 50)}}... </p>
-				</div>
-				@if(Route::currentRouteName() == 'index')
-					@if($i == 3)
-						<?php break; ?>
-					@endif
-				@endif
-				<?php $i++ ?>
-				@endforeach
-			</div>
-		</div>
-	</div>
-	<div class="preguntaover">
-		<div class="row">
-			<div class="col-md-24">
-			<?php $i = 1 ?>
-				@foreach ($notas_nav as $nota)
-				<div class="nota">
-					<article data-uid="{{$nota->id}}" style="background: #000 url('pictures/small/{{$nota->img->url}}') center no-repeat; background-size: cover;">
-						<a href="nota/{{$nota->id}}" title="{{$nota->title}}">
-							<span class="cat">{{$nota->categoria->name}}</span>
-							<div class="ft">
-								<h1>{{$nota->title}}</h1>
-								<span>{{$nota->categoria->name}}</span>
-							</div>
-						</a>
-					</article>
-					<p>{{Clean::desc($nota->description, 50)}}...</p>
-				</div>
-				@if(Route::currentRouteName() == 'index')
-					@if($i == 3)
-						<?php break; ?>
-					@endif
-				@endif
-				<?php $i++ ?>
-				@endforeach
-			</div>
-		</div>
-	</div>

@@ -1,18 +1,4 @@
 $(document).ready(function(){
-	$('.vlink').mouseenter(function(){
-		$('.videover').slideDown(200);
-		$('.preguntaover').slideUp(200);
-	});
-
-	$('.plink').mouseenter(function(e){
-		$('.preguntaover').slideDown(200);
-		$('.videover').slideUp(200);
-	});
-
-	$('nav.menu li a:contains("inicio"), nav.menu li a:contains("memeteca")').mouseenter(function(){
-		$('.preguntaover').slideUp(200);
-		$('.videover').slideUp(200);
-	});
 
 	$('nav.mobil .button').click(function(e){
 		e.stopPropagation();
@@ -21,11 +7,6 @@ $(document).ready(function(){
 
 	$(document).on('click', 'body', function(){
 		$('nav.mobil ul').slideUp(200);
-	});
-
-	$('.preguntaover, .videover').mouseleave(function(event){
-		$('.preguntaover').slideUp(200);
-		$('.videover').slideUp(200);
 	});
 
 	$(window).load(function(){

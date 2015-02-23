@@ -42,6 +42,7 @@
 @include('footer')
 <script>
 $(document).ready(function(){
+
 	$(window).load(function(){
 
 		var $container = $('ul.memes');
@@ -57,6 +58,10 @@ $(document).ready(function(){
 		pages = {{$memes->count()}};
 		current = 1;
 
+		$('.memes').animate({
+			opacity: 1,
+		}, 500);
+
 		$(window).scroll(function() {
 			if($(window).scrollTop() + $(window).height() == $(document).height()) {
 				page = current + 1;
@@ -68,7 +73,9 @@ $(document).ready(function(){
 				}).done(function(html){
 					if (html.length > 0) {
 						var el = $(html);
-						$('.memes').append(el).masonry( 'appended', el, true );
+						$('.memes').append(el);//.masonry();//( 'appended', el, true );
+						$('.memes').masonry('reloadItems');
+						$('.memes').masonry('layout');
 						current = current + 1;
 					}
 				});

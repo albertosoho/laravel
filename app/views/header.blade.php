@@ -7,16 +7,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta property="og:type" content="image" />
 		<meta property="og:site_name" content="Eugenio Derbez" />
-		<meta property="og:image" content="{{URL::to('/').'/pictures'}}" />
 		@if(Route::currentRouteName() == 'nota')
-			<meta property="og:url" content="{{URL::to('/').'/pictures/sq/'.$nota->img->url}}" />
+			<meta property="og:image" content="{{URL::to('/').'/pictures/sq/'.$nota->img->url}}" />
+			<meta property="og:url" content="{{URL::to('/').'/nota/'.$nota->id}}" />
 			<meta property="og:title" content="{{Clean::desc($nota->description, 1000)}}" />
 		@elseif(Route::currentRouteName() == 'video')
-			<meta property="og:url" content="{{URL::to('/').'/pictures/sq/'.$video->img->url}}" />
-			<meta property="og:title" content="{{$video->subtitle}}" />
+			<meta property="og:image" content="{{URL::to('/').'/pictures/sq/'.$video->img->url}}" />
+			<meta property="og:url" content="{{URL::to('/').'/video/'.$video->id}}" />
+			<meta property="og:title" content="{{Clean::desc($video->subtitle, 1000)}}" />
 		@elseif(Route::currentRouteName() == 'meme')
-			<meta property="og:url" content="{{URL::to('/').'/pictures/sq/'.$meme->img->url}}" />
-			<meta property="og:title" content="{{$meme->description}}" />
+			<meta property="og:image" content="{{URL::to('/').'/pictures/sq/'.$meme->img->url}}" />
+			<meta property="og:url" content="{{URL::to('/').'/meme/'.$meme->id}}" />
+			<meta property="og:title" content="{{Clean::desc($meme->description, 1000)}}" />
 		@endif
 		<meta property="og:description" content="By EugenioDerbez.tv" />
 
@@ -31,6 +33,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="{{URL::asset('js/modernizr-2.6.2.js')}}"></script>
 	<script src="{{URL::asset('js/jquery.slitslider.js')}}"></script>
+	<script src="{{URL::asset('js/b.js')}}"></script>
 	@section('scripts')
 
 	@show
@@ -45,15 +48,15 @@
 		ga('send', 'pageview');
 	</script>
 </head>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=523067094482053&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=523067094482053&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 @section('content')
 @show
 </html>

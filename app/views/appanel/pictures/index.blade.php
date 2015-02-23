@@ -9,9 +9,8 @@
 	<ul class="pictures">
 		@foreach ($pictures as $picture)
 		<li>
-		{{$picture->id}}
 			<a href="picture/{{$picture->id}}/edit">
-				<img src="{{URL::asset('/pictures/sq/'.$picture->url)}}">
+				<img src="{{URL::asset('/pictures/sqm/'.$picture->url)}}">
 			</a>
 			{{Form::model($picture, array('route' => array('appanel.picture.destroy', $picture->id), 'class'=>'inline', 'method' => 'post'))}}
 				<button type="submit" class="link">Borrar</button>

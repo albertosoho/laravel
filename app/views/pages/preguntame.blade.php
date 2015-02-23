@@ -12,7 +12,7 @@
 			<div class="col-md-24">
 				<div id="slider" class="sl-slider-wrapper top">
 					<div class="sl-slider">
-						@foreach ($notas as $nota)
+						@foreach ($slider as $nota)
 						<div class="sl-slide" data-uid="{{$nota->id}}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 							<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$nota->img->url}}');">
 								<div class="bottom-preguntame">

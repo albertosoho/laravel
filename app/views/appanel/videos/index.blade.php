@@ -9,8 +9,14 @@
 	<!-- Destacados -->
 	<div class="row">
 		<div class="col s12">
-			<div style="position:relative" class="destacados card-panel grey lighten-3 valign-wrapper">
+			<div style="position:relative" data-send="{{route('appanel.video.destacados')}}" class="destacados card-panel grey lighten-3 valign-wrapper">
 				<h5 class="valign grey-text text-lighten-1">Arrastra aquí tu contenido destacado</h5>
+				@foreach($slider as $s)
+					<div style="background: url({{URL::asset('pictures/sq/'.$s->img->url)}}) repeat scroll center center transparent;" data-id="{{$s->id}}" class="list">
+						<h3>{{$s->title}}}</h3>
+						<span class="remove">x</span>
+					</div>
+				@endforeach
 			</div>
 		</div>
 	</div>
@@ -19,9 +25,9 @@
 	<div class="row">
 	@foreach ($videos as $video)
 		@if($video->status == 2)
-		<div class="col s4" style="opacity:0.3" id="item-{{$video->id}}">
+		<div class="col s4 drag" style="opacity:0.3" data-item="{{$video->id}}" id="item-{{$video->id}}">
 		@else
-		<div class="col s4" id="item-{{$video->id}}">
+		<div class="col s4 drag" data-item="{{$video->id}}" id="item-{{$video->id}}">
 		@endif
 			<div class="card small">
 				<div class="card-image waves-effect waves-block waves-light">

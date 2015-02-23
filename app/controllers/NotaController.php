@@ -11,9 +11,19 @@ class NotaController extends \BaseController {
 	{
 		//$notas = Nota::with('categoria')->paginate(2);//->toJson();
 		$notas = Nota::orderBy('id', 'desc')->whereStatus(1)->orWhere('status', '=', 2)->paginate(12);
+
+		$destacadas = Configurando::where('tipe', '=', 'nota_destacados')->first();
+		$data = (array) json_decode($destacadas->data);
+		foreach($data['destacados'] as $d => $v){
+			$array[] = $v;
+		}
+		$ids = implode(',', $array);
+		$slider = Nota::whereIn('id', $array)->orderByRaw(DB::raw("FIELD(id, $ids)"))->get();
+
 		$data = array(
 			'title' => 'Notas',
 			'notas' => $notas,
+			'slider' => $slider
 		);
 		return View::make('appanel/notas/index', $data);
 	}
@@ -198,9 +208,10 @@ class NotaController extends \BaseController {
 	}
 
 	public function destacados(){
-		//$
 		$json = json_encode($_POST['positions']);
-		print_r($json);
+		$config = Configurando::where('tipe', '=', 'nota_destacados')->first();
+		$config->data = $json;
+		$config->save();
 	}
 
 }

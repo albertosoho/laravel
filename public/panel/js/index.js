@@ -90,28 +90,37 @@ $(document).ready(function(){
 		url = $('.destacados').data('send');
 		elements = $('.destacados > div');
 		obj = {
-			destacados:{}
+			"destacados":[{
+				"1":{},
+				"2":{},
+				"3":{},
+				"4":{},
+				"5":{}
+			}]
 		};
 		i = 1;
 		$.each(elements, function(key, value){
 			div = $(value);
 			id = div.attr('data-id');
-			pos = key + 1;
-			obj.destacados[pos] = id;
+			if (id != undefined){
+				pos = i;
+				obj.destacados[pos] = id;
+				i++;
+				console.log(obj);
+			}
 		});
-		console.log(obj);
 		$.ajax({
 			type: "POST",
 			url: url,
 			data: {'positions':obj},
 			success: function(){},
 			dataType: "json",
-			//contentType : "application/json"
 		});
 	}
 
 	$(document).on('click', '.remove', function(e){
 		e.preventDefault()
 		parent = $(this).parent().remove();
+		saveDestacados();
 	});
 });

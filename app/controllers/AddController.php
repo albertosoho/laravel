@@ -1,6 +1,6 @@
 <?php
 
-class VideoController extends \BaseController {
+class AddController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -10,22 +10,13 @@ class VideoController extends \BaseController {
 	public function index()
 	{
 		//$videos = Nota::with('categoria')->paginate(2);//->toJson();
-		$videos = Video::orderBy('id', 'desc')->whereStatus(1)->orWhere('status', '=', 2)->paginate(12);
-
-		$destacadas = Configurando::where('tipe', '=', 'video_destacados')->first();
-		$data = (array) json_decode($destacadas->data);
-		foreach($data['destacados'] as $d => $v){
-			$array[] = $v;
-		}
-		$ids = implode(',', $array);
-		$slider = Video::whereIn('id', $array)->orderByRaw(DB::raw("FIELD(id, $ids)"))->get();
+		$adds = Add::orderBy('id', 'desc')->whereStatus(1)->paginate(12);
 
 		$data = array(
-			'title' => 'Videos',
-			'videos' => $videos,
-			'slider' => $slider,
+			'title' => 'Anuncios',
+			'adds' => $adds,
 		);
-		return View::make('appanel/videos/index', $data);
+		return View::make('appanel/anuncios/index', $data);
 	}
 
 
@@ -36,12 +27,10 @@ class VideoController extends \BaseController {
 	 */
 	public function create()
 	{
-		$categories = Category::categoryType('video')->get();
 		$data = array(
-			'title' => 'Nuevo video',
-			'categories' => $categories
+			'title' => 'Nuevo anuncio',
 		);
-		return View::make('appanel/videos/create', $data);
+		return View::make('appanel/anuncios/create', $data);
 	}
 
 
@@ -128,14 +117,12 @@ class VideoController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$categories = Category::categoryType('video')->get();
-		$video = Video::find($id);
+		$add = Add::find($id);
 		$data = array(
-			'title' => 'Editar',
-			'video' => $video,
-			'categories' => $categories
+			'title' => 'Editar Anuncio',
+			'add' => $add,
 		);
-		return View::make('appanel/videos/edit', $data);
+		return View::make('appanel/anuncios/edit', $data);
 	}
 
 
@@ -178,8 +165,6 @@ class VideoController extends \BaseController {
 				->withErrors($validator)
 				->withInput();
 		} else {
-			$yt = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", Input::get('youtube'), $ytIDs);
-			$youtube_ID = empty($ytIDs[0]) ? 'none' : $ytIDs[0];
 
 			$video = Video::find($id);
 			$video->title = Input::get('title');
@@ -212,18 +197,11 @@ class VideoController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$video = Video::find($id);
-		$video->status = 0;
-		$video->save();
+		$add = Add::find($id);
+		$add->status = 0;
+		$add->save();
 
-		return Redirect::to('appanel/video/');
-	}
-
-	public function destacados(){
-		$json = json_encode($_POST['positions']);
-		$config = Configurando::where('tipe', '=', 'video_destacados')->first();
-		$config->data = $json;
-		$config->save();
+		return Redirect::to('appanel/add/');
 	}
 
 }

@@ -3,27 +3,16 @@
 <main>
 	<!-- Header -->
 	<nav id="top" class="top-nav">
-		<span class="page-title">Categorías</span>
+		<span class="page-title">{{$title}}</span>
 	</nav>
 
+	<!-- Listado -->
 	<div class="row">
-		<!-- Listado Notas -->
-		<div class="col s6">
+		<div class="col s12">
 			<ul class="collection with-header">
-				<li class="collection-header"><h4>Notas</h4></li>
-
-				@foreach ($notas as $cat)
-				<li class="collection-item"><a href="category/{{$cat->id}}/edit">{{$cat->name}}</a></li>
-				@endforeach
-			</ul>
-		</div>
-		<!-- Listado Videos -->
-		<div class="col s6">
-			<ul class="collection with-header">
-				<li class="collection-header"><h4>Videos</h4></li>
-
-				@foreach ($videos as $cat)
-				<li class="collection-item"><a href="category/{{$cat->id}}/edit">{{$cat->name}}</a></li>
+				<li class="collection-header"><h4>Clientes</h4></li>
+				@foreach ($clientes as $cliente)
+					<li class="collection-item"><a href="client/{{$cliente->id}}/edit">{{$cliente->name}}</a></li>
 				@endforeach
 			</ul>
 		</div>
@@ -31,7 +20,7 @@
 
 	<!-- Floating button -->
 	<div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-		<a href="category/create" class="btn-floating btn-large red">
+		<a href="client/create" class="btn-floating btn-large red">
 			<i class="large mdi-content-create"></i>
 		</a>
 	</div>
@@ -40,6 +29,7 @@
 	<footer id="footer" class="page-footer blue-grey darken-2">
 		<div class="row">
 			<div class="col l6 s12">
+				{{$clientes->links()}}
 			</div>
 		</div>
 		<div class="footer-copyright">
@@ -53,4 +43,3 @@
 
 </main>
 @stop
-{{--$notas imprime json--}}

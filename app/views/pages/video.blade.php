@@ -48,8 +48,8 @@
 												<ul class="social-video">
 													<li class="fb">
 														<span>
-															<a href="http://www.facebook.com/sharer/sharer.php?u={{URL::to('/').'video/'.$video->id}}">
-															<img src="{{URL::asset('img/face.png')}}">
+															<a href="http://www.facebook.com/sharer.php?s=100&p[url]={{URL::to('/').'/video/'.$video->id}}&p[images][0]={{URL::asset('pictures/sq/'.$video->img->url)}}&p[title]={{urlencode($video->title)}}">
+																<img src="{{URL::asset('img/face.png')}}">
 															</a>
 														</span>
 													</li>
@@ -99,8 +99,8 @@
 										<?php $i = 1; ?>
 										@foreach ($videos as $video)
 											<div class="vid-content">
-												<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-													<a href="video/{{$video->vuid}}" title="{{$video->title}}">
+												<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->img->url}}') center no-repeat; background-size: cover;">
+													<a href="video/{{$video->id}}" title="{{$video->title}}">
 														<div class="ft">
 															<h1>{{str_replace('"', '', $video->title)}}</h1>
 														</div>
@@ -129,8 +129,8 @@
 										<h3>recomendados</h3>
 										@foreach ($videos as $video)
 											<div class="vid-content">
-												<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->url}}') center no-repeat; background-size: cover;">
-													<a href="video/{{$video->vuid}}" title="{{$video->title}}">
+												<article class="video" data-uid="{{$video->vuid}}" style="background: #000 url('pictures/small/{{$video->img->url}}') center no-repeat; background-size: cover;">
+													<a href="video/{{$video->id}}" title="{{$video->title}}">
 														<div class="ft">
 															<h1>{{str_replace('"', '', $video->title)}}</h1>
 														</div>

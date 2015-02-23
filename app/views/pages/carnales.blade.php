@@ -32,7 +32,7 @@
 						</h4>
 						<div class="populares">
 							<?php $i = 1 ?>
-							@foreach ($videos as $video)
+							@foreach ($populares as $video)
 							<div class="vid-content">
 								<article class="video" data-uid="{{ $video->id }}" style="background: #000 url('pictures/small/{{$video->img->url}}') center no-repeat; background-size: cover;">
 									<a href="video/{{ $video->id }}" title="{{ $video->title }}">
@@ -61,7 +61,7 @@
 				<!-- SLIDER -->
 					<div id="slider" class="sl-slider-wrapper">
 						<div class="sl-slider">
-							@foreach($videos as $video )
+							@foreach($slider as $video )
 							<div class="sl-slide" data-uid="{{ $video->id }}" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
 								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$video->img->url}}');">
 									<h1><a href="video/{{ $video->id }}">{{ $video->title }}</a></h1>

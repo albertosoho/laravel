@@ -97,6 +97,21 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 	Route::put('category/{id}/update', array('as' => 'appanel.category.update', 'uses' => 'CategoryController@update'));
 	Route::get('category/{id}/destroy', array('as' => 'appanel.category.destroy', 'uses' => 'CategoryController@destroy'));
 
+	Route::get('client', array('as' => 'appanel.client.index', 'uses' => 'ClientController@index'));
+	Route::get('client/create', array('as' => 'appanel.client.create', 'uses' => 'ClientController@create'));
+	Route::post('client/store', array('as' => 'appanel.client.store', 'uses' => 'ClientController@store'));
+	Route::get('client/{id}/edit', array('as' => 'appanel.client.edit', 'uses' => 'ClientController@edit'));
+	Route::put('client/{id}/update', array('as' => 'appanel.client.update', 'uses' => 'ClientController@update'));
+	Route::get('client/{id}/destroy', array('as' => 'appanel.client.destroy', 'uses' => 'ClientController@destroy'));
+
+	Route::get('add', array('as' => 'appanel.add.index', 'uses' => 'AddController@index'));
+	Route::get('add/create', array('as' => 'appanel.add.create', 'uses' => 'AddController@create'));
+	Route::post('add/store', array('as' => 'appanel.add.store', 'uses' => 'AddController@store'));
+	Route::get('add/{id}/edit', array('as' => 'appanel.add.edit', 'uses' => 'AddController@edit'));
+	Route::put('add/{id}/update', array('as' => 'appanel.add.update', 'uses' => 'AddController@update'));
+	Route::get('add/{id}/destroy', array('as' => 'appanel.add.destroy', 'uses' => 'AddController@destroy'));
+
+
 //uploads
 
 	Route::post('upload', array('as'=>'upload', 'uses'=>'ImageController@upload'));
