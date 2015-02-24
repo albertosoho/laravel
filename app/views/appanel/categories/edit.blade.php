@@ -27,11 +27,6 @@
 						{{" selected"}}
 						@endif
 					>Video</option>
-					<option value="derbez"
-						@if($cat->objects == "derbez")
-						{{" selected"}}
-						@endif
-					>Derbez</option>
 				</select>
 			</div>
 		</div>

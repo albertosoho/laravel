@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+	veintiunoNueve();
+	$(window).resize(function(){
+		veintiunoNueve();
+	});
+
 	$('nav.mobil .button').click(function(e){
 		e.stopPropagation();
 		$('nav.mobil ul').slideToggle(200);
@@ -15,6 +20,12 @@ $(document).ready(function(){
 			$('.wrapper-container').width(body).css('overflow-x', 'hidden');
 		}
 	});
+
+	function veintiunoNueve(){
+		width = $('.sl-slider-wrapper').width();
+		height = width / 2.33;
+		$('.sl-slider-wrapper').height( height );
+	}
 
 	$(document).on('click', '.social-video a', function(e){
 		e.preventDefault();

@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('prueba', array('as'=>'prueba', 'uses'=>'DemoController@index'));
-
 Route::get('/', array('as' => 'index', 'uses' => 'IndexController@index'));
 
 Route::get('home', array('as' => 'index', 'uses' => 'IndexController@index'));
@@ -120,5 +118,10 @@ Route::group(array('before' => 'auth', 'prefix' => 'appanel'), function(){
 
 	Route::get('picsjson', array('as'=>'picsJSON', 'uses'=>'ImageController@picsJSON'));
 
+});
+
+App::error(function(Exception $exception)
+{
+    //return Redirect::to(URL::to('/'));
 });
 

@@ -76,12 +76,7 @@
 
 				<li class="bold">
 					<a href="{{route('appanel.client.index')}}" class="waves-effect waves-teal">
-						<i class="mdi-action-account-child"></i> Clientes
-					</a>
-				</li>
-				<li class="bold">
-					<a href="{{route('appanel.add.index')}}" class="waves-effect waves-teal">
-						<i class="mdi-action-account-child"></i> Anuncios
+						<i class="mdi-editor-attach-money"></i> Clientes
 					</a>
 				</li>
 

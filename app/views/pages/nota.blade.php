@@ -17,16 +17,20 @@
 								<div class="row">
 									<div class="col-md-20 col-md-offset-2">
 										<h1>{{$nota->title}}</h1>
-										<p>{{Clean::desc($nota->content, 250) }}</p>
+										<p>{{Clean::desc($nota->description, 250) }}</p>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<nav id="nav-arrows" class="nav-arrows">
-					<span class="nav-arrow-prev">Anterior</span>
-					<span class="nav-arrow-next">Siguiente</span>
+				<nav id="navi-arrows" class="nav-arrows">
+					@if(!$prev->isEmpty())
+					<span class="nav-arrow-prev"><a href="{{route('nota', array('id'=>$prev[0]->id))}}">Anterior</a></span>
+					@endif
+					@if(!$next->isEmpty())
+					<span class="nav-arrow-next"><a href="{{route('nota', array('id'=>$next[0]->id))}}">Siguiente</a></span>
+					@endif
 				</nav>
 			</div>
 		</div>
@@ -54,7 +58,16 @@
 						<p>{{Clean::desc($last->description, 50)}}...</p>
 					</div>
 					@endforeach
-					<div class="ad-cuadro-inline"></div>
+					<div class="ad-cuadro-inline">
+								<!-- SQ_Ads_P5 -->
+								<ins class="adsbygoogle"
+								style="display:inline-block;width:240px;height:200px"
+								data-ad-client="ca-pub-3284457972326292"
+								data-ad-slot="7339020361"></ins>
+								<script>
+								(adsbygoogle = window.adsbygoogle || []).push({});
+								</script>
+					</div>
 				@endif
 				<article class="articulo">
 					<div class="contain special">
@@ -75,7 +88,7 @@
 					</div>
 					{{$nota->content}}
 					@if(!Agent::isMobile())
-						<div class="ad-horizontal"></div>
+					<!--	<div class="ad-horizontal"></div> -->
 					@endif
 					<span class="fuente">{{$nota->fuente}}</span>
 				</article>
@@ -100,7 +113,16 @@
 					<p>{{Clean::desc($last->description, 50)}}...</p>
 				</div>
 				@endforeach
-				<div class="ad-cuadro-inline"></div>
+				<div class="ad-cuadro-inline">
+								<!-- SQ_Ads_P5 -->
+								<ins class="adsbygoogle"
+								style="display:inline-block;width:240px;height:200px"
+								data-ad-client="ca-pub-3284457972326292"
+								data-ad-slot="7339020361"></ins>
+								<script>
+								(adsbygoogle = window.adsbygoogle || []).push({});
+								</script>
+				</div>
 				@if(!Agent::isMobile())
 				<div class="comments-box">
 					<div class="text">Comentarios</div>

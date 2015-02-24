@@ -6,15 +6,42 @@
 		<span class="page-title">{{$title}}</span>
 	</nav>
 
-	<!-- Listado -->
+	<!-- TABS -->
 	<div class="row">
 		<div class="col s12">
+			<ul class="tabs">
+				<li class="tab col s6"><a class="active" href="#test1">Clientes</a></li>
+				<li class="tab col s6"><a href="#test2">Espacios</a></li>
+			</ul>
+		</div>
+		<div id="test1" class="col s12">
 			<ul class="collection with-header">
-				<li class="collection-header"><h4>Clientes</h4></li>
 				@foreach ($clientes as $cliente)
 					<li class="collection-item"><a href="client/{{$cliente->id}}/edit">{{$cliente->name}}</a></li>
 				@endforeach
 			</ul>
+		</div>
+		<div id="test2" class="col s12">
+			<!-- Anuncios -->
+			<div class="row">
+			@foreach ($positions as $p)
+				<div class="col s12 m3">
+					<div class="card blue-grey darken-1">
+						<div class="card-content white-text">
+							<span class="card-title">{{$p->position}} .- {{$p->name}}</span>
+							<p></p>
+						</div>
+						<div class="card-action">
+							@if($p->status == 1)
+							<a href="#">Ocupado Liberar</a>
+							@else
+							<a href="#">Libre</a>
+							@endif
+						</div>
+					</div>
+				</div>
+			@endforeach
+			</div>
 		</div>
 	</div>
 

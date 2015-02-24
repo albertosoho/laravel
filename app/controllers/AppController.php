@@ -34,8 +34,28 @@ class AppController extends Controller{
 	}
 
 	public function index(){
+		//notas
+		$destacadas = Configurando::where('tipe', '=', 'nota_destacados')->first();
+		$dato = (array) json_decode($destacadas->data);
+		foreach($dato['destacados'] as $d => $v){
+			$array[] = $v;
+		}
+		$ids = implode(',', $array);
+		$notas = Nota::whereIn('id', $array)->orderByRaw(DB::raw("FIELD(id, $ids)"))->get();
+
+		//videos
+		$destacados = Configurando::where('tipe', '=', 'video_destacados')->first();
+		$data2 = (array) json_decode($destacados->data);
+		foreach($data2['destacados'] as $d => $v){
+			$array2[] = $v;
+		}
+		$ids2 = implode(',', $array2);
+		$videos = Video::whereIn('id', $array2)->orderByRaw(DB::raw("FIELD(id, $ids2)"))->get();
+
 		$data = array(
 			'title' => 'Inicio',
+			'notas' => $notas,
+			'videos' => $videos
 		);
 		if(Auth::check()){
 			return View::make('appanel/index', $data);

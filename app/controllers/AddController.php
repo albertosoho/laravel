@@ -27,10 +27,28 @@ class AddController extends Controller {
 	 */
 	public function create()
 	{
-		$data = array(
-			'title' => 'Nuevo anuncio',
-		);
-		return View::make('appanel/anuncios/create', $data);
+		if(!Input::get('idCliente')){
+
+		}else{
+			$id = Input::get('idCliente');
+			$adds_home = Position::whereIn('id', [1,2,3])->get();
+			$adds_videos = Position::whereIn('id', [4,5])->get();
+			$adds_notas = Position::whereIn('id', [6,7])->get();
+			$adds_video = Position::whereIn('id', [8,9])->get();
+			$adds_memeteca = Position::whereIn('id', [10])->get();
+
+			$cliente = Client::find($id);
+			$data = array(
+				'title' => 'Nuevo anuncio',
+				'cliente' => $cliente,
+				'home' => $adds_home,
+				'videos' => $adds_videos,
+				'notas' => $adds_notas,
+				'video' => $adds_video,
+				'memeteca' => $adds_memeteca,
+			);
+			return View::make('appanel/anuncios/create', $data);
+		}
 	}
 
 
@@ -43,23 +61,21 @@ class AddController extends Controller {
 	{
 		//validation videos
 		$rules = array(
-			'title' => 'required',
-			'subtitle' => 'required',
-			'credits' => 'required',
-			'youtube' => 'required',
+			'price' => 'required|integer',
+			'start' => 'required',
+			'duration' => 'required',
+			'position' => 'required',
 			'pic' => 'required|integer|exists:pictures,id',
-			'category' => 'required|integer|exists:categories,id',
 		);
 
 		$messages = array(
-			'title.required' => 'Has dejado el título vacío',
-			'subtitle.required' => 'Coloca un subtitulo',
-			'credits.required' => 'No has colocado contenido',
-			'youtube.required' => 'Debes colocar un video de youtube',
+			'price.required' => 'Has dejado el costo vacío',
+			'price.integer' => 'El costo debe ser un valor numérico entero, sin comas ni puntos',
+			'start.required' => 'La fecha de inicio es imprescindible',
+			'duration.required' => 'La fecha de fin es imprescindible',
+			'position.required' => 'Coloca la posición del anuncio',
 			'pic.required' => 'Debes arrastrar o subir una imágen',
-			'category.required' => 'Selecciona una categoría',
-			'integer' => 'Si ves este mensaje haces algo raro',
-			'category.exists' => 'Estás asociando una categoría que no existe',
+			'integer' => 'Si ves este mensaje haces algo raro >:(',
 			'pic.exists' => 'Estás asociando una imágen que no existe'
 		);
 
@@ -68,32 +84,26 @@ class AddController extends Controller {
 
 		if ($validator->fails()) {
 			$messages = $validator->messages();
-			return Redirect::route('appanel.video.create')
+			return Redirect::route('appanel.add.create', array('idCliente' => Input::get('cliente_id')))
 				->withErrors($validator)
 				->withInput();
 		} else {
-			$yt = preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", Input::get('youtube'), $ytIDs);
-			$youtube_ID = empty($ytIDs[0]) ? 'none' : $ytIDs[0];
-
-			$video = new Video;
-			$video->title = Input::get('title');
-			$video->subtitle = Input::get('subtitle');
-			$video->credits = Input::get('credits');
-			$video->tags = Input::get('tags');
-			$video->youtube = $youtube_ID;
-			$video->author = Auth::id();
-			$video->type = 'youtube';
-			$video->pic = Input::get('pic');
-			$video->category = Input::get('category');
+			$add = new Add;
+			$add->price = Input::get('price');
+			$add->start = Input::get('start');
+			$add->duration = Input::get('duration');
+			$add->position_id = Input::get('position')[0];
+			$add->pic_id = Input::get('pic');
+			$add->client_id = Input::get('cliente_id');
 			if(Input::has('status')) {
-				$video->status = 1;
+				$add->status = 1;
 			}else{
-				$video->status = 2;
+				$add->status = 2;
 			}
-			$video->save();
+			$add->save();
 		}
 
-		return Redirect::route('appanel.video.index');
+		return Redirect::route('appanel.add.index');
 	}
 
 
@@ -136,23 +146,20 @@ class AddController extends Controller {
 	{
 		//validation videos
 		$rules = array(
-			'title' => 'required',
-			'subtitle' => 'required',
-			'credits' => 'required',
-			'youtube' => 'required',
+			'price' => 'required',
+			'start' => 'required',
+			'duration' => 'required',
+			'position' => 'required|',
 			'pic' => 'required|integer|exists:pictures,id',
-			'category' => 'required|integer|exists:categories,id',
 		);
 
 		$messages = array(
-			'title.required' => 'Has dejado el título vacío',
-			'subtitle.required' => 'Coloca un subtitulo',
-			'credits.required' => 'No has colocado contenido',
-			'youtube.required' => 'Debes colocar un video de youtube',
+			'price.required' => 'Has dejado el costo vacío',
+			'start.required' => 'La fecha de inicio es imprescindible',
+			'duration.required' => 'La fecha de fin es imprescindible',
+			'position.required' => 'Coloca la posición del anuncio',
 			'pic.required' => 'Debes arrastrar o subir una imágen',
-			'category.required' => 'Selecciona una categoría',
-			'integer' => 'Si ves este mensaje haces algo raro',
-			'category.exists' => 'Estás asociando una categoría que no existe',
+			'integer' => 'Si ves este mensaje haces algo raro >:(',
 			'pic.exists' => 'Estás asociando una imágen que no existe'
 		);
 
@@ -161,31 +168,26 @@ class AddController extends Controller {
 
 		if ($validator->fails()) {
 			$messages = $validator->messages();
-			return Redirect::route('appanel.video.edit', array('id'=>$id))
+			return Redirect::route('appanel.add.edit', array('id' => $id))
 				->withErrors($validator)
 				->withInput();
 		} else {
-
-			$video = Video::find($id);
-			$video->title = Input::get('title');
-			$video->subtitle = Input::get('subtitle');
-			$video->credits = Input::get('credits');
-			$video->tags = Input::get('tags');
-			$video->youtube = $youtube_ID;
-			$video->tags = Input::get('tags');
-			$video->author = Auth::id();
-			$video->type = Input::get('type');
-			$video->pic = Input::get('pic');
-			$video->category = Input::get('category');
+			$add = Add::find($id);
+			$add->price = Input::get('price');
+			$add->start = Input::get('start');
+			$add->duration = Input::get('credits');
+			$add->position_id = Input::get('position');
+			$add->pic_id = Input::get('pic');
+			$add->client_id = Input::get('cliente_id');
 			if(Input::has('status')) {
-				$video->status = 1;
+				$add->status = 1;
 			}else{
-				$video->status = 2;
+				$add->status = 2;
 			}
-			$video->save();
+			$add->save();
 		}
 
-		return Redirect::to('appanel/video/'.$id.'/edit');
+		return Redirect::to('appanel/add/'.$id.'/edit');
 	}
 
 

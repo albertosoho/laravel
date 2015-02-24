@@ -11,10 +11,12 @@ class ClientController extends \BaseController {
 	{
 		//$videos = Nota::with('categoria')->paginate(2);//->toJson();
 		$clientes = Client::orderBy('id', 'desc')->whereStatus(1)->paginate(20);
+		$positions = Position::all();
 
 		$data = array(
 			'title' => 'Clientes',
-			'clientes' => $clientes
+			'clientes' => $clientes,
+			'positions' => $positions,
 		);
 		return View::make('appanel/clientes/index', $data);
 	}
@@ -45,12 +47,14 @@ class ClientController extends \BaseController {
 		$rules = array(
 			'name' => 'required',
 			'email' => 'required|email',
+			'phone' => 'required',
 			'company' => 'required',
 		);
 
 		$messages = array(
 			'name.required' => 'Has dejado el nombre vacío',
 			'email.required' => 'Debes colocar un email de contacto',
+			'phone.required' => 'Es obligatorio un teléfono de contacto',
 			'company.required' => 'No has colocado compañía',
 			'email.email' => 'Debes colocar un email válido',
 		);
@@ -68,6 +72,7 @@ class ClientController extends \BaseController {
 			$cliente = new Client;
 			$cliente->name = Input::get('name');
 			$cliente->email = Input::get('email');
+			$cliente->phone = Input::get('phone');
 			$cliente->company = Input::get('company');
 			if(Input::has('status')) {
 				$cliente->status = 1;
@@ -122,12 +127,14 @@ class ClientController extends \BaseController {
 		$rules = array(
 			'name' => 'required',
 			'email' => 'required|email',
+			'phone' => 'required',
 			'company' => 'required',
 		);
 
 		$messages = array(
 			'name.required' => 'Has dejado el nombre vacío',
 			'email.required' => 'Debes colocar un email de contacto',
+			'phone.required' => 'Es obligatorio un teléfono de contacto',
 			'company.required' => 'No has colocado compañía',
 			'email.email' => 'Debes colocar un email válido',
 		);
@@ -141,10 +148,10 @@ class ClientController extends \BaseController {
 				->withErrors($validator)
 				->withInput();
 		} else {
-
 			$cliente = new Client;
 			$cliente->name = Input::get('name');
 			$cliente->email = Input::get('email');
+			$cliente->phone = Input::get('phone');
 			$cliente->company = Input::get('company');
 			if(Input::has('status')) {
 				$company->status = 1;
@@ -170,7 +177,7 @@ class ClientController extends \BaseController {
 		$cliente->status = 0;
 		$cliente->save();
 
-		return Redirect::to('appanel/cliente/');
+		return Redirect::to('appanel/client/');
 	}
 
 }

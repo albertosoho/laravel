@@ -15,7 +15,7 @@
 					<div class="row">
 						<div class="col-md-16">
 							@if(isset($meme->img->url))
-								<img class="img-responsive" src="{{URL::asset('/pictures/'.$meme->img->url)}}">
+								<img class="img-responsive" src="{{URL::asset('/pictures/normal/'.$meme->img->url)}}">
 							@else
 								<iframe src="https://vine.co/v/{{$meme->id_vine}}/embed/simple" width="600" height="600" frameborder="0"></iframe><script src="https://platform.vine.co/static/scripts/embed.js"></script>
 							@endif

@@ -9,8 +9,27 @@
 	<!-- Destacados -->
 	<div class="row">
 		<div class="col s12">
-			<div style="position:relative" class="destacados card-panel grey lighten-3 valign-wrapper">
+			<div style="position:relative" id="nota" data-send="{{route('appanel.nota.destacados')}}" class="destacados card-panel grey lighten-3 valign-wrapper nota_d">
 				<h5 class="valign grey-text text-lighten-1">Aquí contenido principal</h5>
+				@foreach($notas as $n)
+					<div style="background: url({{URL::asset('pictures/sq/'.$n->img->url)}}) repeat scroll center center transparent;" data-id="{{$n->id}}" class="list">
+						<h3>{{$n->title}}</h3>
+					</div>
+				@endforeach
+			</div>
+		</div>
+	</div>
+
+	<!-- Destacados -->
+	<div class="row">
+		<div class="col s12">
+			<div style="position:relative" id="video" data-send="{{route('appanel.video.destacados')}}" class="destacados card-panel grey lighten-3 valign-wrapper video_d">
+				<h5 class="valign grey-text text-lighten-1">Aquí contenido principal</h5>
+				@foreach($videos as $v)
+					<div style="background: url({{URL::asset('pictures/sq/'.$v->img->url)}}) repeat scroll center center transparent;" data-id="{{$v->id}}" class="list">
+						<h3>{{$v->title}}</h3>
+					</div>
+				@endforeach
 			</div>
 		</div>
 	</div>

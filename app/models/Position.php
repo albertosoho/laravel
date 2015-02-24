@@ -1,6 +1,6 @@
 <?php
 
-class Video extends Eloquent{
+class Position extends Eloquent{
 
 	public function add(){
 		return $this->hasOne('Add');

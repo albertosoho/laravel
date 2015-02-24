@@ -37,9 +37,13 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="input-field col s12">
+			<div class="input-field col s6">
 				<label>Email</label>
 				<input type="email" name="email" value="{{$cliente->email}}" >
+			</div>
+			<div class="input-field col s6">
+				<label>Teléfono</label>
+				<input type="text" name="phone" value="{{$cliente->phone}}" >
 			</div>
 			<div class="input-field col s12">
 				<label>Compañía</label>
@@ -63,9 +67,11 @@
 			</div>
 			<div class="input-field col s6">
 				<button class="btn waves-effect waves-light right">Guardar</button>
+				<a class="delete" href="{{route('appanel.client.destroy', array('id' => $cliente->id))}}"><i class="mdi-action-delete"></i> Borrar</a>
 			</div>
 		</div>
 	{{Form::close()}}
+	<a class="waves-effect waves-light btn" href="{{route('appanel.add.create', array('idCliente' => $cliente->id))}}">Añadir anuncio</a>
 	</div>
 
 	<!-- Footer -->

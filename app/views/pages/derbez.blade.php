@@ -159,7 +159,6 @@
 </ul>
 @endif
 
-@if(Agent::isMobile())
 <section id="intro">
 	<h1>
 		<span>Eugenio Derbez</span>
@@ -328,7 +327,6 @@
 		</p>
 	</div>
 </section>
-@endif
 
 <footer id="footer">
 	<div class="center">

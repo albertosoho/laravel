@@ -282,7 +282,7 @@ nav.mobil li a:active{
 }
 /*slit slider*/
 .sl-slider-wrapper {
-	width: 99%;
+	width: 100%;
 	height: 400px;
 	margin: 0 auto;
 	position: relative;
@@ -423,6 +423,13 @@ nav.mobil li a:active{
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
 }
+.nav-arrows span a{
+	position: relative;
+	top: 0;
+	width: 35px;
+	height: 35px;
+	display: block;
+}
 .nav-arrows span:hover {
 	border-color: rgba(150,150,150,0.9);
 }
@@ -478,6 +485,9 @@ section.slider{
 	box-shadow:-6px 12px 10px -11px #000 inset;
 	position:relative;
 	z-index:96;
+}
+#home #slider{
+	width:90%;
 }
 #slider h1 {
 	font-family: "SierraMadre";
@@ -585,10 +595,11 @@ section.preguntame .view-more a{
 }
 .bottom-preguntame{
 	position:absolute;
-	bottom:0;
+	bottom:60px;
 	left:0;
 	width:100%;
 	margin: 0px;
+	padding:10px;
 	background: rgba(0,0,0,1);
 	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.53) 40%, rgba(0,0,0,1) 75%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(40%, rgba(0,0,0,0.53)), color-stop(75%, rgba(0,0,0,1)));
@@ -933,7 +944,7 @@ section.comments .comment-bottom{
 	text-align: justify;
 	height:40px;
 	width:240px;
-	margin: 5px auto;
+	margin: 10px auto;
 }
 .video{
 	width: 240px;
@@ -1087,6 +1098,7 @@ section.comments .comment-bottom{
 	font-family: WeblySleekUISemilight;
 	font-weight: normal;
 	text-shadow:1px 1px 1px #000;
+	text-align: left !important;
 }
 .video-content aside{
 	text-align:center;
@@ -1166,12 +1178,12 @@ article.contain .liston {
 }
 ul.memes{
 	padding-top:50px;
-	width:960px !important;
+	width:940px !important;
 	margin:0 auto;
 	opacity:0;
 }
 ul.memes li{
-	width:280px;
+	width:300px;
 	margin-bottom: 20px;
 	position: relative;
 	cursor:pointer;

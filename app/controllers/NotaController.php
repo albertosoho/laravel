@@ -212,6 +212,7 @@ class NotaController extends \BaseController {
 		$config = Configurando::where('tipe', '=', 'nota_destacados')->first();
 		$config->data = $json;
 		$config->save();
+		print_r($json);
 	}
 
 }

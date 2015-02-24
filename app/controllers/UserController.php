@@ -11,7 +11,7 @@ class UserController extends \BaseController {
 	{
 		$users = User::orderBy('name', 'asc')->get();
 		$data = array(
-			'title' => 'Memes',
+			'title' => 'Usuarios',
 			'users' => $users,
 		);
 		return View::make('appanel/users/index', $data);

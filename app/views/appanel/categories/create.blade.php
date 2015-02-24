@@ -19,7 +19,6 @@
 				<select name="objects">
 					<option value="nota">Nota</option>
 					<option value="video">Video</option>
-					<option value="derbez">Derbez</option>
 				</select>
 			</div>
 		</div>

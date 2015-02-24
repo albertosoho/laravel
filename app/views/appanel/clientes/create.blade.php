@@ -36,9 +36,13 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="input-field col s12">
+			<div class="input-field col s6">
 				<label>Email</label>
 				<input type="email" name="email" value="{{Input::old('email')}}" >
+			</div>
+			<div class="input-field col s6">
+				<label>Teléfono</label>
+				<input type="text" name="phone" value="{{Input::old('phone')}}" >
 			</div>
 			<div class="input-field col s12">
 				<label>Compañía</label>

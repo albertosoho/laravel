@@ -9,11 +9,11 @@
 	<!-- Destacados -->
 	<div class="row">
 		<div class="col s12">
-			<div style="position:relative" data-send="{{route('appanel.nota.destacados')}}" class="destacados card-panel grey lighten-3 valign-wrapper">
+			<div style="position:relative" id="nota" data-send="{{route('appanel.nota.destacados')}}" class="destacados card-panel grey lighten-3 valign-wrapper nota_d">
 				<h5 class="valign grey-text text-lighten-1">Arrastra aquí tu contenido destacado</h5>
 				@foreach($slider as $s)
 					<div style="background: url({{URL::asset('pictures/sq/'.$s->img->url)}}) repeat scroll center center transparent;" data-id="{{$s->id}}" class="list">
-						<h3>{{$s->title}}}</h3>
+						<h3>{{$s->title}}</h3>
 						<span class="remove">x</span>
 					</div>
 				@endforeach

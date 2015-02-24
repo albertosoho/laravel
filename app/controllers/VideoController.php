@@ -224,6 +224,7 @@ class VideoController extends \BaseController {
 		$config = Configurando::where('tipe', '=', 'video_destacados')->first();
 		$config->data = $json;
 		$config->save();
+		print_r($json);
 	}
 
 }

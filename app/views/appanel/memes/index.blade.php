@@ -24,7 +24,11 @@
 					<span class="card-title">{{$meme->title}}</span>
 				</div>
 				<div class="card-content">
-					<p>{{$meme->description}}</p>
+					<span class="card-title activator grey-text text-darken-4"> <i class="mdi-navigation-more-vert right"></i></span>
+					<p>{{Clean::desc($meme->description, 100)}}</p>
+					@if($meme->status == 2)
+						<p style="color:red">BORRADOR</p>
+					@endif
 				</div>
 				<div class="card-reveal">
 					<span class="card-title grey-text text-darken-4">Opciones <i class="mdi-navigation-close right"></i></span>

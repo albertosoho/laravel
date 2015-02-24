@@ -45,7 +45,7 @@
 										</div>
 									</a>
 								</article>
-								<p>{{substr($video->subtitle, 0, 50) }}... </p>
+								<p>{{Clean::desc($video->subtitle, 0, 50) }}... </p>
 							</div>
 							@if($i == 3)
 								<?php break; ?>
@@ -82,7 +82,6 @@
 							<span></span>
 						</nav>
 					</div>
-					<p class="slider-home">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet</p>
 				@else
 				<!-- SLIDER -->
 
@@ -112,7 +111,7 @@
 										</div>
 									</a>
 								</article>
-								<p>{{ substr($video->subtitle, 0, 50) }}... </p>
+								<p>{{ Clean::desc($video->subtitle, 50) }}... </p>
 							</div>
 								@if($i == 6)
 									<div class="ad-horizontal">

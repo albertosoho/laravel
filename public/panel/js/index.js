@@ -16,8 +16,14 @@ $(document).ready(function(){
 		return false;
 	});
 
+	$('.datepicker').pickadate();
+
 	$('.destacados').sortable({
-		revert: true
+		revert: true,
+		stop: function(event,ui){
+			id = $(this).attr('id');
+			saveDestacados(id);
+		}
 	});
 
 	$('.delete').click(function(e){
@@ -43,11 +49,8 @@ $(document).ready(function(){
 		cursor: 'move',
 		revert: 'invalid',
 		helper: function () { 
-			//alert($(this).attr('class'));
-
 			var cloned = $(this).clone();
 			cloned.attr('id', (++new_id).toString());
-
 			return cloned;
 		},
 		distance: 20
@@ -80,15 +83,23 @@ $(document).ready(function(){
 				}
 			}
 
+			id = $(this).attr('id');
+
 			$(this).find('h5').hide();
 
-			saveDestacados();
+			saveDestacados(id);
 		}
 	});
 
-	function saveDestacados(){
-		url = $('.destacados').data('send');
-		elements = $('.destacados > div');
+	function saveDestacados(id){
+		if($('#'+id).hasClass('video_d')){
+			url = $('.destacados.video_d').data('send');
+			elements = $('.destacados.video_d > div');
+		}else{
+			url = $('.destacados.nota_d').data('send');
+			elements = $('.destacados.nota_d > div');
+		}
+
 		obj = {
 			"destacados":[{
 				"1":{},

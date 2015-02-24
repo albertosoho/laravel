@@ -115,6 +115,9 @@ class IndexController extends Controller {
 		$videos_nav = Video::nav()->get();
 		$notas_nav = Nota::nav()->get();
 
+		$prev = Nota::where('id', '<', $nota->id)->where('status', '=', 1)->get();
+		$next = Nota::where('id', '>', $nota->id)->where('status', '=', 1)->get();
+
 		$nota->views = $nota->views + 1;
 		$nota->save();
 		$data = array(
@@ -122,7 +125,9 @@ class IndexController extends Controller {
 			'nota' => $nota,
 			'lasts' => $lasts,
 			'videos_nav' => $videos_nav,
-			'notas_nav' => $notas_nav
+			'notas_nav' => $notas_nav,
+			'next' => $next,
+			'prev' => $prev
 		);
 		return View::make('pages/nota', $data);
 	}

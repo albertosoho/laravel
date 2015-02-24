@@ -32,6 +32,7 @@ class ImageController extends Controller{
 				//se mueve la imágen a la carpeta pictures
 				$image->move('pictures', $filename);
 				$fileUrl = URL::asset('pictures/'.$filename);
+				$fileUrlMiddle = URL::asset('pictures/medium/'.$filename);
 				$file = public_path('pictures/'.$filename);
 
 				//asignamos las carpetas a variables
@@ -85,12 +86,13 @@ class ImageController extends Controller{
 					),
 					'description' => 'Se guardó la imagen',
 					'pic' => $fileUrl,
-					'filelink' => $fileUrl,
+					'filelink' => $fileUrlMiddle,
 					'id' => $id
 				);
 			}else{
 				//si la imágen ya existe obtenemos la url
 				$fileUrl = URL::asset('pictures/'.$imagen[0]->url);
+				$fileUrlMiddle = URL::asset('pictures/medium/'.$imagen[0]->url);
 				//guardamos el status en json
 				$status = array(
 					'status' => 'repeat',
@@ -99,7 +101,7 @@ class ImageController extends Controller{
 					),
 					'description' => 'La imágen ya existe',
 					'pic' => $fileUrl,
-					'filelink' => $fileUrl,
+					'filelink' => $fileUrlMiddle,
 					'id' => $imagen[0]->id
 				);
 			}

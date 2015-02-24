@@ -17,41 +17,54 @@
 		<div class="row">
 			<div class="col-md-24">
 				<section class="slider">
-					<h1 style="margin:0;padding:0 0 30px 0;margin-bottom:-20px;font-family:SierraMadre;text-align:center;font-size:40px;-webkit-font-smoothing:antialiased">Destacados</h1>
+
+					<h1 style="margin:0;padding:10px 0 0 0;margin-bottom:20px;font-family:SierraMadre;text-align:center;font-size:40px;-webkit-font-smoothing:antialiased">Destacados</h1>
+
+
 					<div id="slider" class="sl-slider-wrapper">
 						<div class="sl-slider">
-							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[0]->img->url}}'); background-position: center;">
-									<h1><a href="video/{{$videos[0]->id}}">{{$videos[0]->title}}</a></h1>
+							<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+								<a href="video/{{$videos[0]->id}}">
+								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[0]->img->url}}'); background-position: center; background-size: cover">
+									<h1>{{$videos[0]->title}}</h1>
 								</div>
+								</a>
 							</div>
 						</div>
 						<div class="sl-slider">
-							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$notas[0]->img->url}}'); background-position: center;">
-									<h1><a href="video/{{$notas[0]->id}}">{{$notas[0]->title}}</a></h1>
+							<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+								<a href="nota/{{$notas[0]->id}}">
+								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$notas[0]->img->url}}'); background-position: center; background-size: cover">
+									<h1>{{$notas[0]->title}}</h1>
 								</div>
+								</a>
 							</div>
 						</div>
 						<div class="sl-slider">
-							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[1]->img->url}}'); background-position: center;">
-									<h1><a href="video/{{$videos[1]->id}}">{{$videos[1]->title}}</a></h1>
+							<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+								<a href="video/{{$videos[1]->id}}">
+								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[1]->img->url}}'); background-position: center; background-size: cover">
+									<h1>{{$videos[1]->title}}</h1>
 								</div>
+								</a>
 							</div>
 						</div>
 						<div class="sl-slider">
-							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$notas[1]->img->url}}'); background-position: center;">
-									<h1><a href="video/{{$notas[1]->id}}">{{$notas[1]->title}}</a></h1>
+							<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+								<a href="nota/{{$notas[1]->id}}">
+								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$notas[1]->img->url}}'); background-position: center; background-size: cover">
+									<h1>{{$notas[1]->title}}</h1>
 								</div>
+								</a>
 							</div>
 						</div>
 						<div class="sl-slider">
-							<div class="sl-slide" data-uid="uid_HBTMfanO" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
-								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[2]->img->url}}'); background-position: center;">
-									<h1><a href="video/{{$videos[0]->id}}">{{$videos[0]->title}}</a></h1>
+							<div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+								<a href="video/{{$videos[0]->id}}">
+								<div class="sl-slide-inner" style="background-image: url('pictures/normal/{{$videos[2]->img->url}}'); background-position: center; background-size: cover">
+									<h1>{{$videos[0]->title}}</h1>
 								</div>
+								</a>
 							</div>
 						</div>
 
@@ -70,6 +83,7 @@
 							<span></span>
 						</nav>
 					</div>
+
 					<p class="slider-home"></p>
 					<div class="ad-horizontal">
 						<!-- HRAds - P1 -->
